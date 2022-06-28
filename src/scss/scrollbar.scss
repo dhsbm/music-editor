@@ -1,0 +1,42 @@
+// 滚动条数据
+$scrollbar-thumb-color: rgb(115, 115, 115);
+$scrollbar-background-color: rgb(32, 32, 32);
+
+// 滚动条样式
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    background: $scrollbar-background-color;
+  }
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $scrollbar-thumb-color;
+    border-radius: 2px;
+  }
+}
+// input 滚动条样式
+@mixin input-scrollbar($width, $height, $thumb-width) {
+  -webkit-appearance: none; /*去除默认样式*/
+  width: $width;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: $height;
+    width: $thumb-width;
+    background: $scrollbar-thumb-color;
+    border-radius: 2px;
+  }
+  &::-webkit-slider-runnable-track {
+    height: $height;
+    background: $scrollbar-background-color;
+  }
+}
+// input 滚动条旋转样式
+@mixin rotate-input-scrollbar {
+  transform-origin: left top;
+  transform: rotate(90deg);
+  left: 14px;
+}

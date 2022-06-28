@@ -1,0 +1,6 @@
+// 窗口数据
+$window-background-color: rgb(128, 125, 114);
+
+@mixin window-shadow() {
+  box-shadow: 1px 17px 90px -9px rgba(0, 0, 0, 0.75);
+}

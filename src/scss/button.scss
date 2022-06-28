@@ -1,0 +1,20 @@
+// 透明按钮
+@mixin transparent-button {
+  -webkit-appearance: none;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+  color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 10%);
+  height: 32px;
+  line-height: 32px;
+  padding: 0 10px;
+  font-size: 12px;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  &:active {
+    background-color: rgba(0, 0, 0, 0.3);
+    outline: 2px solid rgb(255 255 255 / 10%);
+  }
+}
