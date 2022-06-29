@@ -19,15 +19,13 @@ export interface CanvasData {
   coverPixelY: number
   style: { cursor: string }
   cutLineStyle: { transform: string }
-  selectBoxStyle: SelectBoxStyle
+  selectBoxStyle: {
+    outlineWidth: string
+    top: string
+    left: string
+    width: string
+    height: string
+  }
   scrollbarStyle: { width: string }
   scrollbarHide?: boolean
-}
-
-export interface SelectBoxStyle {
-  outlineWidth: string
-  top: string
-  left: string
-  width: string
-  height: string
 }

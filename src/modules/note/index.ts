@@ -13,7 +13,6 @@ import tailorNote from './tailorNote'
 import noteMenuData from './noteMenu/noteMenuData'
 import showNoteMenu from './noteMenu/showNoteMenu'
 import hideNoteMenu from './noteMenu/hideNoteMenu'
-import getActiveNote from './getActiveNote'
 import mousedownNote from './mousedownNote'
 
 export {
@@ -30,6 +29,5 @@ export {
   noteMenuData,
   showNoteMenu,
   hideNoteMenu,
-  getActiveNote,
   mousedownNote,
 }

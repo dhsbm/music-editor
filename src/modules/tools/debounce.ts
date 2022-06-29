@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @description: 防抖函数
  * @param {() => void} func 要防抖的函数，内部函数

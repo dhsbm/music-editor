@@ -2,8 +2,13 @@ import { reactive, computed, watch } from 'vue'
 import { trackData } from 'modules/track'
 import { workerCanvasRender } from '..'
 import { CanvasData } from '../Interface'
+
+interface workerCanvasData extends CanvasData {
+  containerTracksStyle: string
+}
+
 // 工作区的数据
-const workerCanvasData: CanvasData = reactive({
+const workerCanvasData: workerCanvasData = reactive({
   canvas: <HTMLCanvasElement>(<unknown>undefined), // 画布
   ctx: <CanvasRenderingContext2D>(<unknown>undefined), // 画布2d上下文
   mobile: false, // 是否可移动

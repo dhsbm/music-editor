@@ -13,8 +13,8 @@ interface Option {
 // 登录请求
 Mock.mock('/mock/login', 'post', (option: Option) => {
   //请求相关的参数
-  const { userName, password } = JSON.parse(option.body)
-  const volid = userName.length > 1 && password.length > 1
+  const { username, password } = JSON.parse(option.body)
+  const volid = username.length > 1 && password.length > 1
   if (!volid) {
     return {
       code: 400,

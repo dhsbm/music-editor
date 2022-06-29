@@ -13,7 +13,7 @@ import toRange from './toRange'
 // 节流函数
 import throttle from './throttle'
 // 防抖函数
-import debounce from './debounce.js'
+import debounce from './debounce'
 // 修改z-index把元素置于最上层
 import changeZIndex from './changeZindex'
 // 拖动元素

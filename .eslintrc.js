@@ -2,7 +2,7 @@ module.exports = {
   root: true,
   env: {
     node: true,
-    // 在Vue3的setup中运行
+    // 在Vue3的setup中运行 提供defineProps等编译器宏函数
     'vue/setup-compiler-macros': true,
   },
   extends: [
@@ -61,5 +61,11 @@ module.exports = {
     'template-curly-spacing': ['error', 'never'],
     // 不允许行尾出现空格
     'no-trailing-spaces': 'error',
+    // 允许ts非空断言
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    // 允许使用any类型
+    '@typescript-eslint/no-explicit-any': 'off',
+    // 允许v-html
+    'vue/no-v-html': 'off',
   },
 }

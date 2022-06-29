@@ -1,6 +1,12 @@
 import { toRange } from '.'
-import { SelectBoxStyle } from 'modules/canvas/Interface'
 
+interface SelectBoxStyle {
+  outlineWidth: string
+  top: string
+  left: string
+  width: string
+  height: string
+}
 let oldPageX: number, oldPageY: number, oldOffsetX: number, oldOffsetY: number
 /**
  * @description: 初始化选择框数据
