@@ -1,7 +1,7 @@
 import { mockAjax, ResponseInterface } from '..'
 
 interface LoginParams {
-  userName: string
+  username: string
   password: string
 }
 

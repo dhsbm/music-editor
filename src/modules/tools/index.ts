@@ -24,7 +24,8 @@ import resizeDom from './resizeDom'
 import stringify from './stringify'
 // 初始化选择框数据  获取选择框数据
 import { initSelectBox, getSelectBox } from './selectBox'
-// import moveItem from './moveItem'
+// 移动/伸缩 音谱/包络
+import moveItem from './moveItem'
 // 将小节转换为时间
 import beatToTime from './beatToTime'
 // 将小节转换为节拍
@@ -44,7 +45,7 @@ export {
   stringify,
   initSelectBox,
   getSelectBox,
-  // moveItem,
+  moveItem,
   beatToTime,
   beatToPat,
 }

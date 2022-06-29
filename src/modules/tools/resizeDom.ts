@@ -9,7 +9,7 @@ import { hideHit, showHit } from 'modules/hit'
  * @param {style} style 要修改的元素样式
  * @return {void}
  */
-const resizeDom = (e: MouseEvent, direction: direction, style: style): void => {
+const resizeDom = (e: MouseEvent, direction: direction, style: style) => {
   if (e.button != 0) return // 检测是否为左键按下
   // 保留鼠标样式
   if (direction == 'left' || direction == 'right') {

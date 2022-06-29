@@ -1,12 +1,5 @@
 import { toRange } from '.'
-
-interface SelectBoxStyle {
-  outlineWidth: string
-  top: string
-  left: string
-  width: string
-  height: string
-}
+import { SelectBoxStyle } from 'modules/canvas/Interface'
 
 let oldPageX: number, oldPageY: number, oldOffsetX: number, oldOffsetY: number
 /**
@@ -15,7 +8,7 @@ let oldPageX: number, oldPageY: number, oldOffsetX: number, oldOffsetY: number
  * @param {SelectBoxStyle} selectBoxStyle 选择框绑定的样式
  * @return {void}
  */
-export const initSelectBox = (e: MouseEvent, selectBoxStyle: SelectBoxStyle): void => {
+export const initSelectBox = (e: MouseEvent, selectBoxStyle: SelectBoxStyle) => {
   oldPageX = e.pageX
   oldPageY = e.pageY
   oldOffsetX = e.offsetX

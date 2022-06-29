@@ -2,7 +2,7 @@ import { mockAjax, ResponseInterface } from '..'
 
 interface PublishCompositionParams {
   title: string // 文章标题
-  projectId: string // 项目id
+  projectId: number // 项目id
   tags: string[] // 文章标签
   content: string // 文章内容
 }

@@ -5,9 +5,9 @@
  * @param {number} wait 等待时间
  * @param {number} [maxWait] 最大时限，有的话是节流函数，没有的话是防抖函数
  * @param {boolean} [leading] 规定在延迟开始前是否调用内部函数，默认不调用
- * @return {() => void} 已经防抖的函数
+ * @return {any} 已经防抖的函数
  */
-function debounce(func: any, wait: number, maxWait: number, leading = false): () => void {
+function debounce(func: any, wait: number, maxWait = 0, leading = false): any {
   let lastArgs: unknown, // 保存参数
     lastThis: unknown, // 保存this
     timerId: number | undefined, // 定时器id

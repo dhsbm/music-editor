@@ -82,8 +82,8 @@ const project7 = {
 
 const projectDetailMap: Map<number, ProjectDetail> = new Map()
 
-projectDetailMap.set(1234, project1)
-projectDetailMap.set(4786, project2)
+projectDetailMap.set(0, project1)
+projectDetailMap.set(1, project2)
 projectDetailMap.set(5678, project3)
 projectDetailMap.set(7823, project4)
 projectDetailMap.set(7456, project5)

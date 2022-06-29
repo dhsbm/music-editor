@@ -46,13 +46,25 @@ Mock.mock('/mock/logout', 'post', {
 // 项目数据请求 返回项目字符串与bpm
 Mock.mock(/\/mock\/projectData\/\d+/, 'get', (option: Option) => {
   const projectId = gerProjectIdFromUrl(option.url)
+  let projectData, bpm
+  if (projectId == -1) {
+    // 随机一个
+    const r = (Math.random() * (projectList.length - 1)) | 0
+    const id = projectList[r].projectId
+    bpm = projectDetailMap.get(id)?.bpm
+    projectData = projectDataMap.get(id)
+  } else {
+    // 返回测试数据
+    bpm = projectDetailMap.get(projectId)?.bpm
+    projectData = projectDataMap.get(projectId)
+  }
   return {
     code: 200,
     message: '请求成功',
     ok: true,
     data: {
-      bpm: projectDetailMap.get(projectId)?.bpm,
-      projectData: projectDataMap.get(projectId),
+      bpm,
+      projectData,
     },
   }
 })

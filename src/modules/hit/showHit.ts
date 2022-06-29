@@ -5,7 +5,7 @@ import { hitData } from '.'
  * @param {cls} cls 要维持的指针样式
  * @return {void}
  */
-const showHit = (cls: cls): void => {
+const showHit = (cls: cls) => {
   hitData.class = cls
   hitData.style.pointerEvents = 'auto'
 }

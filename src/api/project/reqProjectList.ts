@@ -2,7 +2,7 @@ import { mockAjax, ResponseInterface } from '..'
 
 interface ProjectListResponse extends ResponseInterface {
   data: {
-    projectId: string // 项目id
+    projectId: number // 项目id
     title: string // 项目标题
   }[]
 }
