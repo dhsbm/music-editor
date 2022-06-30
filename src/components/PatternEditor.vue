@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import Title from './tools/Title.vue'
+import Title from 'common/Title.vue'
 import { changeZIndex } from 'modules/tools'
 import { patternEditorData, hidePatternEditor, savePattern } from 'modules/pattern'
 </script>

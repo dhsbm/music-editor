@@ -1,6 +1,7 @@
 import { recordHistory } from 'modules/history'
 import { selectNote } from '.'
 import { Note } from '@/class'
+import { HistoryType } from 'modules/history/Interface'
 /**
  * @description: 裁剪音节
  * @param {Note} note 要裁剪的音节
@@ -15,7 +16,7 @@ const tailorNote = (note: Note, middle: number) => {
   newNote.addSelf()
   selectNote(newNote)
   recordHistory({
-    type: 3,
+    type: HistoryType.Note,
     describe: '裁剪音节',
     target: note,
     target2: newNote,

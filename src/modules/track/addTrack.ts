@@ -1,6 +1,7 @@
 import { Track } from '@/class'
 import { workerCanvasRender } from 'modules/canvas'
 import { recordHistory } from 'modules/history'
+import { HistoryType } from 'modules/history/Interface'
 import { trackData } from '.'
 
 /**
@@ -13,7 +14,7 @@ const addTrack = (record = true) => {
   trackData.trackOrder.push(track.trackId)
   workerCanvasRender()
   // 做记录
-  record && recordHistory({ type: 1, describe: '添加音轨', target: track })
+  record && recordHistory({ type: HistoryType.Track, describe: '添加音轨', target: track })
 
   return track
 }

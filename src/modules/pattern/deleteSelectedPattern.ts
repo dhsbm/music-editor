@@ -1,5 +1,6 @@
 import { workerCanvasRender } from 'modules/canvas'
 import { recordHistory } from 'modules/history'
+import { HistoryType } from 'modules/history/Interface'
 import { deletePattern, selectedPatternList } from '.'
 
 /**
@@ -8,7 +9,7 @@ import { deletePattern, selectedPatternList } from '.'
  */
 const deleteSelectedPattern = () => {
   if (selectedPatternList.size == 0) return
-  recordHistory({ type: 2, describe: '删除音谱', target: [...selectedPatternList] })
+  recordHistory({ type: HistoryType.Pattern, describe: '删除音谱', target: [...selectedPatternList] })
   for (const pattern of selectedPatternList) {
     deletePattern(pattern, false)
   }

@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "types": ["webpack-env"],
     "paths": {
+      "common/*": ["src/common/*"],
       "components/*": ["src/components/*"],
       "modules/*": ["src/modules/*"],
       "scss/*": ["src/scss/*"],

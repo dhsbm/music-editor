@@ -2,6 +2,7 @@ import { Envelope } from '@/class'
 import { workerCanvasRender } from 'modules/canvas'
 import { envelopeEditorData } from 'modules/envelope'
 import { recordHistory } from 'modules/history'
+import { HistoryType } from 'modules/history/Interface'
 import { selectedEnvelopeList } from '.'
 
 /**
@@ -17,9 +18,14 @@ const deleteEnvelope = (envelope: Envelope, record = true, disconnect = true) =>
   selectedEnvelopeList.delete(envelope)
   if (envelope.envelopeId == envelopeEditorData.envelope?.envelopeId) envelopeEditorData.envelope = undefined
 
-  record && workerCanvasRender()
-  // 做记录
-  if (record) recordHistory({ type: 4, describe: '删除包络', target: [envelope] })
+  if (record) {
+    workerCanvasRender()
+    recordHistory({
+      type: HistoryType.Envelop,
+      describe: '删除包络',
+      target: [envelope],
+    })
+  }
 }
 
 export default deleteEnvelope

@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import Title from './tools/Title.vue'
+import Title from 'common/Title.vue'
 import { historyData, historyList, historyItemClass, changeHistoryIndex } from 'modules/history'
 import { changeZIndex } from 'modules/tools'
 import { getCurrentInstance, onMounted } from 'vue'

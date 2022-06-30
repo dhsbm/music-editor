@@ -56,7 +56,7 @@
 </template>
 
 <script setup lang="ts">
-import Title from './tools/Title.vue'
+import Title from 'common/Title.vue'
 import { envelopeEditorData, hideEnvelopeEditor, saveEnvelope } from 'modules/envelope'
 import { changeZIndex } from 'modules/tools'
 import { trackData } from 'modules/track'

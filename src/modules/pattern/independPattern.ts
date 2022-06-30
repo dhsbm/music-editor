@@ -1,5 +1,6 @@
 import { Pattern } from '@/class'
 import { recordHistory } from 'modules/history'
+import { HistoryType } from 'modules/history/Interface'
 
 /**
  * @description: 使音谱的数据独立
@@ -14,7 +15,7 @@ const independPattern = (pattern: Pattern) => {
   newNoteData.addPattern(pattern)
 
   recordHistory({
-    type: 2,
+    type: HistoryType.Pattern,
     describe: '独立音谱',
     target: pattern,
     oldNoteData: noteData,

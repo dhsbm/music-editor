@@ -68,9 +68,6 @@ class Envelope {
     return globalData.project.getEnvelope(envelopeId)
   }
 
-  static keys() {
-    return ['start', 'end', 'offsetX']
-  }
   // 编码为字符串
   static stringify(envelope: Envelope, idMap: IdMap) {
     const result = []
@@ -88,9 +85,9 @@ class Envelope {
     result.push(`"actTrackId":${idMap.trackIdMap.get(envelope.actTrackId) || 0}`)
 
     // 处理普通属性
-    for (const key of <[]>Envelope.keys()) {
-      result.push(`"${key}":${stringify(envelope[key])}`)
-    }
+    result.push(`"start":${stringify(envelope['start'])}`)
+    result.push(`"end":${stringify(envelope['end'])}`)
+    result.push(`"offsetX":${stringify(envelope['offsetX'])}`)
 
     return '{' + String(result) + '}'
   }

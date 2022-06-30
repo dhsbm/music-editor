@@ -12,14 +12,14 @@ class DotData {
   dotList: Array<Dot> // 节点的集合
   type: number // 类型
   category: number // 类别：音量、声相……
-  constructor(dotDataId: number) {
+  constructor(dotDataId: number, type = 1, category = 1) {
     this.dotDataId = dotDataId || globalData.project.newDotData(this)
     this.envelopeIdSet = new Set() // 值为envelope的id
     this.dotList = [] // 点的集合
     //类型：1、2、3、4
     //对应：折线、正向水平线、反向水平线、1/2正弦
-    this.type = 1
-    this.category = 1 // 类别：音量、声相……
+    this.type = type
+    this.category = category // 类别：音量、声相……
   }
   // 添加包络
   addEnvelope(envelope: Envelope) {
@@ -69,9 +69,8 @@ class DotData {
     result.push(`"dotDataId":${idMap.dotDataIdMap.get(dotData.dotDataId)}`)
 
     // 处理普通属性
-    for (const key of <[]>DotData.keys()) {
-      result.push(`"${key}":${stringify(dotData[key])}`)
-    }
+    result.push(`"type":${stringify(dotData['type'])}`)
+    result.push(`"category":${stringify(dotData['category'])}`)
 
     // 处理包络id集合
     const envelopeIdSet = []
@@ -92,26 +91,11 @@ class DotData {
 
   // 解析对象
   static parse(object: DotDataObj, dotDataId: number) {
-    const dotData = new DotData(dotDataId)
-
-    // 处理普通属性
-    for (const key of <[]>DotData.keys()) {
-      dotData[key] = object[key]
-    }
-
-    // 建立音谱id集合
-    const envelopeIdSet: Set<number> = new Set()
-    for (const envelopeId of object.envelopeIdSet) {
-      envelopeIdSet.add(envelopeId)
-    }
-    dotData.envelopeIdSet = envelopeIdSet
-
-    // 建立音节映射
-    const dotList = []
-    for (const dot of object.dotList) {
-      dotList.push(Dot.parse(dot, dotDataId))
-    }
-    dotData.dotList = dotList
+    const dotData = new DotData(dotDataId, object.type, object.category)
+    // 建立包络id集合
+    dotData.envelopeIdSet = new Set(object.envelopeIdSet)
+    // 建立节点列表
+    dotData.dotList = object.dotList.map((dot) => Dot.parse(dot, dotDataId))
 
     return dotData
   }

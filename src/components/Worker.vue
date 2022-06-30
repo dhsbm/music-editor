@@ -73,13 +73,13 @@
 </template>
 
 <script setup lang="ts">
-import HeaderCanvas from './tools/HeaderCanvas.vue'
-import Indicator from './tools/Indicator.vue'
-import Overlay from './tools/Overlay.vue'
-import CanvasScrollbar from './tools/CanvasScrollbar.vue'
-import TrackItem from './tools/TrackItem.vue'
-import Shady from './tools/Shady.vue'
-import CutLine from './tools/CutLine.vue'
+import HeaderCanvas from 'common/HeaderCanvas.vue'
+import Indicator from 'common/Indicator.vue'
+import Overlay from 'common/Overlay.vue'
+import CanvasScrollbar from 'common/CanvasScrollbar.vue'
+import TrackItem from 'common/TrackItem.vue'
+import Shady from 'common/Shady.vue'
+import CutLine from 'common/CutLine.vue'
 
 import { workerSig } from 'modules/time'
 import { dropLibraryItem } from 'modules/library'
@@ -110,10 +110,11 @@ onMounted(() => {
   window.onresize = () => {
     init()
   }
-  workerCanvasData.canvas = vm!.refs.workerCanvas as HTMLCanvasElement
-  workerCanvasData.ctx = workerCanvasData.canvas.getContext('2d') as CanvasRenderingContext2D
-  workerCanvasData.canvas.width = 2000
-  workerCanvasData.canvas.height = 900
+  const workerCanvas = vm!.refs.workerCanvas as HTMLCanvasElement
+  workerCanvasData.canvas = workerCanvas
+  workerCanvasData.ctx = workerCanvas.getContext('2d')!
+  workerCanvas.width = 2000
+  workerCanvas.height = 900
 
   init()
 })

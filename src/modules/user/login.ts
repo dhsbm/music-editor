@@ -4,8 +4,7 @@ import { reqLogin } from '@/api'
 
 /**
  * @description: 登录函数
- * @param {null}
- * @return {null}
+ * @return {void}
  */
 const login = async () => {
   const { username, password } = loginWindowData

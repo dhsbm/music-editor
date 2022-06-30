@@ -5,6 +5,7 @@ import { editorSig } from 'modules/time'
 import { toMultiple } from 'modules/tools'
 import { selectNote, drawNote } from '.'
 import { Note, Pattern } from '@/class'
+import { HistoryType } from 'modules/history/Interface'
 
 /**
  * @description: 添加音节
@@ -23,7 +24,7 @@ const addNote = (e: MouseEvent) => {
   selectNote(note)
   drawSimilarPattern(pattern)
   // 做记录
-  recordHistory({ type: 3, describe: '添加音节', target: [note] })
+  recordHistory({ type: HistoryType.Note, describe: '添加音节', target: [note] })
   return note
 }
 

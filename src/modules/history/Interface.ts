@@ -1,6 +1,14 @@
 export interface HistoryItem {
-  type: number
+  type: HistoryType
   describe: string
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [propNmae: string]: any
+}
+
+export enum HistoryType {
+  Init,
+  Track,
+  Pattern,
+  Note,
+  Envelop,
+  Dot,
 }

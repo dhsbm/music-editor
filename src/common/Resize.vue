@@ -1,13 +1,15 @@
 <template>
   <!-- 上下左右拉伸 -->
-  <div class="topResize" @mousedown="resizeDom($event, 'top', props.data.style)"></div>
-  <div class="leftResize" @mousedown="resizeDom($event, 'left', props.data.style)"></div>
-  <div class="rightResize" @mousedown="resizeDom($event, 'right', props.data.style)"></div>
-  <div class="bottomResize" @mousedown="resizeDom($event, 'bottom', props.data.style)"></div>
+  <div class="upResize" @mousedown="resizeDom($event, Direction.Up, props.data.style)"></div>
+  <div class="leftResize" @mousedown="resizeDom($event, Direction.Left, props.data.style)"></div>
+  <div class="rightResize" @mousedown="resizeDom($event, Direction.Right, props.data.style)"></div>
+  <div class="downResize" @mousedown="resizeDom($event, Direction.Down, props.data.style)"></div>
 </template>
 
 <script setup lang="ts">
 import { resizeDom } from 'modules/tools'
+import { Direction } from 'modules/tools/Interfacs'
+
 interface Style {
   transform: string
   height: string
@@ -21,8 +23,8 @@ const props = defineProps<{
 </script>
 
 <style lang="scss" scoped>
-.topResize,
-.bottomResize {
+.upResize,
+.downResize {
   position: absolute;
   height: 5px;
   width: 100%;
@@ -37,10 +39,10 @@ const props = defineProps<{
   z-index: 4;
   cursor: ew-resize;
 }
-.topResize {
+.upResize {
   top: -3px;
 }
-.bottomResize {
+.downResize {
   bottom: -3px;
 }
 .leftResize {

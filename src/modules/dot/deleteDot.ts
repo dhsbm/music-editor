@@ -1,5 +1,6 @@
 import { Dot } from '@/class'
 import { recordHistory } from 'modules/history'
+import { HistoryType } from 'modules/history/Interface'
 import { toRaw } from 'vue'
 import { selectedDotList, drawDotData, dotEditorData } from '.'
 
@@ -18,7 +19,7 @@ const deleteDot = (dot: Dot, record = true) => {
   if (record) {
     drawDotData(dot.dotData)
     recordHistory({
-      type: 5,
+      type: HistoryType.Dot,
       describe: '删除包络节点',
       target: [dot],
     })

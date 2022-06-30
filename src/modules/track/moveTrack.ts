@@ -1,5 +1,6 @@
 import { workerCanvasData } from 'modules/canvas'
 import { recordHistory } from 'modules/history'
+import { HistoryType } from 'modules/history/Interface'
 import { trackData } from '.'
 
 /**
@@ -39,7 +40,7 @@ const moveTrack = (e: MouseEvent, trackId: number) => {
     for (let i = 0; i < oldOrder.length; i++) {
       if (trackData.trackOrder[i] != oldOrder[i]) {
         recordHistory({
-          type: 1,
+          type: HistoryType.Track,
           describe: '移动音轨',
           oldOrder,
           newOrder: [...trackData.trackOrder],

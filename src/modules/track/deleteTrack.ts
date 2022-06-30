@@ -5,6 +5,7 @@ import { trackData, trackEditorData } from '.'
 import { synthesizerData } from 'modules/synthesizer'
 import { deleteEnvelope, envelopeEditorData, selectedEnvelopeList } from 'modules/envelope'
 import { Track, Envelope } from '@/class'
+import { HistoryType } from 'modules/history/Interface'
 
 /**
  * @description: 删除音轨
@@ -50,7 +51,7 @@ const deleteTrack = (trackId: number, record = true) => {
   // 做记录
   if (record) {
     workerCanvasRender()
-    recordHistory({ type: 1, describe: '删除音轨', index, target: track })
+    recordHistory({ type: HistoryType.Track, describe: '删除音轨', index, target: track })
   }
 }
 

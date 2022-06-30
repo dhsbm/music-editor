@@ -10,6 +10,7 @@ import { toRaw } from 'vue'
 import { selectedEnvelopeList } from 'modules/envelope'
 import { globalData } from 'modules/globalData'
 import { Pattern, Envelope } from '@/class'
+import { HistoryType } from 'modules/history/Interface'
 /**
  * @description: 移动/伸缩 音谱/包络
  * @param {MouseEvent} e 鼠标事件对象
@@ -123,7 +124,7 @@ const moveItem = (e: MouseEvent, item: Pattern | Envelope, changeStart: boolean,
     // 做记录
     if (selectedPatternList.size > 0 && (difX != 0 || difRow != 0)) {
       recordHistory({
-        type: 2,
+        type: HistoryType.Pattern,
         describe: changeStart && changeEnd ? '移动音谱' : '伸缩音谱',
         target: [...selectedPatternList],
         difX,
@@ -134,7 +135,7 @@ const moveItem = (e: MouseEvent, item: Pattern | Envelope, changeStart: boolean,
     }
     if (selectedEnvelopeList.size > 0 && (difX != 0 || difRow != 0)) {
       recordHistory({
-        type: 4,
+        type: HistoryType.Envelop,
         describe: changeStart && changeEnd ? '移动包络' : '伸缩包络',
         target: [...selectedEnvelopeList],
         difX,

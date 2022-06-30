@@ -66,7 +66,7 @@ export interface TrackObj {
 }
 
 export interface ProjectObj {
-  id: number // 项目id
+  projectId: number // 项目id
   title: string // 项目标题
   introduce: string // 项目介绍
   authorId: string // 项目作者

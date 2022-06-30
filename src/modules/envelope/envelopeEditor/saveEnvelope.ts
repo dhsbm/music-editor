@@ -2,6 +2,7 @@ import { toRaw } from 'vue'
 import { recordHistory } from 'modules/history'
 import { drawSimilarEnvelope, envelopeEditorData } from '..'
 import { Track } from '@/class'
+import { HistoryType } from 'modules/history/Interface'
 
 /**
  * @description: 保存音谱参数的修改
@@ -30,7 +31,7 @@ const saveEnvelope = () => {
 
   if (difference.length > 0) {
     recordHistory({
-      type: 4,
+      type: HistoryType.Envelop,
       describe: '修改包络参数',
       target: toRaw(envelope),
       difference,

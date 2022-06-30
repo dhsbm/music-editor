@@ -2,6 +2,7 @@ import { addPattern, findPointPattern, showContentEditor } from 'modules/pattern
 import { globalData, mode } from 'modules/globalData'
 import { addEnvelope, findPointEnvelope } from 'modules/envelope'
 import { addDot, deleteDot } from 'modules/dot'
+import { Mode } from 'modules/globalData/Interface'
 
 /**
  * @description: 双击工作区画布，打开内容编辑器/添加乐谱
@@ -25,7 +26,7 @@ const dblclickWorkerCanvas = (e: MouseEvent) => {
     return
   }
 
-  if (mode.value == 1) {
+  if (mode.value == Mode.Select) {
     globalData.shift ? addEnvelope(e) : addPattern(e)
   }
 }

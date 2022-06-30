@@ -1,6 +1,7 @@
 import { toRaw } from 'vue'
 import { recordHistory } from 'modules/history'
 import { dotEditorData, drawDotData } from '..'
+import { HistoryType } from 'modules/history/Interface'
 
 /**
  * @description: 保存音节参数的修改
@@ -25,7 +26,7 @@ const saveDot = () => {
 
   if (difference.length > 0) {
     recordHistory({
-      type: 5,
+      type: HistoryType.Dot,
       describe: '修改节点参数',
       target: toRaw(dot),
       difference,

@@ -1,12 +1,12 @@
 /**
  * @description: 防抖函数
- * @param {() => void} func 要防抖的函数，内部函数
+ * @param {(...args: any[]) => void} func 要防抖的函数，内部函数
  * @param {number} wait 等待时间
  * @param {number} [maxWait] 最大时限，有的话是节流函数，没有的话是防抖函数
  * @param {boolean} [leading] 规定在延迟开始前是否调用内部函数，默认不调用
  * @return {any} 已经防抖的函数
  */
-function debounce(func: any, wait: number, maxWait = 0, leading = false): any {
+function debounce(func: (...args: any[]) => any, wait: number, maxWait = 0, leading = false): any {
   let lastArgs: unknown, // 保存参数
     lastThis: unknown, // 保存this
     timerId: number | undefined, // 定时器id
@@ -65,7 +65,7 @@ function debounce(func: any, wait: number, maxWait = 0, leading = false): any {
   }
 
   // 返回的防抖函数，该函数无返回值
-  function debounced(this: object, ...args: unknown[]) {
+  function debounced(this: object, ...args: any[]) {
     const time = Date.now()
     // 这里检测是否应该重置定时器
     const isInvoking = shouldInvoke(time)

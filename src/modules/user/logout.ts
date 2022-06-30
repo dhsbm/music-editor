@@ -3,7 +3,6 @@ import { switchProjectWindowData, saveProjectWindowData } from 'modules/project'
 
 /**
  * @description: 退出登录
- * @param {null}
  * @return {void}
  */
 const logout = () => {

@@ -2,6 +2,7 @@ import { findPointNote } from 'modules/note'
 import { throttle } from 'modules/tools'
 import { editorCanvasData, changePrePointData } from '..'
 import { mode, globalData } from 'modules/globalData'
+import { Mode } from 'modules/globalData/Interface'
 
 /**
  * @description: 鼠标在编辑器画布上滑过，展示删除线/修改音节；若处于按压状态，在边缘滚动画布
@@ -13,7 +14,7 @@ const mousemoveEditorCanvas = (e: MouseEvent) => {
 }
 
 const _mousemoveEditorCanvas = throttle((e: MouseEvent) => {
-  if (mode.value == 3) {
+  if (mode.value == Mode.Tailor) {
     editorCanvasData.cutLineStyle.transform = `translateX(${Math.round(e.offsetX + 10)}px)`
     return
   }

@@ -30,26 +30,18 @@ class Note {
     this.noteData.deleteNote(this)
   }
 
-  // 编码时用到的keys
-  static keys() {
-    return ['row', 'start', 'end']
-  }
-
   // 编码为字符串
   static stringify(note: Note) {
     const result = []
-    for (const key of <[]>Note.keys()) {
-      result.push(`"${key}":${stringify(note[key])}`)
-    }
+    result.push(`"row":${stringify(note['row'])}`)
+    result.push(`"start":${stringify(note['start'])}`)
+    result.push(`"end":${stringify(note['end'])}`)
     return '{' + String(result) + '}'
   }
 
   // 解码
   static parse(object: NoteObj, noteDataId: number) {
-    const note = new Note(noteDataId)
-    for (const key of <[]>Note.keys()) {
-      note[key] = object[key]
-    }
+    const note = new Note(noteDataId, object.row, object.start, object.end)
     return note
   }
 

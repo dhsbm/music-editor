@@ -5,6 +5,7 @@ import { adsorb } from 'modules/tools'
 import { trackData, addTrack } from 'modules/track'
 import { selectEnvelope, drawEnvelope } from '.'
 import { Track, Envelope, DotData } from '@/class'
+import { HistoryType } from 'modules/history/Interface'
 
 /**
  * @description: 为音轨添加包络
@@ -32,7 +33,7 @@ const addTrackEnvelope = (track: Track) => {
   drawEnvelope(envelope)
   selectEnvelope(envelope)
   // 做记录
-  recordHistory({ type: 4, describe: '添加包络', target: [envelope] })
+  recordHistory({ type: HistoryType.Envelop, describe: '添加包络', target: [envelope] })
   return envelope
 }
 

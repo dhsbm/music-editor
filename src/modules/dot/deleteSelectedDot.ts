@@ -1,5 +1,6 @@
 import { DotData } from '@/class'
 import { recordHistory } from 'modules/history'
+import { HistoryType } from 'modules/history/Interface'
 import { deleteDot, drawDotData, selectedDotList } from '.'
 
 /**
@@ -8,7 +9,7 @@ import { deleteDot, drawDotData, selectedDotList } from '.'
  */
 const deleteSelectedDot = () => {
   if (selectedDotList.size == 0) return
-  recordHistory({ type: 5, describe: '删除包络节点', target: [...selectedDotList] })
+  recordHistory({ type: HistoryType.Dot, describe: '删除包络节点', target: [...selectedDotList] })
   let dotData
   for (const dot of selectedDotList) {
     deleteDot(dot, false)

@@ -1,6 +1,7 @@
 import { Note, Pattern } from '@/class'
 import { globalData } from 'modules/globalData'
 import { recordHistory } from 'modules/history'
+import { HistoryType } from 'modules/history/Interface'
 import { selectedNoteList, selectNote } from 'modules/note'
 import { contentEditorData } from 'modules/pattern'
 import { editorCanvasRender } from '..'
@@ -41,7 +42,7 @@ const keydownEditorCanvas = (e: KeyboardEvent) => {
 
     if (clipboard.length > 0)
       recordHistory({
-        type: 3,
+        type: HistoryType.Note,
         describe: '粘贴音节',
         target,
       })

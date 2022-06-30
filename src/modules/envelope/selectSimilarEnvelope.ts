@@ -4,7 +4,7 @@ import { selectEnvelope, drawSelectedEnvelope } from '.'
 /**
  * @description: 选择所有公用一份音节数据的音谱
  * @param {Envelope} envelope 样本音谱
- * @return {null}
+ * @return {void}
  */
 const selectSimilarEnvelope = (envelope: Envelope) => {
   selectEnvelope() // 清空选区

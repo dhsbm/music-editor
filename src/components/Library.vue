@@ -36,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-import Title from './tools/Title.vue'
+import Title from 'common/Title.vue'
 import { libraryData, dragLibraryItem, switchFolder, libraryItemIcons } from 'modules/library'
 import { changeZIndex } from 'modules/tools'
 </script>

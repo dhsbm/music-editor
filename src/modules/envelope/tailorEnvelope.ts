@@ -1,5 +1,6 @@
 import { Envelope } from '@/class'
 import { recordHistory } from 'modules/history'
+import { HistoryType } from 'modules/history/Interface'
 import { drawEnvelope, selectEnvelope } from '.'
 
 /**
@@ -16,7 +17,7 @@ const tailorEnvelope = (envelope: Envelope, middle: number) => {
   drawEnvelope(newEnvelope)
   selectEnvelope(newEnvelope)
   recordHistory({
-    type: 4,
+    type: HistoryType.Envelop,
     describe: '裁剪包络',
     target: envelope,
     target2: newEnvelope,

@@ -23,8 +23,8 @@
 </template>
 
 <script setup lang="ts">
-import Knob from './tools/Knob.vue'
-import Title from './tools/Title.vue'
+import Knob from 'common/Knob.vue'
+import Title from 'common/Title.vue'
 import { synthesizerData, hideSynthesizer } from 'modules/synthesizer'
 import { changeZIndex } from 'modules/tools'
 import { watch, ref } from 'vue'

@@ -6,6 +6,7 @@ import { historyList, historyData } from '.'
 import { deleteEnvelope, showEnvelopeEditor } from 'modules/envelope'
 import { deleteDot, showDotEditor } from 'modules/dot'
 import { Track } from '@/class'
+import { HistoryType } from './Interface'
 
 /**
  * @description: 重做函数
@@ -18,7 +19,7 @@ const redo = (needRender = true) => {
   else historyData.oldStep++
   const historyEvent = historyList[++historyData.index]
   const { type, describe, target } = historyEvent
-  if (type == 1) {
+  if (type == HistoryType.Track) {
     // 音轨操作
     if (describe == '添加音轨') {
       trackData.trackOrder.push(target.trackId)
@@ -33,7 +34,7 @@ const redo = (needRender = true) => {
       showTrackEditor(target)
     }
     if (needRender) workerCanvasRender()
-  } else if (type == 2) {
+  } else if (type == HistoryType.Pattern) {
     // 音谱操作
     if (describe == '添加音谱' || describe == '粘贴音谱') {
       for (const pattern of target) pattern.addSelf()
@@ -68,7 +69,7 @@ const redo = (needRender = true) => {
       needRender = false
     }
     if (needRender) workerCanvasRender()
-  } else if (type == 3) {
+  } else if (type == HistoryType.Note) {
     // 音节操作
     if (describe == '添加音节' || describe == '粘贴音节') {
       for (const note of target) note.addSelf()
@@ -90,7 +91,7 @@ const redo = (needRender = true) => {
       }
     }
     if (needRender) editorCanvasRender()
-  } else if (type == 4) {
+  } else if (type == HistoryType.Envelop) {
     if (describe == '添加包络') {
       for (const envelope of target) envelope.addSelf()
     } else if (describe == '删除包络') {
@@ -129,7 +130,7 @@ const redo = (needRender = true) => {
     }
 
     if (needRender) workerCanvasRender()
-  } else if (type == 5) {
+  } else if (type == HistoryType.Dot) {
     if (describe == '添加包络节点') {
       for (const dot of target) dot.addSelf()
     } else if (describe == '删除包络节点') {

@@ -2,6 +2,7 @@ import { Dot, Envelope } from '@/class'
 import { workerCanvasData } from 'modules/canvas'
 import { drawSimilarEnvelope } from 'modules/envelope'
 import { recordHistory } from 'modules/history'
+import { HistoryType } from 'modules/history/Interface'
 import { toRange } from 'modules/tools'
 import { selectDot } from '.'
 
@@ -21,7 +22,7 @@ const addDot = (e: MouseEvent, envelope: Envelope) => {
   envelope.addDot(dot)
   selectDot(dot)
   drawSimilarEnvelope(envelope)
-  recordHistory({ type: 5, describe: '添加包络节点', target: [dot] })
+  recordHistory({ type: HistoryType.Dot, describe: '添加包络节点', target: [dot] })
   return dot
 }
 

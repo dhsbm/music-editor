@@ -14,7 +14,7 @@ const getProjectDetail = () => {
     title: project.title, // 项目标题
     bpm: bpm.value, // bpm
     trackAmount: trackData.trackCount, // 音轨数
-    barAmount: <number>getBarOrTime('bar'), // 小节数
+    barAmount: getBarOrTime('bar'), // 小节数
     projectData: Project.stringify(project), // 项目数据
   }
 

@@ -84,21 +84,18 @@ class NoteData {
     const noteData = new NoteData(noteDataId)
 
     // 建立音谱id集合
-    const patternIdSet = <Set<number>>new Set()
-    for (const patternId of object.patternIdSet) {
-      patternIdSet.add(patternId)
-    }
-    noteData.patternIdSet = patternIdSet
+    noteData.patternIdSet = new Set(object.patternIdSet)
 
     // 建立音节映射
     const noteMap = new Map()
     for (const row of Object.keys(object.noteMap)) {
-      // const row = <number>parseInt(r)
       const noteSet = new Set()
+
       for (const note of object.noteMap[row]) {
         noteSet.add(Note.parse(note, noteDataId))
       }
-      noteMap.set(row, noteSet)
+
+      noteMap.set(parseInt(row), noteSet)
     }
     noteData.noteMap = noteMap
 

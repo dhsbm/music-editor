@@ -5,6 +5,7 @@ import { toMultiple } from 'modules/tools'
 import { trackData, addTrack } from 'modules/track'
 import { selectPattern, drawPattern } from '.'
 import { Pattern, NoteData } from '@/class'
+import { HistoryType } from 'modules/history/Interface'
 
 /**
  * @description: 添加音谱
@@ -31,7 +32,7 @@ const addPattern = (e: MouseEvent, noteData: NoteData | undefined = undefined) =
   drawPattern(pattern)
   selectPattern(pattern)
   // 做记录
-  recordHistory({ type: 2, describe: '添加音谱', target: [pattern] })
+  recordHistory({ type: HistoryType.Pattern, describe: '添加音谱', target: [pattern] })
   return pattern
 }
 

@@ -76,9 +76,6 @@ class Pattern {
     return globalData.project.getPattern(patternId)
   }
 
-  static keys() {
-    return ['start', 'end', 'offsetX', 'volume']
-  }
   // 编码为字符串
   static stringify(pattern: Pattern, idMap: IdMap) {
     const result = []
@@ -95,9 +92,10 @@ class Pattern {
     result.push(`"noteDataId":${idMap.noteDataIdMap.get(pattern.noteDataId)}`)
 
     // 处理普通属性
-    for (const key of <[]>Pattern.keys()) {
-      result.push(`"${key}":${stringify(pattern[key])}`)
-    }
+    result.push(`"start":${stringify(pattern['start'])}`)
+    result.push(`"end":${stringify(pattern['end'])}`)
+    result.push(`"offsetX":${stringify(pattern['offsetX'])}`)
+    result.push(`"volume":${stringify(pattern['volume'])}`)
 
     return '{' + String(result) + '}'
   }

@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { throttle } from '.'
 /**
  * @description: 拖动元素
  * @param {MouseEvent} e 触发事件对象
- * @param {Object>} style 要修改的元素样式
+ * @param {{transform: string}>} style 要修改的元素样式
  * @return {void}
  */
 const moveDom = (e: MouseEvent, style: { transform: string }) => {

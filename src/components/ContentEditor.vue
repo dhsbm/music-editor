@@ -80,13 +80,13 @@
 </template>
 
 <script setup lang="ts">
-import HeaderCanvas from './tools/HeaderCanvas.vue'
-import Indicator from './tools/Indicator.vue'
-import Resize from './tools/Resize.vue'
-import Title from './tools/Title.vue'
-import CanvasScrollbar from './tools/CanvasScrollbar.vue'
-import Shady from './tools/Shady.vue'
-import CutLine from './tools/CutLine.vue'
+import HeaderCanvas from 'common/HeaderCanvas.vue'
+import Indicator from 'common/Indicator.vue'
+import Resize from 'common/Resize.vue'
+import Title from 'common/Title.vue'
+import CanvasScrollbar from 'common/CanvasScrollbar.vue'
+import Shady from 'common/Shady.vue'
+import CutLine from 'common/CutLine.vue'
 import { changeZIndex } from 'modules/tools'
 import { editorSig, sigList } from 'modules/time'
 import { contentEditorData, hideContentEditor } from 'modules/pattern'
@@ -106,13 +106,13 @@ const vm = getCurrentInstance()
 onMounted(() => {
   const editorCanvas = vm!.refs.editorCanvas as HTMLCanvasElement
   editorCanvasData.canvas = editorCanvas
-  editorCanvasData.ctx = editorCanvas.getContext('2d') as CanvasRenderingContext2D
+  editorCanvasData.ctx = editorCanvas.getContext('2d')!
   editorCanvas.width = 2000
   editorCanvas.height = 900
 
   const editorPianoCanvas = vm!.refs.editorPianoCanvas as HTMLCanvasElement
   editorPianoCanvasData.canvas = editorPianoCanvas
-  editorPianoCanvasData.ctx = editorPianoCanvas.getContext('2d') as CanvasRenderingContext2D
+  editorPianoCanvasData.ctx = editorPianoCanvas.getContext('2d')!
   editorPianoCanvas.width = 60
   editorPianoCanvas.height = 132 * 16
 })

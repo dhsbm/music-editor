@@ -11,8 +11,8 @@
     </button>
     <button
       class="puyin"
-      :class="mode == 1 ? 'active' : ''"
-      @click="mode = 1"
+      :class="mode == Mode.Select ? 'active' : ''"
+      @click="mode = Mode.Select"
       @mouseleave="hideHoverPrompt"
       @mouseenter="showHoverPrompt($event, '指针工具')"
     >
@@ -20,8 +20,8 @@
     </button>
     <button
       class="puyin"
-      :class="mode == 2 ? 'active' : ''"
-      @click="mode = 2"
+      :class="mode == Mode.Add ? 'active' : ''"
+      @click="mode = Mode.Add"
       @mouseleave="hideHoverPrompt"
       @mouseenter="showHoverPrompt($event, '铅笔工具')"
     >
@@ -29,8 +29,8 @@
     </button>
     <button
       class="puyin"
-      :class="mode == 3 ? 'active' : ''"
-      @click="mode = 3"
+      :class="mode == Mode.Tailor ? 'active' : ''"
+      @click="mode = Mode.Tailor"
       @mouseleave="hideHoverPrompt"
       @mouseenter="showHoverPrompt($event, '剪刀工具')"
     >
@@ -38,8 +38,8 @@
     </button>
     <button
       class="puyin"
-      :class="mode == 4 ? 'active' : ''"
-      @click="mode = 4"
+      :class="mode == Mode.Delete ? 'active' : ''"
+      @click="mode = Mode.Delete"
       @mouseleave="hideHoverPrompt"
       @mouseenter="showHoverPrompt($event, '删除工具')"
     >
@@ -178,6 +178,7 @@ import { showHoverPrompt, hideHoverPrompt } from 'modules/prompt'
 import { indicatorData } from 'modules/indicator'
 import { keyboardData } from 'modules/pianoKeyboard'
 import { mode } from 'modules/globalData'
+import { Mode } from 'modules/globalData/Interface'
 </script>
 
 <style lang="scss" scoped>

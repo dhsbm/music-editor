@@ -7,6 +7,8 @@ import { editorCanvasData, editorCanvasRender } from 'modules/canvas'
 import { globalData, mode } from 'modules/globalData'
 import { toRaw } from 'vue'
 import { Note, Pattern } from '@/class'
+import { Mode } from 'modules/globalData/Interface'
+import { HistoryType } from 'modules/history/Interface'
 
 /**
  * @description: 点击音谱的处理函数
@@ -28,10 +30,10 @@ const mousedownNote = (e: MouseEvent, data: ReturnType<typeof findPointNote>) =>
   const pattern = <Pattern>toRaw(contentEditorData.pattern)
   const sig = Math.floor((4 * 10 ** 6) / editorSig.value) / 10 ** 6
 
-  if (mode.value == 4) {
+  if (mode.value == Mode.Delete) {
     // 删除模式：删除目标音节
     deleteNote(note)
-  } else if (mode.value == 3) {
+  } else if (mode.value == Mode.Tailor) {
     // 裁剪模式：创造新音节，浅拷贝其中的内容
     const middle = adsorb(e.offsetX / beatWidth + pattern.offsetX + leftBeat, sig, sig / 2)
     // 不满足裁剪条件，返回
@@ -95,7 +97,7 @@ const mousedownNote = (e: MouseEvent, data: ReturnType<typeof findPointNote>) =>
       // 做记录
       if (difX != 0 || difRow != 0) {
         recordHistory({
-          type: 3,
+          type: HistoryType.Note,
           describe: changeStart && changeEnd ? '移动音节' : '伸缩音节',
           target: [...selectedNoteList],
           difX,

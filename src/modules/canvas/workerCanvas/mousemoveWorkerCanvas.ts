@@ -1,6 +1,7 @@
 import { changeDotStyle } from 'modules/dot'
 import { findPointEnvelope } from 'modules/envelope'
 import { globalData, mode } from 'modules/globalData'
+import { Mode } from 'modules/globalData/Interface'
 import { findPointPattern } from 'modules/pattern'
 import { throttle } from 'modules/tools'
 import { workerCanvasData, changePrePointData } from '..'
@@ -15,7 +16,7 @@ const mousemoveWorkerCanvas = (e: MouseEvent) => {
 }
 
 const _mousemoveWorkerCanvas = throttle((e: MouseEvent) => {
-  if (mode.value == 3) {
+  if (mode.value == Mode.Tailor) {
     workerCanvasData.cutLineStyle.transform = `translateX(${Math.round(e.offsetX + 10)}px)`
     return
   }

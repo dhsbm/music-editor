@@ -33,8 +33,8 @@
 </template>
 
 <script setup lang="ts">
-import Resize from './tools/Resize.vue'
-import Title from './tools/Title.vue'
+import Resize from 'common/Resize.vue'
+import Title from 'common/Title.vue'
 import { getCurrentInstance, onMounted } from 'vue'
 import { keyboardData, keyboardStaticData, changeOctave, mousedownKeyboard, initKeyboard } from 'modules/pianoKeyboard'
 import { changeZIndex } from 'modules/tools'

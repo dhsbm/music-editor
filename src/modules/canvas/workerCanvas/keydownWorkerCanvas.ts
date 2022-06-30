@@ -2,6 +2,7 @@ import { Pattern, Envelope } from '@/class'
 import { selectedEnvelopeList, selectEnvelope } from 'modules/envelope'
 import { globalData } from 'modules/globalData'
 import { recordHistory } from 'modules/history'
+import { HistoryType } from 'modules/history/Interface'
 import { selectedPatternList, selectPattern } from 'modules/pattern'
 import { workerCanvasRender } from '..'
 
@@ -45,7 +46,7 @@ const keydownWorkerCanvas = (e: KeyboardEvent) => {
     }
     if (patternClipboard.length > 0)
       recordHistory({
-        type: 2,
+        type: HistoryType.Pattern,
         describe: '粘贴乐谱',
         target: patternList,
       })
@@ -62,7 +63,7 @@ const keydownWorkerCanvas = (e: KeyboardEvent) => {
     }
     if (envelopeClipboard.length > 0)
       recordHistory({
-        type: 4,
+        type: HistoryType.Envelop,
         describe: '粘贴包络',
         target: envelopeList,
       })

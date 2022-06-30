@@ -15,11 +15,17 @@ class Track {
   patternIdSet: Set<number> // 音谱id集合
   envelopeIdSet: Set<number> // 所拥有的包络id
   envelopeIdList: Set<number> // 作用于此音轨的包络id
-  constructor(trackId: number, volume = 50, source = 1) {
+  constructor(
+    trackId: number,
+    color = trackData.colorList[Math.floor(Math.random() * trackData.colorList.length)],
+    name = '',
+    volume = 50,
+    source = 1
+  ) {
     this.trackId = trackId || globalData.project.newTrack(this)
 
-    this.color = trackData.colorList[Math.floor(Math.random() * trackData.colorList.length)] // 颜色
-    this.name = '音轨' + this.trackId // 名称
+    this.color = color // 颜色
+    this.name = name || '音轨' + this.trackId // 名称
     this.volume = volume // 响度
     this.source = source // 音源
     this.mute = false // 静音
@@ -66,18 +72,16 @@ class Track {
     return globalData.project.getTrack(trackId)
   }
 
-  static keys() {
-    return ['color', 'name', 'volume', 'source']
-  }
   // 编码为字符串
   static stringify(track: Track, idMap: IdMap) {
     const result = []
     result.push(`"trackId":${idMap.trackIdMap.get(track.trackId)}`)
 
     // 处理普通属性
-    for (const key of <[]>Track.keys()) {
-      result.push(`"${key}":${stringify(track[key])}`)
-    }
+    result.push(`"color":${stringify(track['color'])}`)
+    result.push(`"name":${stringify(track['name'])}`)
+    result.push(`"volume":${stringify(track['volume'])}`)
+    result.push(`"source":${stringify(track['source'])}`)
 
     // 处理音谱集合  建立patternIdMap
     const patternIdSet = []
@@ -117,10 +121,7 @@ class Track {
   }
   // 解码
   static parse(object: TrackObj, trackId: number) {
-    const track = new Track(trackId)
-    for (const key of <[]>Track.keys()) {
-      track[key] = object[key]
-    }
+    const track = new Track(trackId, object.color, object.name, object.volume, object.source)
 
     // 建立音谱id集合
     const patternIdSet = <Set<number>>new Set()

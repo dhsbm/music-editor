@@ -77,10 +77,6 @@ class Project {
     return <DotData>this.dotDataMap.get(dotDataId)
   }
 
-  static keys() {
-    return ['id', 'title', 'introduce', 'authorId']
-  }
-
   // 流程：Project -> trackOrder -> 建立trackIdMap -> Track ->
   // 建立patternIdSet-> Pattern -> 建立noteDataIdMap -> NoteDara -> Note
   // 建立envelopeIdSet-> Envelope -> 建立dotDataIdMap -> dotDara -> Dot
@@ -88,9 +84,10 @@ class Project {
   static stringify(project: Project) {
     const result = []
     // 处理普通属性
-    for (const key of <[]>Project.keys()) {
-      result.push(`"${key}":${stringify(<string | number>project[key])}`)
-    }
+    result.push(`"projectId":${stringify(project['projectId'])}`)
+    result.push(`"title":${stringify(project['title'])}`)
+    result.push(`"introduce":${stringify(project['introduce'])}`)
+    result.push(`"authorId":${stringify(project['authorId'])}`)
 
     const idMap = {
       newTrackId: 0,
@@ -158,9 +155,10 @@ class Project {
   // 解析对象
   static parse(object: ProjectObj) {
     const project = new Project()
-    for (const key of <[]>Project.keys()) {
-      project[key] = object[key]
-    }
+    project['projectId'] = object['projectId']
+    project['title'] = object['title']
+    project['introduce'] = object['introduce']
+    project['authorId'] = object['authorId']
 
     // 建立音轨映射
     const trackMap = new Map()

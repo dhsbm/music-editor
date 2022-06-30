@@ -8,6 +8,7 @@ import { findPointPattern, deletePattern, addPattern, selectPattern, mousedownPa
 import { selectEnvelope, findPointEnvelope, deleteEnvelope, addEnvelope, mousedownEnvelope } from 'modules/envelope'
 import { selectDot } from 'modules/dot'
 import { Pattern, Envelope, Project, Track } from '@/class'
+import { Mode } from 'modules/globalData/Interface'
 
 /**
  * @description: 工作区鼠标点下，添加/拖动/伸缩/多选乐谱，右键进入删除模式
@@ -77,7 +78,7 @@ const mousedownWorkerCanvas = (e: MouseEvent) => {
   selectPattern()
   selectEnvelope()
   selectDot()
-  if (mode.value == 2) {
+  if (mode.value == Mode.Add) {
     // 添加模式：添加乐谱/包络
     const item = globalData.shift ? addEnvelope(e) : addPattern(e)
     const oldPageX = e.pageX
@@ -95,7 +96,7 @@ const mousedownWorkerCanvas = (e: MouseEvent) => {
     }
     document.addEventListener('mousemove', move)
     document.addEventListener('mouseup', moveEnd)
-  } else if (mode.value == 1) {
+  } else if (mode.value == Mode.Select) {
     // 选择模式：显示多选框多选音节
     initSelectBox(e, selectBoxStyle)
     globalData.pressed = true

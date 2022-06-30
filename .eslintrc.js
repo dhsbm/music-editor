@@ -24,10 +24,10 @@ module.exports = {
     'vue/html-self-closing': 'off',
     // html中每行最多属性数目n
     'vue/max-attributes-per-line': 'off',
-    // 未使用的变量
-    'no-unused-vars': 'warn',
-    // let -> const
-    'prefer-const': 'warn',
+    // 未使用的变量 ts中不需要
+    // 'no-unused-vars': 'warn',
+    // let -> const ts中不需要
+    // 'prefer-const': 'warn',
     // 建议使用单引号
     quotes: ['warn', 'single'],
     // 多余的空行

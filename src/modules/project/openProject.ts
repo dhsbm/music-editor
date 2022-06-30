@@ -7,6 +7,7 @@ import { selectedNoteList } from 'modules/note'
 import { selectedPatternList } from 'modules/pattern'
 import { trackData } from 'modules/track'
 import { recordHistory } from 'modules/history'
+import { HistoryType } from 'modules/history/Interface'
 
 /**
  * @description: 打开项目
@@ -31,7 +32,7 @@ const openProject = async (projectId: number) => {
 
     document.title = project.title // 改标题
 
-    recordHistory({ type: 0, describe: '初始化项目', target: project })
+    recordHistory({ type: HistoryType.Init, describe: '初始化项目', target: project })
 
     // 清空选择区
     selectedNoteList.clear()

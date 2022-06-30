@@ -16,6 +16,8 @@ import { deleteDot, dotPromptData, dotStyle, selectDot, selectedDotList, showDot
 import { trackData } from 'modules/track'
 import { recordHistory } from 'modules/history'
 import { Dot, Envelope } from '@/class'
+import { Mode } from 'modules/globalData/Interface'
+import { HistoryType } from 'modules/history/Interface'
 
 /**
  * @description: 点击包络的处理函数
@@ -42,8 +44,8 @@ const mousedownEnvelope = (e: MouseEvent, data: ReturnType<typeof findPointEnvel
   }
 
   // 在线上，操作点 裁剪模式下不可操作点
-  if (onLine && mode.value != 3) {
-    if (mode.value == 4 && dot) {
+  if (onLine && mode.value != Mode.Tailor) {
+    if (mode.value == Mode.Delete && dot) {
       deleteDot(dot)
       return
     }
@@ -53,7 +55,7 @@ const mousedownEnvelope = (e: MouseEvent, data: ReturnType<typeof findPointEnvel
       envelope.addDot(dot)
       selectDot(dot)
       drawSimilarEnvelope(envelope)
-      recordHistory({ type: 5, describe: '添加包络节点', target: [dot] })
+      recordHistory({ type: HistoryType.Dot, describe: '添加包络节点', target: [dot] })
       record = false
       dotStyle.opacity = 0
       dotPromptData.style.opacity = 1
@@ -125,7 +127,7 @@ const mousedownEnvelope = (e: MouseEvent, data: ReturnType<typeof findPointEnvel
           })
         }
         recordHistory({
-          type: 5,
+          type: HistoryType.Dot,
           describe: '移动包络节点',
           target: [...selectedDotList],
           oldData,
@@ -140,16 +142,16 @@ const mousedownEnvelope = (e: MouseEvent, data: ReturnType<typeof findPointEnvel
 
   // 不在线上，操作包络 / 多选点
   const sig = Math.floor((4 * 10 ** 6) / workerSig.value) / 10 ** 6
-  if (mode.value == 4) {
+  if (mode.value == Mode.Delete) {
     // 删除模式：删除目标包络
     deleteEnvelope(envelope)
-  } else if (mode.value == 3) {
+  } else if (mode.value == Mode.Tailor) {
     // 裁剪模式：创造新包络，浅拷贝其中的内容
     const middle = adsorb(e.offsetX / beatWidth + leftBeat, sig, sig / 2)
     // 不满足裁剪条件，返回
     if (middle >= envelope.end || middle <= envelope.start) return
     tailorEnvelope(envelope, middle)
-  } else if (mode.value == 2) {
+  } else if (mode.value == Mode.Add) {
     // 添加模式 拖动/修改包络
     moveItem(e, envelope, changeStart, changeEnd)
   } else {

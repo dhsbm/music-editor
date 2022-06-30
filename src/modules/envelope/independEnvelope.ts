@@ -1,5 +1,6 @@
 import { recordHistory } from 'modules/history'
 import { Envelope } from '@/class'
+import { HistoryType } from 'modules/history/Interface'
 
 /**
  * @description: 使音谱的数据独立
@@ -14,7 +15,7 @@ const independEnvelope = (envelope: Envelope) => {
   newDotData.addEnvelope(envelope)
 
   recordHistory({
-    type: 4,
+    type: HistoryType.Envelop,
     describe: '独立包络',
     target: envelope,
     oldDotData: dotData,

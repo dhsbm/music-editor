@@ -1,18 +1,18 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { throttle } from '.'
 import { hideHit, showHit } from 'modules/hit'
+import { Direction } from './Interfacs'
 
 /**
  * @description: 修改元素的大小
  * @param {MouseEvent} e 触发事件对象
- * @param {string} direction 拖动方向
+ * @param {Direction} direction 拖动方向
  * @param {Style} style 要修改的元素样式
  * @return {void}
  */
-const resizeDom = (e: MouseEvent, direction: direction, style: Style) => {
+const resizeDom = (e: MouseEvent, direction: Direction, style: Style) => {
   if (e.button != 0) return // 检测是否为左键按下
   // 保留鼠标样式
-  if (direction == 'left' || direction == 'right') {
+  if (direction == Direction.Left || direction == Direction.Right) {
     showHit('ew-resize')
   } else {
     showHit('ns-resize')
@@ -32,12 +32,12 @@ const resizeDom = (e: MouseEvent, direction: direction, style: Style) => {
   const resize = throttle((event: MouseEvent) => {
     const difX = event.pageX - oldPageX
     const difY = event.pageY - oldPageY
-    if (direction == 'bottom') {
+    if (direction == Direction.Down) {
       style.height = Math.max(minHeight, oldHeight + difY) + 'px'
-    } else if (direction == 'top') {
+    } else if (direction == Direction.Up) {
       style.height = Math.max(oldHeight - difY) + 'px'
       style.transform = `translate(${oldTranslateX}px, ${oldTranslateY + difY}px)`
-    } else if (direction == 'right') {
+    } else if (direction == Direction.Right) {
       style.width = Math.max(minWidght, oldWidth + difX) + 'px'
     } else {
       style.width = Math.max(minWidght, oldWidth - difX) + 'px'
@@ -55,7 +55,6 @@ const resizeDom = (e: MouseEvent, direction: direction, style: Style) => {
 
 export default resizeDom
 
-type direction = 'bottom' | 'top' | 'left' | 'right'
 type Style = {
   transform: string
   height: string

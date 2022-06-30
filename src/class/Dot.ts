@@ -27,26 +27,17 @@ class Dot {
     this.dotData.deleteDot(this)
   }
 
-  // 编码时用到的keys
-  static keys() {
-    return ['x', 'y']
-  }
-
   // 编码为字符串
   static stringify(dot: Dot): string {
     const result = []
-    for (const key of <[]>Dot.keys()) {
-      result.push(`"${key}":${stringify(dot[key])}`)
-    }
+    result.push(`"x":${stringify(dot['x'])}`)
+    result.push(`"y":${stringify(dot['y'])}`)
     return '{' + String(result) + '}'
   }
 
   // 解码
   static parse(object: DotObj, dotDataId: number) {
-    const dot = new Dot(dotDataId)
-    for (const key of <[]>Dot.keys()) {
-      dot[key] = object[key]
-    }
+    const dot = new Dot(dotDataId, object.x, object.y)
     return dot
   }
 

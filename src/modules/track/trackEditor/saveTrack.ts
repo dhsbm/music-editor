@@ -1,6 +1,7 @@
 import { toRaw } from 'vue'
 import { recordHistory } from 'modules/history'
 import { trackEditorData } from '..'
+import { HistoryType } from 'modules/history/Interface'
 
 /**
  * @description: 保存音轨参数的修改
@@ -24,7 +25,7 @@ const saveTrack = () => {
 
   if (difference.length > 0) {
     recordHistory({
-      type: 1,
+      type: HistoryType.Track,
       describe: '修改音轨参数',
       target: toRaw(track),
       difference,

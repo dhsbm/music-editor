@@ -51,7 +51,7 @@ const render = () => {
 watch(() => [props.leftBeat, props.beatWidth, props.sig], render)
 onMounted(() => {
   canvas = vm!.refs.canvas as HTMLCanvasElement
-  ctx = canvas.getContext('2d') as CanvasRenderingContext2D
+  ctx = canvas.getContext('2d')!
   canvas.width = 2000
   canvas.height = 30
   render()

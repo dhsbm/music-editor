@@ -3,7 +3,7 @@ import { historyData, undo, redo } from '.'
 
 /**
  * @description: 一次性进行多步撤销/重做操作
- * @param {number} i
+ * @param {number} i 要前往的历史索引
  * @return {void}
  */
 const changeHistoryIndex = (i: number) => {

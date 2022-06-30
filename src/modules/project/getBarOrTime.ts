@@ -8,7 +8,9 @@ import { trackData } from 'modules/track'
  * @param {'bar' | 'time'} type 要获取的是时间还是节拍数
  * @return {string | number}
  */
-const getBarOrTime = (type: 'bar' | 'time') => {
+function getBarOrTime(type: 'bar'): number
+function getBarOrTime(type: 'time'): string
+function getBarOrTime(type: string) {
   const project = globalData.project
 
   let max = 0
@@ -22,7 +24,7 @@ const getBarOrTime = (type: 'bar' | 'time') => {
 
   if (type == 'bar') {
     return Math.ceil(max / 4)
-  } else {
+  } else if (type == 'time') {
     return beatToTime(Math.ceil(max), bpm.value)
   }
 }

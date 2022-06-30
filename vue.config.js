@@ -5,8 +5,9 @@ module.exports = {
     resolve: {
       alias: {
         // 别名配置
-        components: '@/components',
-        modules: '@/modules',
+        common: '@/common', // 公用组件
+        components: '@/components', // 组件
+        modules: '@/modules', // 模块 js
         scss: '@/scss',
         '@': resolve('src'),
       },

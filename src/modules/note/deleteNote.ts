@@ -2,6 +2,7 @@ import { editorCanvasRender } from 'modules/canvas'
 import { recordHistory } from 'modules/history'
 import { selectedNoteList } from '.'
 import { Note } from '@/class'
+import { HistoryType } from 'modules/history/Interface'
 
 /**
  * @description: 删除音节
@@ -17,7 +18,7 @@ const deleteNote = (note: Note, record = true) => {
   if (record) {
     editorCanvasRender()
     recordHistory({
-      type: 3,
+      type: HistoryType.Note,
       describe: '删除音节',
       target: [note],
     })

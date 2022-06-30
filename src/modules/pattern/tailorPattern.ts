@@ -1,6 +1,7 @@
 import { recordHistory } from 'modules/history'
 import { drawPattern, selectPattern } from '.'
 import { Pattern } from '@/class'
+import { HistoryType } from 'modules/history/Interface'
 
 /**
  * @description: 裁剪音谱
@@ -16,7 +17,7 @@ const tailorPattern = (pattern: Pattern, middle: number) => {
   drawPattern(newPattern)
   selectPattern(newPattern)
   recordHistory({
-    type: 2,
+    type: HistoryType.Pattern,
     describe: '裁剪音谱',
     target: pattern,
     target2: newPattern,

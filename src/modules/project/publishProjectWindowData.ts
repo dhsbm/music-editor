@@ -32,7 +32,7 @@ watch(
     } else {
       changeZIndex(publishProjectWindowData.style)
       publishProjectWindowData.projectId = globalData.project.projectId
-      publishProjectWindowData.projectTime = <string>getBarOrTime('time')
+      publishProjectWindowData.projectTime = getBarOrTime('time')
     }
   }
 )

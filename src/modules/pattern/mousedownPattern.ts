@@ -4,6 +4,7 @@ import { mode } from 'modules/globalData'
 import { workerCanvasData } from 'modules/canvas'
 import { workerSig } from 'modules/time'
 import { Pattern } from '@/class'
+import { Mode } from 'modules/globalData/Interface'
 
 /**
  * @description: 点击音谱的处理函数
@@ -23,10 +24,10 @@ const mousedownPattern = (e: MouseEvent, data: ReturnType<typeof findPointPatter
   // 鼠标左键
   const { beatWidth, leftBeat } = workerCanvasData
   const sig = Math.floor((4 * 10 ** 6) / workerSig.value) / 10 ** 6
-  if (mode.value == 4) {
+  if (mode.value == Mode.Delete) {
     // 删除模式：删除目标音谱
     deletePattern(pattern)
-  } else if (mode.value == 3) {
+  } else if (mode.value == Mode.Tailor) {
     // 裁剪模式：创造新音谱，浅拷贝其中的内容
     const middle = adsorb(e.offsetX / beatWidth + leftBeat, sig, sig / 2)
     // 不满足裁剪条件，返回

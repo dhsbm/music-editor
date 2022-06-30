@@ -1,4 +1,4 @@
-import { HistoryItem } from './Interface'
+import { HistoryItem, HistoryType } from './Interface'
 import { nextTick } from 'vue'
 import { historyList, historyData } from '.'
 
@@ -10,7 +10,7 @@ import { historyList, historyData } from '.'
 const recordHistory = (obj: HistoryItem) => {
   historyList[++historyData.index] = obj
   historyData.lastIndex = historyData.index
-  if (obj.type == 0) historyData.newStep--
+  if (obj.type == HistoryType.Init) historyData.newStep--
   historyData.newStep++
   nextTick(() => {
     historyData.show && (historyData.historyContainer.scrollTop = historyList.length * 22)
