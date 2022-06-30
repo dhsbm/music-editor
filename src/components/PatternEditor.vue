@@ -1,7 +1,7 @@
+<!-- 音谱编辑器 -->
 <template>
-  <!-- 音谱编辑器 -->
   <div
-    v-show="patternEditorData.show"
+    v-if="patternEditorData.show"
     class="patternEditor"
     :style="patternEditorData.style"
     @mousedown="changeZIndex(patternEditorData.style)"

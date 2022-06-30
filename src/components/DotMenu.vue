@@ -1,5 +1,5 @@
+<!-- 包络节点菜单 -->
 <template>
-  <!-- 包络节点菜单 -->
   <div v-show="dotMenuData.show" class="dotMenu" :style="dotMenuData.style" @contextmenu="$event.preventDefault()">
     <div @mousedown="showDotEditor(getActiveDot())">编辑节点参数</div>
     <div @mousedown="deleteSelectedDot">删除选定节点</div>

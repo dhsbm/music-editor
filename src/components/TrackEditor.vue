@@ -1,7 +1,7 @@
+<!-- 音轨编辑器 -->
 <template>
-  <!-- 音轨编辑器 -->
   <div
-    v-show="trackEditorData.show"
+    v-if="trackEditorData.show"
     class="trackEditor window"
     :style="trackEditorData.style"
     @mousedown="changeZIndex(trackEditorData.style)"

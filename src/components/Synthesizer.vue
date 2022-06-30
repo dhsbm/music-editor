@@ -1,7 +1,7 @@
+<!-- 合成器 -->
 <template>
-  <!-- 合成器 -->
   <div
-    v-show="synthesizerData.show"
+    v-if="synthesizerData.show"
     class="synthesizer"
     :style="synthesizerData.style"
     @mousedown="changeZIndex(synthesizerData.style)"

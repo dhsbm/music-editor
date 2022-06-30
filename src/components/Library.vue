@@ -1,11 +1,6 @@
+<!-- 素材库 -->
 <template>
-  <!-- 素材库 -->
-  <div
-    v-show="libraryData.show"
-    class="library"
-    :style="libraryData.style"
-    @mousedown="changeZIndex(libraryData.style)"
-  >
+  <div v-if="libraryData.show" class="library" :style="libraryData.style" @mousedown="changeZIndex(libraryData.style)">
     <Title :data="libraryData" name="音频素材库" :close="() => (libraryData.show = false)"></Title>
     <div class="search">
       <span class="puyin">&#xe7b7;</span>

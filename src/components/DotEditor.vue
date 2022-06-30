@@ -1,5 +1,5 @@
+<!-- 包络节点编辑器 -->
 <template>
-  <!-- 包络节点编辑器 -->
   <div
     v-if="dotEditorData.show"
     class="dotEditor"

@@ -1,5 +1,5 @@
+<!-- 历史记录 -->
 <template>
-  <!-- 历史记录 -->
   <div
     v-show="historyData.show"
     class="history"

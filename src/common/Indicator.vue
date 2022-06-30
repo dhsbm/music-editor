@@ -15,7 +15,7 @@ const style = computed(() => `transform:translateX(${props.beatWidth * (indicato
 
 <style lang="scss" scoped>
 .indicator {
-  height: 800px;
+  height: 100vh;
   position: absolute;
   pointer-events: none;
   left: 10px;

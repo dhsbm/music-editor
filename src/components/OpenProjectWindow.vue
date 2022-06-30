@@ -1,6 +1,6 @@
 <template>
   <div
-    v-show="switchProjectWindowData.show"
+    v-if="switchProjectWindowData.show"
     class="openProject"
     :style="switchProjectWindowData.style"
     @mousedown="changeZIndex(switchProjectWindowData.style)"

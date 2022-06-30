@@ -1,7 +1,7 @@
+<!-- 保存项目 -->
 <template>
-  <!-- 保存项目 -->
   <div
-    v-show="saveProjectWindowData.show"
+    v-if="saveProjectWindowData.show"
     class="saveProject"
     :style="saveProjectWindowData.style"
     @mousedown="changeZIndex(saveProjectWindowData.style)"

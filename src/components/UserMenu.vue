@@ -1,5 +1,5 @@
+<!-- 用户菜单 -->
 <template>
-  <!-- 用户菜单 -->
   <div v-show="userMenuData.show" class="userMenu">
     <div v-if="globalData.login">
       <div class="name">{{ globalData.user.userName }}</div>

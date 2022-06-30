@@ -1,3 +1,4 @@
+<!-- 音谱内容编辑器 -->
 <template>
   <div
     v-show="contentEditorData.show"

@@ -1,7 +1,7 @@
+<!-- 保存项目 -->
 <template>
-  <!-- 保存项目 -->
   <div
-    v-show="publishProjectWindowData.show"
+    v-if="publishProjectWindowData.show"
     class="publish-project"
     :style="publishProjectWindowData.style"
     @mousedown="changeZIndex(publishProjectWindowData.style)"

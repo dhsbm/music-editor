@@ -1,5 +1,5 @@
+<!-- 指针悬浮提示框 -->
 <template>
-  <!-- 指针悬浮提示框 -->
   <div v-show="hoverPromptData.show" class="hoverPrompt" :style="hoverPromptData.style">
     {{ hoverPromptData.text }}
     <div class="arrow" :style="hoverPromptData.arrowStyle"></div>

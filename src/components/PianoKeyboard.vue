@@ -1,5 +1,5 @@
+<!-- 钢琴键盘 -->
 <template>
-  <!-- 钢琴键盘 -->
   <div
     v-show="keyboardData.show"
     class="keyboard"

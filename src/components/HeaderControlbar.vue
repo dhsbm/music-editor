@@ -1,6 +1,6 @@
+<!-- 头部控制栏 -->
 <template>
   <div class="headerControlBar">
-    <!-- 头部控制栏 -->
     <button
       class="puyin menu"
       @click="masterMenuData.show = true"
@@ -104,7 +104,7 @@
     </button>
     <button
       class="puyin"
-      :class="timeData.play ? 'active' : ''"
+      :class="timeData.playing ? 'active' : ''"
       @click="play"
       @mouseleave="hideHoverPrompt"
       @mouseenter="showHoverPrompt($event, '播放')"

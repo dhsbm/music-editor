@@ -1,5 +1,5 @@
+<!-- 中央提示框 -->
 <template>
-  <!-- 中央提示框 -->
   <!-- 不认识pointerEvents属性，断言成any -->
   <div class="centerPrompt" :style="(centerPromptData.style as any)" @click="hideCenterPrompt">
     {{ centerPromptData.content }}

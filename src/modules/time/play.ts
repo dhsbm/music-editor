@@ -8,15 +8,14 @@ import { bpm, timeData } from '.'
 
 let oldStart: number
 let timer: number
-let cycle: boolean
 let oldWorkerLeftBeat: number, oldEditorLeftBeat: number
 /**
  * @description: 播放/暂停
  * @return {void}
  */
 const play = () => {
-  if (timeData.play) {
-    timeData.play = false
+  if (timeData.playing) {
+    timeData.playing = false
     indicatorData.start = oldStart
     workerCanvasData.leftBeat = oldWorkerLeftBeat
     editorCanvasData.leftBeat = oldEditorLeftBeat
@@ -24,14 +23,13 @@ const play = () => {
 
     // 停止播放
   } else {
-    timeData.play = true
-    cycle = timeData.cycle && indicatorData.start <= overlayData.end
+    timeData.playing = true
     oldStart = indicatorData.start
     oldWorkerLeftBeat = workerCanvasData.leftBeat
     oldEditorLeftBeat = editorCanvasData.leftBeat
     const step = bpm.value / 60 / 50
     timer = setInterval(() => {
-      if (cycle && indicatorData.start >= overlayData.end) {
+      if (timeData.cycle && indicatorData.start >= overlayData.end) {
         indicatorData.start = overlayData.start
         workerCanvasData.leftBeat = oldWorkerLeftBeat
         editorCanvasData.leftBeat = oldEditorLeftBeat
@@ -64,9 +62,10 @@ const play = () => {
       result.push(getTrackData(track, trackMap))
     }
 
-    console.log(result)
+    // console.log(result)
   }
 }
+
 // 获取一个音轨的播放数据，返回一个对象
 const getTrackData = (track: Track, trackMap: Map<number, Track>) => {
   // 处理音节

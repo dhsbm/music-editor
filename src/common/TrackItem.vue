@@ -51,7 +51,7 @@ watch(volume, (now) => {
       padding-left: 10px;
       flex: 1;
       .name {
-        cursor: move;
+        cursor: ns-resize;
       }
       input[type='range'] {
         @include input-scrollbar(100px, 14px, 18px);

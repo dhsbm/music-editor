@@ -1,7 +1,7 @@
+<!-- 意见反馈 -->
 <template>
-  <!-- 意见反馈 -->
   <div
-    v-show="feedbackData.show"
+    v-if="feedbackData.show"
     class="feedback window"
     :style="feedbackData.style"
     @mousedown="changeZIndex(feedbackData.style)"

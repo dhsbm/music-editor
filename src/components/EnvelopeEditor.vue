@@ -1,7 +1,7 @@
+<!-- 音轨包络编辑器 -->
 <template>
-  <!-- 音轨包络编辑器 -->
   <div
-    v-show="envelopeEditorData.show"
+    v-if="envelopeEditorData.show"
     class="envelopeEditor"
     :style="envelopeEditorData.style"
     @mousedown="changeZIndex(envelopeEditorData.style)"

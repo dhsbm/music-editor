@@ -1,3 +1,4 @@
+<!-- 中央工作区 -->
 <template>
   <div class="worker">
     <!-- 侧边声轨 -->
@@ -125,6 +126,7 @@ onMounted(() => {
 // 工作区样式
 .worker {
   height: calc(100vh - 50px);
+  max-height: 900px;
   display: flex;
   background-color: #292d31;
   overflow: hidden;

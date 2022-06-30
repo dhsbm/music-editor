@@ -1,5 +1,5 @@
+<!-- 包络菜单 -->
 <template>
-  <!-- 包络菜单 -->
   <div
     v-show="envelopeMenuData.show"
     class="envelopeMenu"

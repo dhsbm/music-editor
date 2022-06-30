@@ -1,5 +1,5 @@
+<!-- 音轨菜单 -->
 <template>
-  <!-- 音轨菜单 -->
   <div
     v-show="trackMenuData.show"
     class="trackMenu"

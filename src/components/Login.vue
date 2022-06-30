@@ -1,5 +1,5 @@
 <template>
-  <div v-show="loginWindowData.show" class="loginWindow">
+  <div v-if="loginWindowData.show" class="loginWindow">
     <div class="main">
       <button class="close puyin" @click="hideLoginWindow">&#xe66d;</button>
       <ul>

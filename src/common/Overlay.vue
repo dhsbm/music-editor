@@ -32,7 +32,7 @@ defineProps<{
     height: 6px;
     .screen {
       pointer-events: none; /* 实现点击穿透 */
-      height: 800px;
+      height: 100vh;
       background-color: rgba(255, 255, 255, 0.1);
     }
     .left {

@@ -1,6 +1,6 @@
+<!-- 主菜单 -->
 <template>
-  <!-- 主菜单 -->
-  <div v-show="masterMenuData.show" class="mask" @click="masterMenuData.show = false">
+  <div v-if="masterMenuData.show" class="mask" @click="masterMenuData.show = false">
     <div class="mastMenu">
       <ul class="menu-group">
         <li class="menu-item" @click="newProjectWindowData.show = true">新建</li>

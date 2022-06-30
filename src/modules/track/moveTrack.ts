@@ -1,3 +1,4 @@
+import { hideHit, showHit } from 'modules/hit'
 import { workerCanvasData } from 'modules/canvas'
 import { recordHistory } from 'modules/history'
 import { HistoryType } from 'modules/history/Interface'
@@ -10,6 +11,7 @@ import { trackData } from '.'
  * @return {void}
  */
 const moveTrack = (e: MouseEvent, trackId: number) => {
+  showHit('ns-resize')
   let preRow = 0 // 上一次移动前的行数
   const oldOrder = [...trackData.trackOrder],
     { beatHeight } = workerCanvasData,
@@ -35,6 +37,7 @@ const moveTrack = (e: MouseEvent, trackId: number) => {
     }
   }
   const moveEnd = () => {
+    hideHit()
     document.removeEventListener('mousemove', move)
     document.removeEventListener('mouseup', moveEnd)
     for (let i = 0; i < oldOrder.length; i++) {

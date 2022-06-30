@@ -1,5 +1,5 @@
+<!-- 音节菜单 -->
 <template>
-  <!-- 音节菜单 -->
   <div v-show="noteMenuData.show" class="noteMenu" :style="noteMenuData.style" @contextmenu="$event.preventDefault()">
     <div @mousedown="deleteSelectedNote">删除选定音节</div>
   </div>

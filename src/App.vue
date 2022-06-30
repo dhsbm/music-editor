@@ -1,61 +1,34 @@
 <template>
   <div class="app">
-    <!-- 头部控制栏 -->
     <HeaderControlBar></HeaderControlBar>
-    <!-- 主菜单 -->
     <MastMenu></MastMenu>
-    <!-- 工作区 -->
     <Worker></Worker>
-    <!-- 登录 -->
     <LoginWindow></LoginWindow>
-    <!-- 音轨编辑器 -->
     <TrackEditor></TrackEditor>
-    <!-- 音谱编辑器 -->
     <PatternEditor></PatternEditor>
-    <!-- 包络节点编辑器 -->
     <DotEditor></DotEditor>
-    <!-- 包络编辑器 -->
     <EnvelopeEditor></EnvelopeEditor>
-    <!-- 内容编辑器 -->
     <ContentEditor></ContentEditor>
-    <!-- 钢琴键盘 -->
     <PianoKeyboard></PianoKeyboard>
-    <!-- 历史记录 -->
     <History></History>
-    <!-- 素材库 -->
     <Library></Library>
-    <!-- 合成器 -->
     <Synthesizer></Synthesizer>
-    <!-- 新建项目 -->
     <NewProjectWindow></NewProjectWindow>
-    <!-- 打开项目 -->
     <OpenProjectWindow></OpenProjectWindow>
-    <!-- 保存项目 -->
     <SaveProjectWindow></SaveProjectWindow>
-    <!-- 发布项目 -->
     <PublishProjectWindow></PublishProjectWindow>
-    <!-- 意见反馈 -->
     <Feedback></Feedback>
-    <!-- 用户菜单 -->
     <UserMenu></UserMenu>
-    <!-- 音轨菜单 -->
     <TrackMenu></TrackMenu>
-    <!-- 音谱菜单 -->
     <PatternMenu></PatternMenu>
-    <!-- 音节菜单 -->
     <NoteMenu></NoteMenu>
-    <!-- 包络菜单 -->
     <EnvelopeMenu></EnvelopeMenu>
-    <!-- 包络节点菜单 -->
     <DotMenu></DotMenu>
-    <!-- 指针悬浮提示框 -->
     <HoverPrompt></HoverPrompt>
-    <!-- 中央提示框 -->
     <CenterPrompt></CenterPrompt>
-    <!-- 保存提示 -->
     <SavePrompt></SavePrompt>
-    <!-- 点击后出现，用于保留指针效果 -->
     <Hit></Hit>
+    <TimeMask></TimeMask>
   </div>
 </template>
 
@@ -88,6 +61,7 @@ import HoverPrompt from 'components/HoverPrompt.vue'
 import CenterPrompt from 'components/CenterPrompt.vue'
 import SavePrompt from 'components/SavePrompt.vue'
 import Hit from 'components/Hit.vue'
+import TimeMask from 'components/TimeMask.vue'
 import { init } from 'modules/init'
 
 // 初始化
@@ -113,7 +87,10 @@ init()
 }
 
 .app {
-  min-width: 1100px;
+  margin: 0 auto;
+  // height: 950px;
+  max-width: 2000px;
+  min-width: 1200px;
   position: relative;
   cursor: default;
   user-select: none;

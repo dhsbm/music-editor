@@ -1,5 +1,5 @@
+<!-- 保存提示 -->
 <template>
-  <!-- 保存提示 -->
   <div v-if="savePromptData.show" class="savePrompt">
     <p>您是否要保存修改 {{ globalData.project?.title }} ?</p>
     <div class="btns">

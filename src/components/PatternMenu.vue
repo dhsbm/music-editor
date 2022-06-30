@@ -1,5 +1,5 @@
+<!-- 音谱菜单 -->
 <template>
-  <!-- 音谱菜单 -->
   <div
     v-show="patternMenuData.show"
     class="patternMenu"
