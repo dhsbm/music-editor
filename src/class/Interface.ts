@@ -37,6 +37,7 @@ export interface NoteObj {
   row: number
   start: number
   end: number
+  volume: number
 }
 export interface NoteDataObj {
   noteDataId: number // 音节数据id

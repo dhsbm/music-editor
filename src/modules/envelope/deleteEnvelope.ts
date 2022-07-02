@@ -16,7 +16,10 @@ import { selectedEnvelopeList } from '.'
 const deleteEnvelope = (envelope: Envelope, record = true, disconnect = true) => {
   envelope.deleteSelf(disconnect)
   selectedEnvelopeList.delete(envelope)
-  if (envelope.envelopeId == envelopeEditorData.envelope?.envelopeId) envelopeEditorData.envelope = undefined
+  if (envelope.envelopeId == envelopeEditorData.envelope?.envelopeId) {
+    envelopeEditorData.envelope = undefined
+    envelopeEditorData.clone = undefined
+  }
 
   if (record) {
     workerCanvasRender()

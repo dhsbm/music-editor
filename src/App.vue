@@ -7,6 +7,7 @@
     <TrackEditor></TrackEditor>
     <PatternEditor></PatternEditor>
     <DotEditor></DotEditor>
+    <NoteEditor></NoteEditor>
     <EnvelopeEditor></EnvelopeEditor>
     <ContentEditor></ContentEditor>
     <PianoKeyboard></PianoKeyboard>
@@ -41,6 +42,7 @@ import TrackEditor from 'components/TrackEditor.vue'
 import PatternEditor from 'components/PatternEditor.vue'
 import DotEditor from 'components/DotEditor.vue'
 import EnvelopeEditor from 'components/EnvelopeEditor.vue'
+import NoteEditor from 'components/NoteEditor.vue'
 import ContentEditor from 'components/ContentEditor.vue'
 import PianoKeyboard from 'components/PianoKeyboard.vue'
 import History from 'components/History.vue'

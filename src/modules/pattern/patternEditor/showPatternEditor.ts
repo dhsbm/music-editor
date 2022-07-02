@@ -11,6 +11,7 @@ const showPatternEditor = (pattern: Pattern) => {
   patternEditorData.show = true
   patternEditorData.pattern = pattern
   patternEditorData.clone = {
+    patternTitle: pattern.patternTitle,
     volume: pattern.volume,
   }
   changeZIndex(patternEditorData.style)

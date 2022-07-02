@@ -10,7 +10,7 @@ const showTrackEditor = (track: Track) => {
   trackEditorData.show = true
   trackEditorData.track = track // 绑定音轨
   trackEditorData.clone = {
-    title: track.trackTitle,
+    trackTitle: track.trackTitle,
     color: track.color,
     volume: track.volume,
     source: track.source,

@@ -19,7 +19,7 @@ class Track {
     trackId: number,
     color = trackData.colorList[Math.floor(Math.random() * trackData.colorList.length)],
     title = '',
-    volume = 50,
+    volume = 1,
     source = 1
   ) {
     this.trackId = trackId || globalData.project.newTrack(this)

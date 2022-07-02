@@ -6,15 +6,17 @@ import { NoteObj } from './Interface'
 class Note {
   noteDataId: number // 所属父容器的id
   row: number //音节所在行数
+  volume: number // 响度
   private _start: number // 开始位置
   private _end: number // 结束位置
-  constructor(noteDataId: number, row = 0, start = 0, end = 1) {
+  constructor(noteDataId: number, row = 0, start = 0, end = 1, volume = 1) {
     this.noteDataId = noteDataId
     this._start = 0
     this._end = 0
     this.row = row
     this.start = start // 初始位置 与父容器的相对位置
     this.end = end // 结束位置 与父容器的相对位置
+    this.volume = volume
   }
 
   // 克隆当前音节
@@ -33,7 +35,7 @@ class Note {
   // 编码为字符串
   static stringify(note: Note) {
     const result = []
-    for (const key of ['row', 'start', 'end']) {
+    for (const key of ['row', 'start', 'end', 'volume']) {
       result.push(`"${key}":${stringify(note[<keyof Note>key])}`)
     }
     return '{' + String(result) + '}'

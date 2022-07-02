@@ -20,7 +20,7 @@ class Pattern {
     start: number,
     end: number,
     offsetX = start,
-    volume = 50,
+    volume = 1,
     patternTitle = '音谱'
   ) {
     this.patternId = patternId || globalData.project.newPattern(this)

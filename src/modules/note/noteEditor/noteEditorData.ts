@@ -1,9 +1,9 @@
-import { Pattern } from '@/class'
+import { Note } from '@/class'
 import { reactive } from 'vue'
 
-const patternEditorData: PatternEditorData = reactive({
+const noteEditorData: NoteEditorData = reactive({
   show: false,
-  pattern: undefined, // 编辑器绑定音谱
+  note: undefined, // 编辑器绑定音节
   clone: undefined, // 克隆的数据
   style: {
     zIndex: 4,
@@ -11,13 +11,12 @@ const patternEditorData: PatternEditorData = reactive({
   },
 })
 
-export default patternEditorData
+export default noteEditorData
 
-interface PatternEditorData {
+interface NoteEditorData {
   show: boolean
-  pattern?: Pattern
+  note?: Note
   clone?: {
-    patternTitle: string
     volume: number
   }
   style: {

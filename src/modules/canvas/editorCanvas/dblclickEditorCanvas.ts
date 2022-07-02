@@ -1,4 +1,4 @@
-import { addNote, findPointNote } from 'modules/note'
+import { addNote, findPointNote, showNoteEditor } from 'modules/note'
 import { mode } from 'modules/globalData'
 import { Mode } from 'modules/globalData/Interface'
 
@@ -10,6 +10,7 @@ import { Mode } from 'modules/globalData/Interface'
 const dblclickEditorCanvas = (e: MouseEvent) => {
   const { pointNote } = findPointNote(e)
   if (pointNote) {
+    showNoteEditor(pointNote)
     return
   } else if (mode.value == Mode.Select) {
     addNote(e)

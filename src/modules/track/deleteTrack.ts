@@ -19,16 +19,24 @@ const deleteTrack = (trackId: number, record = true) => {
   const index = trackOrder.indexOf(trackId)
   trackOrder.splice(index, 1)
   // 关闭窗口
-  if (trackEditorData.track?.trackId === trackId) trackEditorData.track = undefined
-  if (synthesizerData.track?.trackId === trackId) synthesizerData.track = undefined
+  if (trackEditorData.track?.trackId === trackId) {
+    trackEditorData.track = undefined
+    trackEditorData.clone = undefined
+  }
+  if (synthesizerData.track?.trackId === trackId) {
+    synthesizerData.track = undefined
+    // synthesizerData.clone = undefined
+  }
   if (contentEditorData.pattern && track.hasPattern(contentEditorData.pattern)) {
     contentEditorData.pattern = undefined
   }
   if (patternEditorData.pattern && track.hasPattern(patternEditorData.pattern)) {
     patternEditorData.pattern = undefined
+    patternEditorData.clone = undefined
   }
   if (envelopeEditorData.envelope && track.hasEnvelope(envelopeEditorData.envelope)) {
     envelopeEditorData.envelope = undefined
+    envelopeEditorData.clone = undefined
   }
 
   // 连带删除所有绑定的包络

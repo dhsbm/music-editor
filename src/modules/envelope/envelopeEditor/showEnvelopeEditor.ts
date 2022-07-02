@@ -14,6 +14,7 @@ const showEnvelopeEditor = (envelope: Envelope) => {
     type: envelope.type,
     category: envelope.category,
     actTrackId: envelope.actTrackId,
+    envelopeTitle: envelope.envelopeTitle,
   }
   changeZIndex(envelopeEditorData.style)
 }

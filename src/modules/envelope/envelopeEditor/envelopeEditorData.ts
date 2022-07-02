@@ -20,6 +20,7 @@ interface EnvelopeEditorData {
     type: number
     category: number
     actTrackId: number
+    envelopeTitle: string
   }
   large: boolean
   style: {

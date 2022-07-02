@@ -15,7 +15,10 @@ const deleteDot = (dot: Dot, record = true) => {
   selectedDotList.delete(dot)
   drawDotData(dot.dotData)
 
-  if (dot == toRaw(dotEditorData.dot)) dotEditorData.dot = undefined
+  if (dot == toRaw(dotEditorData.dot)) {
+    dotEditorData.dot = undefined
+    dotEditorData.clone = undefined
+  }
   if (record) {
     drawDotData(dot.dotData)
     recordHistory({

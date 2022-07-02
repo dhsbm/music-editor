@@ -13,10 +13,14 @@ const deletePattern = (pattern: Pattern, record = true) => {
   pattern.deleteSelf()
   selectedPatternList.delete(pattern)
   if (pattern.patternId == contentEditorData.pattern?.patternId) contentEditorData.pattern = undefined
-  if (pattern.patternId == patternEditorData.pattern?.patternId) patternEditorData.pattern = undefined
-  record && workerCanvasRender()
-  // 做记录
-  if (record) recordHistory({ type: HistoryType.Pattern, describe: '删除音谱', target: [pattern] })
+  if (pattern.patternId == patternEditorData.pattern?.patternId) {
+    patternEditorData.pattern = undefined
+    patternEditorData.clone = undefined
+  }
+  if (record) {
+    workerCanvasRender()
+    recordHistory({ type: HistoryType.Pattern, describe: '删除音谱', target: [pattern] })
+  }
 }
 
 export default deletePattern

@@ -1,12 +1,13 @@
 <!-- 音节菜单 -->
 <template>
   <div v-show="noteMenuData.show" class="noteMenu" :style="noteMenuData.style" @contextmenu="$event.preventDefault()">
+    <div @mousedown="showNoteEditor(getActiveNote())">修改音节参数</div>
     <div @mousedown="deleteSelectedNote">删除选定音节</div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { noteMenuData, hideNoteMenu, deleteSelectedNote } from 'modules/note'
+import { noteMenuData, hideNoteMenu, deleteSelectedNote, showNoteEditor, getActiveNote } from 'modules/note'
 
 // 关闭菜单
 document.addEventListener('mousedown', () => {

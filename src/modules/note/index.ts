@@ -14,6 +14,11 @@ import noteMenuData from './noteMenu/noteMenuData'
 import showNoteMenu from './noteMenu/showNoteMenu'
 import hideNoteMenu from './noteMenu/hideNoteMenu'
 import mousedownNote from './mousedownNote'
+import noteEditorData from './noteEditor/noteEditorData'
+import showNoteEditor from './noteEditor/showNoteEditor'
+import hideNoteEditor from './noteEditor/hideNoteEditor'
+import saveNote from './noteEditor/saveNote'
+import getActiveNote from './getActiveNote'
 
 export {
   addNote,
@@ -30,4 +35,9 @@ export {
   showNoteMenu,
   hideNoteMenu,
   mousedownNote,
+  noteEditorData,
+  showNoteEditor,
+  hideNoteEditor,
+  saveNote,
+  getActiveNote,
 }
