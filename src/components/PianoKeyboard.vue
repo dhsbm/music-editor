@@ -8,7 +8,7 @@
   >
     <!-- 上下左右拉伸 -->
     <Resize :data="keyboardData"></Resize>
-    <Title :data="keyboardData" name="键盘" :close="() => (keyboardData.show = false)" :start="true"></Title>
+    <Title :data="keyboardData" title="键盘" :close="() => (keyboardData.show = false)" :start="true"></Title>
 
     <div class="scrollbox">
       <div class="settings">

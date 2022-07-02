@@ -37,7 +37,7 @@ const drawEnvelope = (envelope: Envelope, pointed = false) => {
   ctx.textAlign = 'left'
   ctx.textBaseline = 'top'
   ctx.fillStyle = 'white'
-  ctx.fillText('包络', x + 1, y + 5)
+  ctx.fillText(envelope.envelopeTitle, x + 1, y + 5)
 
   // 画内部的点
   drawDot(envelope, y)

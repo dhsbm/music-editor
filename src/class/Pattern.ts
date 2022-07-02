@@ -12,7 +12,7 @@ class Pattern {
   _end: number // 结束位置 私有
   offsetX: number // pattern相对于noteData 的偏移位置
   volume: number // 响度
-
+  patternTitle: string
   constructor(
     patternId: number,
     trackId: number,
@@ -20,7 +20,8 @@ class Pattern {
     start: number,
     end: number,
     offsetX = start,
-    volume = 50
+    volume = 50,
+    patternTitle = '音谱'
   ) {
     this.patternId = patternId || globalData.project.newPattern(this)
     this.trackId = trackId // 所属的父声轨的id
@@ -31,8 +32,8 @@ class Pattern {
     this.start = start // 开始位置
     this.end = end // 结束位置
     this.offsetX = offsetX // pattern相对于noteData 的位置
-
     this.volume = volume // 响度
+    this.patternTitle = patternTitle
   }
 
   setNote(note: Note) {
@@ -63,7 +64,8 @@ class Pattern {
 
   clone(deep = false) {
     // 克隆当前音谱 是否深克隆
-    const pattern = new Pattern(0, this.trackId, this.noteDataId, this.start, this.end, this.offsetX)
+    const { trackId, noteDataId, start, end, offsetX, volume, patternTitle } = this
+    const pattern = new Pattern(0, trackId, noteDataId, start, end, offsetX, volume, patternTitle)
     if (deep) {
       const noteData = this.noteData.clone()
       pattern.noteData = noteData
@@ -87,22 +89,25 @@ class Pattern {
     }
 
     // 从idMap中获取新的id
-    result.push(`"trackId":${idMap.trackIdMap.get(pattern.trackId)}`)
-    result.push(`"patternId":${idMap.patternIdMap.get(pattern.patternId)}`)
-    result.push(`"noteDataId":${idMap.noteDataIdMap.get(pattern.noteDataId)}`)
+    const { trackId, patternId, noteDataId } = pattern
+    result.push(`"trackId":${idMap.trackIdMap.get(trackId)}`)
+    result.push(`"patternId":${idMap.patternIdMap.get(patternId)}`)
+    result.push(`"noteDataId":${idMap.noteDataIdMap.get(noteDataId)}`)
 
     // 处理普通属性
-    result.push(`"start":${stringify(pattern['start'])}`)
-    result.push(`"end":${stringify(pattern['end'])}`)
-    result.push(`"offsetX":${stringify(pattern['offsetX'])}`)
-    result.push(`"volume":${stringify(pattern['volume'])}`)
+    const { start, end, offsetX, volume, patternTitle } = pattern
+    result.push(`"start":${stringify(start)}`)
+    result.push(`"end":${stringify(end)}`)
+    result.push(`"offsetX":${stringify(offsetX)}`)
+    result.push(`"volume":${stringify(volume)}`)
+    result.push(`"patternTitle":${stringify(patternTitle)}`)
 
     return '{' + String(result) + '}'
   }
   // 解码
   static parse(object: PatternObj, patternId: number) {
-    const { trackId, noteDataId, start, end, offsetX, volume } = object
-    const pattern = new Pattern(patternId, trackId, noteDataId, start, end, offsetX, volume)
+    const { trackId, noteDataId, start, end, offsetX, volume, patternTitle } = object
+    const pattern = new Pattern(patternId, trackId, noteDataId, start, end, offsetX, volume, patternTitle)
 
     return pattern
   }

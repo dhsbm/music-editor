@@ -33,15 +33,16 @@ class Note {
   // 编码为字符串
   static stringify(note: Note) {
     const result = []
-    result.push(`"row":${stringify(note['row'])}`)
-    result.push(`"start":${stringify(note['start'])}`)
-    result.push(`"end":${stringify(note['end'])}`)
+    for (const key of ['row', 'start', 'end']) {
+      result.push(`"${key}":${stringify(note[<keyof Note>key])}`)
+    }
     return '{' + String(result) + '}'
   }
 
   // 解码
   static parse(object: NoteObj, noteDataId: number) {
-    const note = new Note(noteDataId, object.row, object.start, object.end)
+    const { row, start, end } = object
+    const note = new Note(noteDataId, row, start, end)
     return note
   }
 

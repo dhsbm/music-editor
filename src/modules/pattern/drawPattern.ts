@@ -36,7 +36,7 @@ const drawPattern = (pattern: Pattern, pointed = false) => {
   ctx.textAlign = 'left'
   ctx.textBaseline = 'top'
   ctx.fillStyle = 'white'
-  ctx.fillText('音谱', x + 1, y + 5)
+  ctx.fillText(pattern.patternTitle, x + 1, y + 5)
 
   // 画内部音节
   ctx.strokeStyle = track.color

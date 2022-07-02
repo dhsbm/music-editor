@@ -6,12 +6,12 @@
     :style="trackEditorData.style"
     @mousedown="changeZIndex(trackEditorData.style)"
   >
-    <Title :data="trackEditorData" name="音轨参数编辑器" :close="hideTrackEditor" :small="true" :start="true"></Title>
+    <Title :data="trackEditorData" title="音轨参数编辑器" :close="hideTrackEditor" :small="true" :start="true"></Title>
     <div v-if="trackEditorData.clone" class="content">
       <div class="container">
         <div class="textSetting">
           <span class="name">名称</span>
-          <input v-model="trackEditorData.clone.name" type="text" />
+          <input v-model="trackEditorData.clone.title" type="text" />
         </div>
         <div class="rangeSetting">
           <span class="name">响度:</span>

@@ -9,10 +9,10 @@ import { reqSaveProject } from '@/api'
  */
 const saveAsProject = async () => {
   const { project } = globalData
-  const preTitle = project.title
+  const preTitle = project.projectTitle
   const preIntroduce = project.introduce
   const preId = project.projectId
-  project.title = saveProjectWindowData.title
+  project.projectTitle = saveProjectWindowData.title
   project.introduce = saveProjectWindowData.introduce
   let response
   try {
@@ -21,7 +21,7 @@ const saveAsProject = async () => {
   } catch (e) {
     console.log(e)
   }
-  project.title = preTitle
+  project.projectTitle = preTitle
   project.introduce = preIntroduce
   project.projectId = preId
 

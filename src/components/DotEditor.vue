@@ -6,7 +6,7 @@
     :style="dotEditorData.style"
     @mousedown="changeZIndex(dotEditorData.style)"
   >
-    <Title :data="dotEditorData" name="包络节点参数编辑器" :close="hideDotEditor" :small="true" :start="true"></Title>
+    <Title :data="dotEditorData" title="包络节点参数编辑器" :close="hideDotEditor" :small="true" :start="true"></Title>
     <div v-if="dotEditorData.clone" class="content">
       <div class="container">
         <div class="textSetting">

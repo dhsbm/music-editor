@@ -6,7 +6,7 @@
     :style="historyData.style"
     @mousedown="changeZIndex(historyData.style)"
   >
-    <Title :data="historyData" name="历史记录" :close="() => (historyData.show = false)" :small="true"></Title>
+    <Title :data="historyData" title="历史记录" :close="() => (historyData.show = false)" :small="true"></Title>
     <div ref="historyContainer" class="content">
       <div class="historyList">
         <div

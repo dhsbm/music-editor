@@ -33,7 +33,7 @@ interface TrackEditorData {
   show: boolean
   track?: Track
   clone?: {
-    name: string
+    title: string
     color: string
     volume: number
     source: number

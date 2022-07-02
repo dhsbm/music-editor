@@ -6,7 +6,7 @@
     :style="synthesizerData.style"
     @mousedown="changeZIndex(synthesizerData.style)"
   >
-    <Title :data="synthesizerData" name="音源合成器" :close="hideSynthesizer" :start="true"></Title>
+    <Title :data="synthesizerData" title="音源合成器" :close="hideSynthesizer" :start="true"></Title>
     <div v-if="synthesizerData.track" class="content">
       <div class="container">
         <p>各种设置 todos</p>

@@ -24,7 +24,7 @@ watch(
       saveProjectWindowData.show = false
       return
     }
-    saveProjectWindowData.title = globalData.project.title
+    saveProjectWindowData.title = globalData.project.projectTitle
     saveProjectWindowData.introduce = globalData.project.introduce
     changeZIndex(saveProjectWindowData.style)
   }

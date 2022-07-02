@@ -5,7 +5,7 @@ import { ProjectObj } from './Interface'
 // 项目类
 class Project {
   projectId: number // 项目id
-  title: string // 项目标题
+  projectTitle: string // 项目标题
   introduce: string // 项目介绍
   authorId: string // 项目作者
   // 所有数据
@@ -22,7 +22,7 @@ class Project {
   dotDataId: number
   constructor() {
     this.projectId = Math.floor(Math.random() * 10000)
-    this.title = '默认项目'
+    this.projectTitle = '默认项目'
     this.introduce = ''
     this.authorId = ''
 
@@ -85,7 +85,7 @@ class Project {
     const result = []
     // 处理普通属性
     result.push(`"projectId":${stringify(project['projectId'])}`)
-    result.push(`"title":${stringify(project['title'])}`)
+    result.push(`"projectTitle":${stringify(project['projectTitle'])}`)
     result.push(`"introduce":${stringify(project['introduce'])}`)
     result.push(`"authorId":${stringify(project['authorId'])}`)
 
@@ -156,7 +156,7 @@ class Project {
   static parse(object: ProjectObj) {
     const project = new Project()
     project['projectId'] = object['projectId']
-    project['title'] = object['title']
+    project['projectTitle'] = object['projectTitle']
     project['introduce'] = object['introduce']
     project['authorId'] = object['authorId']
 

@@ -69,8 +69,9 @@ class DotData {
     result.push(`"dotDataId":${idMap.dotDataIdMap.get(dotData.dotDataId)}`)
 
     // 处理普通属性
-    result.push(`"type":${stringify(dotData['type'])}`)
-    result.push(`"category":${stringify(dotData['category'])}`)
+    for (const key of ['type', 'category']) {
+      result.push(`"${key}":${stringify(dotData[<keyof DotData>key])}`)
+    }
 
     // 处理包络id集合
     const envelopeIdSet = []
@@ -91,11 +92,12 @@ class DotData {
 
   // 解析对象
   static parse(object: DotDataObj, dotDataId: number) {
-    const dotData = new DotData(dotDataId, object.type, object.category)
+    const { type, category, envelopeIdSet, dotList } = object
+    const dotData = new DotData(dotDataId, type, category)
     // 建立包络id集合
-    dotData.envelopeIdSet = new Set(object.envelopeIdSet)
+    dotData.envelopeIdSet = new Set(envelopeIdSet)
     // 建立节点列表
-    dotData.dotList = object.dotList.map((dot) => Dot.parse(dot, dotDataId))
+    dotData.dotList = dotList.map((dot) => Dot.parse(dot, dotDataId))
 
     return dotData
   }

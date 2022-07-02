@@ -13,7 +13,7 @@
     <Title
       v-model:large="contentEditorData.large"
       :data="contentEditorData"
-      name="音谱内容编辑器"
+      title="音谱内容编辑器"
       :close="hideContentEditor"
       :start="true"
       :enlarge="true"

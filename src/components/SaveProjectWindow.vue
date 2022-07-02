@@ -6,7 +6,7 @@
     :style="saveProjectWindowData.style"
     @mousedown="changeZIndex(saveProjectWindowData.style)"
   >
-    <Title :data="saveProjectWindowData" name="保存项目" :close="() => (saveProjectWindowData.show = false)"></Title>
+    <Title :data="saveProjectWindowData" title="保存项目" :close="() => (saveProjectWindowData.show = false)"></Title>
     <div class="content">
       <div>
         <p>项目名称</p>

@@ -7,7 +7,7 @@
   >
     <Title
       :data="switchProjectWindowData"
-      name="打开项目"
+      title="打开项目"
       :close="() => (switchProjectWindowData.show = false)"
     ></Title>
     <div class="content">

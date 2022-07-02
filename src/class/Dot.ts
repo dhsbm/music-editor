@@ -30,8 +30,9 @@ class Dot {
   // 编码为字符串
   static stringify(dot: Dot): string {
     const result = []
-    result.push(`"x":${stringify(dot['x'])}`)
-    result.push(`"y":${stringify(dot['y'])}`)
+    for (const key of ['x', 'y']) {
+      result.push(`"${key}":${stringify(dot[<keyof Dot>key])}`)
+    }
     return '{' + String(result) + '}'
   }
 

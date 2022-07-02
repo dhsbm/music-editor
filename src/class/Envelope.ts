@@ -10,9 +10,18 @@ class Envelope {
   dotDataId: number // 绑定的节点数据id
   actTrackId: number // 作用于的音轨 0表示未绑定
   offsetX: number // 包络相对于音节数据的偏移位置
+  envelopeTitle: string
   private _start: number // 开始位置
   private _end: number // 结束位置
-  constructor(envelopeId: number, trackId: number, dotDataId: number, start: number, end: number, offsetX = start) {
+  constructor(
+    envelopeId: number,
+    trackId: number,
+    dotDataId: number,
+    start: number,
+    end: number,
+    offsetX = start,
+    envelopeTitle = '包络'
+  ) {
     this.envelopeId = envelopeId || globalData.project.newEnvelope(this) // 包络id
     this.trackId = trackId // 所属的父音轨
     this.dotDataId = dotDataId // 值为dot的数组
@@ -23,6 +32,7 @@ class Envelope {
     this._end = 0 // 结束位置 私有
     this.end = end // 结束位置
     this.offsetX = offsetX // envelope相对于dotData 的位置
+    this.envelopeTitle = envelopeTitle
   }
 
   // 添加节点
@@ -55,7 +65,15 @@ class Envelope {
   // 克隆包络
   clone(deep = false) {
     // 克隆当前音谱 是否深克隆
-    const envelope = new Envelope(0, this.trackId, this.dotDataId, this.start, this.end, this.offsetX)
+    const envelope = new Envelope(
+      0,
+      this.trackId,
+      this.dotDataId,
+      this.start,
+      this.end,
+      this.offsetX,
+      this.envelopeTitle
+    )
     if (deep) {
       const dotData = this.dotData.clone()
       envelope.dotData = dotData
@@ -79,23 +97,24 @@ class Envelope {
     }
 
     // 从idMap中获取新的id
-    result.push(`"trackId":${idMap.trackIdMap.get(envelope.trackId)}`)
-    result.push(`"envelopeId":${idMap.envelopeIdMap.get(envelope.envelopeId)}`)
-    result.push(`"dotDataId":${idMap.dotDataIdMap.get(envelope.dotDataId)}`)
-    result.push(`"actTrackId":${idMap.trackIdMap.get(envelope.actTrackId) || 0}`)
+    const { trackId, envelopeId, dotDataId, actTrackId } = envelope
+    result.push(`"trackId":${idMap.trackIdMap.get(trackId)}`)
+    result.push(`"envelopeId":${idMap.envelopeIdMap.get(envelopeId)}`)
+    result.push(`"dotDataId":${idMap.dotDataIdMap.get(dotDataId)}`)
+    result.push(`"actTrackId":${idMap.trackIdMap.get(actTrackId) || 0}`)
 
     // 处理普通属性
-    result.push(`"start":${stringify(envelope['start'])}`)
-    result.push(`"end":${stringify(envelope['end'])}`)
-    result.push(`"offsetX":${stringify(envelope['offsetX'])}`)
+    for (const key of ['start', 'end', 'offsetX', 'envelopeTitle']) {
+      result.push(`"${key}":${stringify(envelope[<keyof Envelope>key])}`)
+    }
 
     return '{' + String(result) + '}'
   }
   // 解码
   static parse(object: EnvelopeObj, envelopeId: number) {
-    const { trackId, dotDataId, start, end, offsetX } = object
-    const envelope = new Envelope(envelopeId, trackId, dotDataId, start, end, offsetX)
-    envelope.actTrackId = object.actTrackId
+    const { trackId, dotDataId, start, end, offsetX, envelopeTitle, actTrackId } = object
+    const envelope = new Envelope(envelopeId, trackId, dotDataId, start, end, offsetX, envelopeTitle)
+    envelope.actTrackId = actTrackId
 
     return envelope
   }

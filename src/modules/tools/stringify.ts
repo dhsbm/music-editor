@@ -3,7 +3,7 @@
  * @param {string | undefined | number} value 传入的数据
  * @return {string} 返回JSON字符串
  */
-const stringify = (value: string | undefined | number): string => {
+const stringify = (value: any): string => {
   const type = typeof value
   if (/string|undefined/.test(type)) {
     value = '"' + value + '"'

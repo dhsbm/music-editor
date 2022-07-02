@@ -8,7 +8,7 @@
   >
     <Title
       :data="publishProjectWindowData"
-      name="发布项目"
+      title="发布项目"
       :close="() => (publishProjectWindowData.show = false)"
     ></Title>
     <div class="form">

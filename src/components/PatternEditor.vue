@@ -8,7 +8,7 @@
   >
     <Title
       :data="patternEditorData"
-      name="音谱参数编辑器"
+      title="音谱参数编辑器"
       :close="hidePatternEditor"
       :small="true"
       :start="true"

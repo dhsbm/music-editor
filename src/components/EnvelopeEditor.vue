@@ -9,7 +9,7 @@
     <!-- 标题 -->
     <Title
       :data="envelopeEditorData"
-      name="音轨包络编辑器"
+      title="音轨包络编辑器"
       :close="hideEnvelopeEditor"
       :small="true"
       :start="true"
@@ -22,7 +22,7 @@
           <span class="name">作用于:</span>
           <select v-model.number="envelopeEditorData.clone.actTrackId">
             <option v-for="track in trackData.sortedTrackData" :key="track.trackId" :value="track.trackId">
-              {{ track.name }}
+              {{ track.trackTitle }}
             </option>
             <option value="0">未绑定</option>
           </select>

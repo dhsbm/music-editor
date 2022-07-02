@@ -2,7 +2,7 @@
   <div class="container">
     <div class="trackItem" :style="`height:${height}px;`" :data-trackId="track.trackId" data-name="item">
       <div class="trackSettings">
-        <p class="name" data-name="name">{{ track.name }}</p>
+        <p class="name" data-name="name">{{ track.trackTitle }}</p>
         <input v-model="volume" type="range" min="0" max="100" step="1" />
         <div class="trackButtons">
           <button :style="track.mute ? 'background: black;color:white;' : ''" data-name="mute">M</button>

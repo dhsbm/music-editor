@@ -6,7 +6,7 @@
     :style="feedbackData.style"
     @mousedown="changeZIndex(feedbackData.style)"
   >
-    <Title :data="feedbackData" name="使用反馈" :close="() => (feedbackData.show = false)"></Title>
+    <Title :data="feedbackData" title="使用反馈" :close="() => (feedbackData.show = false)"></Title>
     <div class="content">
       <div>
         <p>主题</p>

@@ -1,6 +1,6 @@
 <template>
   <div :class="titleClass" :style="titleStyle" @mousedown="moveDom($event, props.data.style)">
-    <span> {{ props.name }} </span>
+    <span> {{ props.title }} </span>
     <button class="puyin" @click="props.close">&#xe66d;</button>
     <!-- &#xea98;&#xea6b; -->
     <button v-if="props.enlarge" class="puyin enlarge" @click="switchLarge">
@@ -14,7 +14,7 @@ import { moveDom } from 'modules/tools'
 const props = withDefaults(
   defineProps<{
     data: { style: { transform: string } }
-    name: string
+    title: string
     close: () => void
     small?: boolean
     start?: boolean

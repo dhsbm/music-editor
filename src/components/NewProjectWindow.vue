@@ -6,7 +6,7 @@
     :style="newProjectWindowData.style"
     @mousedown="changeZIndex(newProjectWindowData.style)"
   >
-    <Title :data="newProjectWindowData" name="新建项目" :close="() => (newProjectWindowData.show = false)"></Title>
+    <Title :data="newProjectWindowData" title="新建项目" :close="() => (newProjectWindowData.show = false)"></Title>
     <div class="content">
       <button @click="newProject(false)">
         <p>新项目</p>

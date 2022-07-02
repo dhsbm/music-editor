@@ -9,7 +9,7 @@ class Track {
   volume: number // 音轨响度
   source: number // 音源 (应该传入的时sourse类的id)
   color: string // 音轨颜色
-  name: string // 音轨标题
+  trackTitle: string // 音轨标题
   mute: boolean // 静音
   solo: boolean // 独奏
   patternIdSet: Set<number> // 音谱id集合
@@ -18,14 +18,14 @@ class Track {
   constructor(
     trackId: number,
     color = trackData.colorList[Math.floor(Math.random() * trackData.colorList.length)],
-    name = '',
+    title = '',
     volume = 50,
     source = 1
   ) {
     this.trackId = trackId || globalData.project.newTrack(this)
 
     this.color = color // 颜色
-    this.name = name || '音轨' + this.trackId // 名称
+    this.trackTitle = title || '音轨' + this.trackId // 名称
     this.volume = volume // 响度
     this.source = source // 音源
     this.mute = false // 静音
@@ -78,10 +78,9 @@ class Track {
     result.push(`"trackId":${idMap.trackIdMap.get(track.trackId)}`)
 
     // 处理普通属性
-    result.push(`"color":${stringify(track['color'])}`)
-    result.push(`"name":${stringify(track['name'])}`)
-    result.push(`"volume":${stringify(track['volume'])}`)
-    result.push(`"source":${stringify(track['source'])}`)
+    for (const key of ['color', 'trackTitle', 'volume', 'source']) {
+      result.push(`"${key}":${stringify(track[<keyof Track>key])}`)
+    }
 
     // 处理音谱集合  建立patternIdMap
     const patternIdSet = []
@@ -121,7 +120,8 @@ class Track {
   }
   // 解码
   static parse(object: TrackObj, trackId: number) {
-    const track = new Track(trackId, object.color, object.name, object.volume, object.source)
+    const { color, trackTitle, volume, source } = object
+    const track = new Track(trackId, color, trackTitle, volume, source)
 
     // 建立音谱id集合
     const patternIdSet = <Set<number>>new Set()

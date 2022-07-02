@@ -30,7 +30,7 @@ const openProject = async (projectId: number) => {
     }
     trackData.trackOrder = trackOrder
 
-    document.title = project.title // 改标题
+    document.title = project.projectTitle // 改标题
 
     // 清空选择区
     selectedNoteList.clear()
