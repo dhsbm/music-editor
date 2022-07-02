@@ -14,7 +14,7 @@ const hoverPromptData: HoverPromptData = reactive({
     } else if (hoverPromptData.arrowDirection == 'bottom') {
       return {
         bottom: '-4px',
-        clipPath: 'polygon(0% 0%, 50% 100%, 0% 100%)',
+        clipPath: 'polygon(0% 0%, 50% 100%, 100% 0%)',
       }
     }
     return {}

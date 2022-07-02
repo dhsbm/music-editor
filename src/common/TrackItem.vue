@@ -3,7 +3,7 @@
     <div class="trackItem" :style="`height:${height}px;`" :data-trackId="track.trackId" data-name="item">
       <div class="trackSettings">
         <p class="name" data-name="name">{{ track.trackTitle }}</p>
-        <input v-model="volume" type="range" min="0" max="2" step="0.01" />
+        <input v-model.number="volume" type="range" min="0" max="2" step="0.01" />
         <div class="trackButtons">
           <button :style="track.mute ? 'background: black;color:white;' : ''" data-name="mute">M</button>
           <button :style="track.solo ? 'background: black;color:white;' : ''" data-name="solo">S</button>

@@ -14,7 +14,7 @@ import { hoverPromptData } from 'modules/prompt'
 // 提示框样式
 .hoverPrompt {
   position: absolute;
-  z-index: 99998;
+  z-index: 99999;
   transform: translateX(-50%);
   font-size: 10px;
   background-color: rgba(255, 255, 255, 0.8);

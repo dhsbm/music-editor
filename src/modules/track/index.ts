@@ -18,6 +18,7 @@ import switchSolo from './switchSolo'
 import switchMute from './switchMute'
 import mouseoverTrackList from './mouseoverTrackList'
 import mouseoutTrackList from './mouseoutTrackList'
+import selectTrackItem from './selectTrackItem'
 
 export {
   trackData,
@@ -38,4 +39,5 @@ export {
   saveTrack,
   switchSolo,
   switchMute,
+  selectTrackItem,
 }

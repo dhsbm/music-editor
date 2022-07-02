@@ -26,9 +26,9 @@ const mouseoverTrackList = (e: MouseEvent) => {
   }
   if (targetName == 'mute') {
     // 因为需要传入的是鼠标事件对象，其target属性应该是个dom元素
-    showHoverPrompt(<MouseEvent>{ target }, '静音 开/关')
+    showHoverPrompt(<MouseEvent>{ target }, '静音 开/关', 'bottom')
   } else if (targetName == 'solo') {
-    showHoverPrompt(<MouseEvent>{ target }, '独奏 开/关')
+    showHoverPrompt(<MouseEvent>{ target }, '独奏 开/关', 'bottom')
   }
 }
 

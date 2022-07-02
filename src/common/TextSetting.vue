@@ -22,6 +22,12 @@ const num = typeof prop.value === 'number'
 watch(inlineValue, (now) => {
   emit('update:value', num ? parseFloat(now as string) : now)
 })
+watch(
+  () => prop.value,
+  (now) => {
+    inlineValue.value = now
+  }
+)
 </script>
 
 <style lang="scss" scoped>

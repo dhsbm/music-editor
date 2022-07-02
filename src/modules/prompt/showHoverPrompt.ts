@@ -17,10 +17,11 @@ const _showHoverPrompt = debounce((e: MouseEvent, text: string, arrowDirection: 
   hoverPromptData.text = text
   hoverPromptData.show = true
   hoverPromptData.style.left = rect.left + rect.width / 2 + 'px'
+  hoverPromptData.arrowDirection = arrowDirection
   if (arrowDirection == 'top') {
     hoverPromptData.style.top = rect.top + rect.height + 10 + 'px'
   } else if (arrowDirection == 'bottom') {
-    hoverPromptData.style.top = rect.top - 10 + 'px'
+    hoverPromptData.style.top = rect.top - rect.height - 15 + 'px'
   }
 }, 300)
 hoverPromptData.debounced = _showHoverPrompt

@@ -9,6 +9,7 @@ import { bpm, timeData } from '.'
 let oldStart: number
 let timer: number
 let oldWorkerLeftBeat: number, oldEditorLeftBeat: number
+
 /**
  * @description: 播放/暂停
  * @return {void}
@@ -28,12 +29,15 @@ const play = () => {
     oldWorkerLeftBeat = workerCanvasData.leftBeat
     oldEditorLeftBeat = editorCanvasData.leftBeat
     const step = bpm.value / 60 / 50
+    let litter = indicatorData.start < overlayData.end // 记录上一时刻指针是否小于循环结束位置
+
     timer = setInterval(() => {
-      if (timeData.cycle && indicatorData.start >= overlayData.end) {
+      if (timeData.cycle && indicatorData.start >= overlayData.end && litter) {
         indicatorData.start = overlayData.start
         workerCanvasData.leftBeat = oldWorkerLeftBeat
         editorCanvasData.leftBeat = oldEditorLeftBeat
       }
+      litter = indicatorData.start < overlayData.end
       if (indicatorData.start >= workerCanvasData.rightBeat) {
         workerCanvasData.leftBeat = indicatorData.start
       }

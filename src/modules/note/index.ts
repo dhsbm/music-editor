@@ -19,6 +19,7 @@ import showNoteEditor from './noteEditor/showNoteEditor'
 import hideNoteEditor from './noteEditor/hideNoteEditor'
 import saveNote from './noteEditor/saveNote'
 import getActiveNote from './getActiveNote'
+import selectRowNote from './selectRowNote'
 
 export {
   addNote,
@@ -40,4 +41,5 @@ export {
   hideNoteEditor,
   saveNote,
   getActiveNote,
+  selectRowNote,
 }

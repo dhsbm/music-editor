@@ -1,3 +1,4 @@
+import { showCenterPrompt } from 'modules/prompt'
 import { toRaw } from 'vue'
 import { recordHistory } from 'modules/history'
 import { dotEditorData, drawDotData } from '..'
@@ -9,28 +10,22 @@ import { HistoryType } from 'modules/history/Interface'
  */
 const saveDot = () => {
   const { clone, dot } = dotEditorData
-  const difference = []
   if (clone && dot) {
-    for (const key of <[]>Object.keys(clone)) {
-      if (clone[key] != dot[key]) {
-        difference.push({
-          key,
-          oldData: dot[key],
-          newData: clone[key],
+    if (clone.y > 0 && clone.y < 1) {
+      if (clone.y != dot.y) {
+        dot.y = clone.y
+        recordHistory({
+          type: HistoryType.Dot,
+          describe: '修改节点参数',
+          target: toRaw(dot),
+          difference: [{ key: 'y', oldData: dot.y, newData: clone.y }],
         })
-        dot[key] = clone[key]
+        drawDotData(dot.dotData)
       }
+    } else {
+      clone.y = dot.y
+      showCenterPrompt('参数不合法')
     }
-    drawDotData(dot.dotData)
-  }
-
-  if (difference.length > 0) {
-    recordHistory({
-      type: HistoryType.Dot,
-      describe: '修改节点参数',
-      target: toRaw(dot),
-      difference,
-    })
   }
 }
 

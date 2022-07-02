@@ -1,7 +1,7 @@
 <template>
   <div class="rangeSetting">
     <span class="label">{{ label }}:</span>
-    <input v-model.number="inlineValue" type="range" :max="max" :min="min" :step="step" />
+    <input v-model.number="inlineValue" type="range" :max="max * 100" :min="min * 100" :step="step * 100" />
     <span class="num">{{ inlineValue + '%' }}</span>
     <br />
   </div>
