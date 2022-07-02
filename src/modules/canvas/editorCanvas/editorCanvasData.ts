@@ -14,8 +14,9 @@ const editorCanvasData: CanvasData = reactive({
   beatHeight: 16, // 节拍高度
   maxBeatHeight: 32, // 最大节拍高度
   minBeatHeight: 12, // 最小节拍高度
-  totalBeats: 100, // 总拍数
-  coverRadioY: 0.5, // 上方覆盖比例
+  totalBeats: 1000, // 总拍数
+  totalRows: 120,
+  coverRadioY: 0.6, // 上方覆盖比例
   // 编辑区展示的高度 顶部标题30+顶部画布30+底部滚动条14
   editAreaHeight: computed(() => {
     editorCanvasRender()
@@ -27,7 +28,7 @@ const editorCanvasData: CanvasData = reactive({
   // 最右边的节拍数
   rightBeat: computed(() => editorCanvasData.leftBeat + editorCanvasData.editAreaWidth / editorCanvasData.beatWidth),
   // 总高度
-  totalHeight: computed(() => editorCanvasData.beatHeight * 132),
+  totalHeight: computed(() => editorCanvasData.beatHeight * editorCanvasData.totalRows),
   // 总高度与显示宽度的差
   difHeight: computed(() => editorCanvasData.totalHeight - editorCanvasData.editAreaHeight),
   // 垂直方向上覆盖的px

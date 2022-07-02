@@ -62,7 +62,7 @@ const play = () => {
       result.push(getTrackData(track, trackMap))
     }
 
-    // console.log(result)
+    console.log(result)
   }
 }
 

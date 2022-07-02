@@ -1,5 +1,4 @@
 import { Note, Pattern } from '@/class'
-import { globalData } from 'modules/globalData'
 import { recordHistory } from 'modules/history'
 import { HistoryType } from 'modules/history/Interface'
 import { selectedNoteList, selectNote } from 'modules/note'
@@ -15,7 +14,7 @@ let maxWidth = 0
  * @return {void}
  */
 const keydownEditorCanvas = (e: KeyboardEvent) => {
-  if (!globalData.ctrl) return
+  if (!e.ctrlKey) return
   const key = e.key.toLocaleLowerCase()
   if (key === 'c') {
     // 复制操作 shift按下时为 深拷贝

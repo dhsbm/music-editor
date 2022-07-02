@@ -1,4 +1,4 @@
-import { workerCanvasData } from 'modules/canvas'
+import { editorCanvasData, workerCanvasData } from 'modules/canvas'
 import { trackData } from 'modules/track'
 import { selectedPatternList } from '.'
 import { Pattern } from '@/class'
@@ -40,15 +40,15 @@ const drawPattern = (pattern: Pattern, pointed = false) => {
 
   // 画内部音节
   ctx.strokeStyle = track.color
-  ctx.lineWidth = (beatHeight - 4) / 132
+  ctx.lineWidth = (beatHeight - 4) / editorCanvasData.totalRows
   ctx.beginPath()
   for (const [row, notes] of noteMap) {
     for (const note of notes) {
       if (note.start + offsetX > start + width || note.end + offsetX < start) continue
       const startX = (note.start + offsetX - leftBeat) * beatWidth
       const endX = startX + note.width * beatWidth
-      ctx.moveTo(startX, y + (row * beatHeight) / 132 + 1)
-      ctx.lineTo(endX, y + (row * beatHeight) / 132 + 1)
+      ctx.moveTo(startX, y + (row * beatHeight) / editorCanvasData.totalRows + 1)
+      ctx.lineTo(endX, y + (row * beatHeight) / editorCanvasData.totalRows + 1)
     }
   }
   ctx.stroke()

@@ -1,6 +1,5 @@
 import { Pattern, Envelope } from '@/class'
 import { selectedEnvelopeList, selectEnvelope } from 'modules/envelope'
-import { globalData } from 'modules/globalData'
 import { recordHistory } from 'modules/history'
 import { HistoryType } from 'modules/history/Interface'
 import { selectedPatternList, selectPattern } from 'modules/pattern'
@@ -16,7 +15,7 @@ let maxWidth = 0
  * @return {null}
  */
 const keydownWorkerCanvas = (e: KeyboardEvent) => {
-  if (!globalData.ctrl) return
+  if (!e.ctrlKey) return
   const key = e.key.toLocaleLowerCase()
   if (key === 'c') {
     // 复制操作
@@ -39,7 +38,7 @@ const keydownWorkerCanvas = (e: KeyboardEvent) => {
       pattern.start += maxWidth
       pattern.end += maxWidth
       pattern.offsetX += maxWidth
-      const clone = pattern.clone(globalData.shift)
+      const clone = pattern.clone(e.shiftKey)
       patternList.push(clone)
       clone.addSelf()
       selectPattern(clone, false)
@@ -56,7 +55,7 @@ const keydownWorkerCanvas = (e: KeyboardEvent) => {
       envelope.start += maxWidth
       envelope.end += maxWidth
       envelope.offsetX += maxWidth
-      const clone = envelope.clone(globalData.shift)
+      const clone = envelope.clone(e.shiftKey)
       envelopeList.push(clone)
       clone.addSelf()
       selectEnvelope(clone, false)

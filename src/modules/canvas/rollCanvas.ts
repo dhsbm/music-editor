@@ -1,4 +1,3 @@
-import { globalData } from 'modules/globalData'
 import { CanvasData } from './Interface'
 /**
  * @description: 滚动/缩放画布
@@ -7,10 +6,11 @@ import { CanvasData } from './Interface'
  * @return {void}
  */
 const rollCanvas = (e: WheelEvent, canvasData: CanvasData) => {
+  console.log(e)
   // 在canvas中滚动
-  if (globalData.shift) {
+  if (e.shiftKey) {
     // 横向操作
-    if (globalData.ctrl) {
+    if (e.ctrlKey) {
       // 缩放
       const { beatWidth, minBeatWidth, maxBeatWidth } = canvasData
       if (e.deltaY < 0) {
@@ -20,16 +20,16 @@ const rollCanvas = (e: WheelEvent, canvasData: CanvasData) => {
       }
     } else {
       // 滚动
-      const { leftBeat, beatWidth, editAreaWidth } = canvasData
+      const { leftBeat, beatWidth, editAreaWidth, totalBeats } = canvasData
       if (e.deltaY < 0) {
         canvasData.leftBeat = Math.max(0, leftBeat - editAreaWidth / (10 * beatWidth))
       } else {
-        canvasData.leftBeat = Math.min(100, leftBeat + editAreaWidth / (10 * beatWidth))
+        canvasData.leftBeat = Math.min(totalBeats, leftBeat + editAreaWidth / (10 * beatWidth))
       }
     }
   } else {
     // 纵向操作
-    if (globalData.ctrl) {
+    if (e.ctrlKey) {
       // 缩放
       const { beatHeight, minBeatHeight, maxBeatHeight } = canvasData
       if (e.deltaY < 0) {

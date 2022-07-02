@@ -115,7 +115,7 @@ onMounted(() => {
   editorPianoCanvasData.canvas = editorPianoCanvas
   editorPianoCanvasData.ctx = editorPianoCanvas.getContext('2d')!
   editorPianoCanvas.width = 60
-  editorPianoCanvas.height = 132 * 16
+  editorPianoCanvas.height = editorCanvasData.totalRows * 16
 })
 </script>
 

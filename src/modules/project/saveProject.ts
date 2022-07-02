@@ -1,6 +1,6 @@
 import { globalData } from 'modules/globalData'
 import { showCenterPrompt } from 'modules/prompt'
-import { historyData, isLatest } from 'modules/history'
+import { historyData } from 'modules/history'
 import { reqSaveProject } from '@/api'
 import { getProjectDetail } from '.'
 
@@ -9,11 +9,6 @@ import { getProjectDetail } from '.'
  * @return {void}
  */
 const saveProject = async () => {
-  // 是最新状态，无需保存
-  if (isLatest()) {
-    showCenterPrompt('当前项目未修改，无需保存')
-    return
-  }
   showCenterPrompt('开始保存')
   const projectId = globalData.project.patternId
 

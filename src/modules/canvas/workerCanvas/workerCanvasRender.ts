@@ -1,4 +1,4 @@
-import { trackData, drawAllTrack } from 'modules/track'
+import { drawAllTrack } from 'modules/track'
 import { throttle } from 'modules/tools'
 import { drawVerticalLines, drawHorizontalLines, workerCanvasData } from '..'
 
@@ -15,7 +15,7 @@ const _workerCanvasRender = throttle(() => {
   const { canvas, ctx } = workerCanvasData
   ctx.clearRect(0, 0, canvas.width, canvas.height)
   drawVerticalLines(canvas, workerCanvasData)
-  drawHorizontalLines(canvas, workerCanvasData, trackData.trackCount)
+  drawHorizontalLines(canvas, workerCanvasData)
   drawAllTrack()
 }, 15)
 export default workerCanvasRender

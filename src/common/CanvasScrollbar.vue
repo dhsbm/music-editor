@@ -1,7 +1,7 @@
 <template>
   <!-- 边角处滑块 -->
   <div class="horizontalMoveScrollbar">
-    <input v-model.number="canvasData.leftBeat" type="range" min="0.0" max="100.0" step="0.1" />
+    <input v-model.number="canvasData.leftBeat" type="range" min="0.0" :max="canvasData.totalBeats" step="0.1" />
   </div>
   <div class="horizontalStretchScrollbar">
     <input

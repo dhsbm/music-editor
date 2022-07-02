@@ -1,5 +1,5 @@
 import { addPattern, findPointPattern, showContentEditor } from 'modules/pattern'
-import { globalData, mode } from 'modules/globalData'
+import { mode } from 'modules/globalData'
 import { addEnvelope, findPointEnvelope } from 'modules/envelope'
 import { addDot, deleteDot } from 'modules/dot'
 import { Mode } from 'modules/globalData/Interface'
@@ -27,7 +27,7 @@ const dblclickWorkerCanvas = (e: MouseEvent) => {
   }
 
   if (mode.value == Mode.Select) {
-    globalData.shift ? addEnvelope(e) : addPattern(e)
+    e.shiftKey ? addEnvelope(e) : addPattern(e)
   }
 }
 

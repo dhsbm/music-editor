@@ -1,4 +1,5 @@
 import { Note, NoteData } from '@/class'
+import { editorCanvasData } from 'modules/canvas'
 import { LibraryItem } from './Interface'
 
 const libraryList = <Map<number, LibraryItem>>new Map()
@@ -13,7 +14,7 @@ export default libraryList
 const createNoteData = () => {
   const noteData = new NoteData(-1) // 传入-1,不备案
   for (let i = 0; i < 10; i++) {
-    const row = (Math.random() * 132) | 0
+    const row = (Math.random() * editorCanvasData.totalRows) | 0
     let start = (Math.random() * 4) | 0
     noteData.setNote(new Note(-1, row, start, start + 0.5))
     start = (start + 2) % 4

@@ -9,6 +9,7 @@ export interface CanvasData {
   maxBeatHeight: number
   minBeatHeight: number
   totalBeats: number
+  totalRows: number
   coverRadioY: number
   editAreaHeight: number
   editAreaWidth: number

@@ -1,4 +1,5 @@
 import { editorPianoCanvasData } from 'modules/canvas'
+import editorCanvasData from './editorCanvasData'
 
 const defaultWhiteColor = '#dcdcdc',
   defaultBlackColor = '#222222',
@@ -17,7 +18,7 @@ const drawPiano = () => {
   const pressedKey = editorPianoCanvasData.pressedKey
   const ctx = editorPianoCanvasData.ctx
   ctx.fillStyle = defaultWhiteColor
-  ctx.fillRect(0, 0, beatWidth, beatHeight * 132)
+  ctx.fillRect(0, 0, beatWidth, beatHeight * editorCanvasData.totalRows)
   if (pressedKey[0] == 'w') {
     const index = parseInt(pressedKey.slice(1))
     ctx.fillStyle = activeWhiteColor
@@ -30,7 +31,7 @@ const drawPiano = () => {
   ctx.lineWidth = 1
   ctx.strokeStyle = 'black'
   ctx.beginPath()
-  for (let i = 0; i < 11; i++) {
+  for (let i = 0; i < 10; i++) {
     const offsetY = 12 * beatHeight * i
     for (let j = 0; j < 7; j++) {
       ctx.moveTo(0, beatHeight * lineLocationList[j] + offsetY)
@@ -42,7 +43,7 @@ const drawPiano = () => {
   // 画黑键
   ctx.fillStyle = defaultBlackColor
   ctx.fillRect(0, beatHeight, 38, beatHeight)
-  for (let i = 0; i < 11; i++) {
+  for (let i = 0; i < 10; i++) {
     const offsetY = 12 * beatHeight * i
     for (let j = 0; j < 5; j++) {
       ctx.fillRect(0, beatHeight * blackKeyLocationList[j] + offsetY, 38, beatHeight)
@@ -57,7 +58,7 @@ const drawPiano = () => {
   ctx.font = '12px sans-serif'
   ctx.textAlign = 'right'
   ctx.fillStyle = 'black'
-  for (let i = 0; i < 11; i++) {
+  for (let i = 0; i < 10; i++) {
     const offsetY = 12 * beatHeight * (i + 1)
     ctx.fillText('C' + (10 - i), 55, offsetY - 5)
   }

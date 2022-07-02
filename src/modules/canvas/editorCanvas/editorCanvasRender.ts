@@ -18,7 +18,7 @@ const _editorCanvasRender = throttle(() => {
   const { canvas, ctx } = editorCanvasData
   ctx.clearRect(0, 0, canvas.width, canvas.height)
   drawVerticalLines(canvas, editorCanvasData)
-  drawHorizontalLines(canvas, editorCanvasData, 132)
+  drawHorizontalLines(canvas, editorCanvasData)
   drawAllNote()
   drawSelectedNote()
   drawSimilarPattern(pattern)

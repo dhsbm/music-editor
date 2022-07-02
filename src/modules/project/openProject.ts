@@ -32,8 +32,6 @@ const openProject = async (projectId: number) => {
 
     document.title = project.title // 改标题
 
-    recordHistory({ type: HistoryType.Init, describe: '初始化项目', target: project })
-
     // 清空选择区
     selectedNoteList.clear()
     selectedPatternList.clear()
@@ -42,6 +40,8 @@ const openProject = async (projectId: number) => {
     historyData.newStep = historyData.oldStep = 0
     // 先假删除，不然热更新总报错
     historyList.splice(0, historyList.length)
+
+    recordHistory({ type: HistoryType.Init, describe: '初始化项目', target: project })
   }
 }
 

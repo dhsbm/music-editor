@@ -18,7 +18,8 @@ const workerCanvasData: workerCanvasData = reactive({
   beatHeight: 80, // 音轨高度
   maxBeatHeight: 160, // 最大节拍高度
   minBeatHeight: 30, // 最大节拍高度
-  totalBeats: 100, // 总共100格
+  totalBeats: 1000, // 总共1000格
+  totalRows: computed(() => trackData.trackCount),
   coverRadioY: 0, // 上方覆盖的比例
   editAreaHeight: 0, // 编辑区展示的高度
   editAreaWidth: 0, // 编辑区展示的宽度
@@ -26,7 +27,7 @@ const workerCanvasData: workerCanvasData = reactive({
   // 最右边的节拍数
   rightBeat: computed(() => workerCanvasData.leftBeat + workerCanvasData.editAreaWidth / workerCanvasData.beatWidth),
   // 总高度 56 :添加按钮70 -底部滑块 14
-  totalHeight: computed(() => 56 + trackData.trackCount * workerCanvasData.beatHeight),
+  totalHeight: computed(() => 56 + workerCanvasData.totalRows * workerCanvasData.beatHeight),
   // 总高度与显示宽度的差
   difHeight: computed(() => workerCanvasData.totalHeight - workerCanvasData.editAreaHeight),
   // 垂直方向上覆盖的px

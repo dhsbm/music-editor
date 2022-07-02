@@ -80,7 +80,7 @@ const mousedownWorkerCanvas = (e: MouseEvent) => {
   selectDot()
   if (mode.value == Mode.Add) {
     // 添加模式：添加乐谱/包络
-    const item = globalData.shift ? addEnvelope(e) : addPattern(e)
+    const item = e.shiftKey ? addEnvelope(e) : addPattern(e)
     const oldPageX = e.pageX
     const oldEnd = item.end // 原始末端
     globalData.pressed = true
