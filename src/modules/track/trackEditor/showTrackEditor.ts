@@ -7,13 +7,13 @@ import { Track } from '@/class'
  * @return {void}
  */
 const showTrackEditor = (track: Track) => {
+  console.log(track)
   trackEditorData.show = true
   trackEditorData.track = track // 绑定音轨
   trackEditorData.clone = {
     trackTitle: track.trackTitle,
     color: track.color,
     volume: track.volume,
-    source: track.source,
   }
   changeZIndex(trackEditorData.style)
 }

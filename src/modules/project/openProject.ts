@@ -1,3 +1,4 @@
+import { showCenterPrompt } from 'modules/prompt'
 import { reqProjectData } from '@/api'
 import { Project } from '@/class'
 import { globalData } from 'modules/globalData'
@@ -16,33 +17,38 @@ import { HistoryType } from 'modules/history/Interface'
  */
 const openProject = async (projectId: number) => {
   const response = await reqProjectData(projectId)
+  let project
   if (response.code == 200 && response.data) {
     const data = response.data
     const projectData = data.projectData
     bpm.value = data.bpm
-    const project = Project.parse(JSON.parse(projectData))
-    globalData.project = project
-    // 重置音轨
-    trackData.trackMap = project.trackMap
-    const trackOrder = []
-    for (let i = 1; i <= project.trackMap.size; i++) {
-      trackOrder.push(i)
-    }
-    trackData.trackOrder = trackOrder
-
-    document.title = project.projectTitle // 改标题
-
-    // 清空选择区
-    selectedNoteList.clear()
-    selectedPatternList.clear()
-    // 维护历史记录
-    historyData.lastIndex = historyData.index = -1
-    historyData.newStep = historyData.oldStep = 0
-    // 先假删除，不然热更新总报错
-    historyList.splice(0, historyList.length)
-
-    recordHistory({ type: HistoryType.Init, describe: '初始化项目', target: project })
+    project = Project.parse(JSON.parse(projectData))
+  } else {
+    showCenterPrompt('网络不良，项目加载失败')
+    project = new Project()
   }
+  globalData.project = project
+
+  // 重置音轨
+  trackData.trackMap = project.trackMap
+  const trackOrder = []
+  for (let i = 1; i <= project.trackMap.size; i++) {
+    trackOrder.push(i)
+  }
+  trackData.trackOrder = trackOrder
+
+  document.title = project.projectTitle // 改标题
+
+  // 清空选择区
+  selectedNoteList.clear()
+  selectedPatternList.clear()
+  // 维护历史记录
+  historyData.lastIndex = historyData.index = -1
+  historyData.newStep = historyData.oldStep = 0
+  // 先假删除，不然热更新总报错
+  historyList.splice(0, historyList.length)
+
+  recordHistory({ type: HistoryType.Init, describe: '初始化项目', target: project })
 }
 
 export default openProject

@@ -6,7 +6,6 @@ import { CanvasData } from './Interface'
  * @return {void}
  */
 const rollCanvas = (e: WheelEvent, canvasData: CanvasData) => {
-  console.log(e)
   // 在canvas中滚动
   if (e.shiftKey) {
     // 横向操作

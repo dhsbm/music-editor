@@ -27,9 +27,11 @@ import { initSelectBox, getSelectBox } from './selectBox'
 // 移动/伸缩 音谱/包络
 import moveItem from './moveItem'
 // 将小节转换为时间
-import beatToTime from './beatToTime'
+import beatToTimeStr from './beatToTimeStr'
 // 将小节转换为节拍
-import beatToPat from './beatToPat'
+import beatToPatStr from './beatToPatStr'
+// 节拍与秒的互转
+import convertBeatTime from './convertBeatTime'
 
 export {
   fix,
@@ -46,6 +48,7 @@ export {
   initSelectBox,
   getSelectBox,
   moveItem,
-  beatToTime,
-  beatToPat,
+  beatToTimeStr,
+  beatToPatStr,
+  convertBeatTime,
 }

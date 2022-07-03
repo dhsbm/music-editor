@@ -1,5 +1,5 @@
 import { hideHit, showHit } from 'modules/hit'
-import { timeData } from 'modules/time'
+import { playData } from 'modules/audio'
 import { toRange } from 'modules/tools'
 import { overlayData } from '.'
 
@@ -11,7 +11,7 @@ import { overlayData } from '.'
  */
 const moveOverlay = (e: MouseEvent, beatWidth: number) => {
   if (e.button != 0) return // 检测是否为左键按下
-  timeData.cycle = true
+  playData.cycle = true
   const oldPageX = e.pageX
   const oldStart = overlayData.start
   const oldEnd = overlayData.end

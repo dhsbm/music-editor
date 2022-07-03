@@ -96,7 +96,7 @@
     </div>
     <button
       class="puyin"
-      @click="workerCanvasData.leftBeat = editorCanvasData.leftBeat = indicatorData.start = 0"
+      @click="backToStart"
       @mouseleave="hideHoverPrompt"
       @mouseenter="showHoverPrompt($event, '跳到开头')"
     >
@@ -104,8 +104,8 @@
     </button>
     <button
       class="puyin"
-      :class="timeData.playing ? 'active' : ''"
-      @click="play"
+      :class="playData.playing ? 'active' : ''"
+      @click="play(!playData.playing)"
       @mouseleave="hideHoverPrompt"
       @mouseenter="showHoverPrompt($event, '播放')"
     >
@@ -113,8 +113,8 @@
     </button>
     <button
       class="puyin"
-      :class="timeData.cycle ? 'active' : ''"
-      @click="timeData.cycle = !timeData.cycle"
+      :class="playData.cycle ? 'active' : ''"
+      @click="playData.cycle = !playData.cycle"
       @mouseleave="hideHoverPrompt"
       @mouseenter="showHoverPrompt($event, '循环 开/关')"
     >
@@ -122,8 +122,8 @@
     </button>
     <button
       class="puyin"
-      :class="timeData.metronome ? 'active' : ''"
-      @click="timeData.metronome = !timeData.metronome"
+      :class="playData.metronome ? 'active' : ''"
+      @click="playData.metronome = !playData.metronome"
       @mouseleave="hideHoverPrompt"
       @mouseenter="showHoverPrompt($event, '节拍器 开/关')"
     >
@@ -170,12 +170,11 @@
 import { masterMenuData } from 'modules/masterMenu'
 import { libraryData } from 'modules/library'
 import { workerSig, bpm, timeData, play, changeBpm, changeWorkerSig } from 'modules/time'
+import { playData, backToStart } from 'modules/audio'
 import { userButtonData, showUserMenu } from 'modules/user'
 import { historyData, undo, redo } from 'modules/history'
-import { workerCanvasData, editorCanvasData } from 'modules/canvas'
 import { contentEditorData } from 'modules/pattern'
 import { showHoverPrompt, hideHoverPrompt } from 'modules/prompt'
-import { indicatorData } from 'modules/indicator'
 import { keyboardData } from 'modules/pianoKeyboard'
 import { mode } from 'modules/globalData'
 import { Mode } from 'modules/globalData/Interface'

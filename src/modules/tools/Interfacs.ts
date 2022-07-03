@@ -4,3 +4,8 @@ export enum Direction {
   Left,
   Right,
 }
+
+export enum ConvertDir {
+  BeatToTime,
+  TimeToBeat,
+}

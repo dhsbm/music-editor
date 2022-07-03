@@ -36,7 +36,6 @@ interface TrackEditorData {
     trackTitle: string
     color: string
     volume: number
-    source: number
   }
   style: {
     zIndex: number

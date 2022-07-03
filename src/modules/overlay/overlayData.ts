@@ -1,5 +1,5 @@
 import { reactive, computed } from 'vue'
-import { timeData } from 'modules/time'
+import { playData } from 'modules/audio'
 import { workerCanvasData } from 'modules/canvas'
 
 // 遮罩层数据
@@ -10,7 +10,7 @@ const overlayData: OverlayDate = reactive({
   changeStart: false,
   changeEnd: false,
   // 音谱编辑器的颜色
-  color: computed(() => (timeData.cycle ? 'blue' : 'grey')),
+  color: computed(() => (playData.cycle ? 'blue' : 'grey')),
   // 音谱编辑器的样式
   style: {
     transform: computed(

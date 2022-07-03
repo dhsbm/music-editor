@@ -1,3 +1,5 @@
+import { Source } from 'modules/audio/Interface'
+
 export interface IdMap {
   newTrackId: number
   newPatternId: number
@@ -58,7 +60,7 @@ export interface PatternObj {
 }
 export interface TrackObj {
   volume: number // 音轨响度
-  source: number // 音源 (应该传入的时sourse类的id)
+  source: Source // 音源 (应该传入的时sourse类的id)
   color: string // 音轨颜色
   trackTitle: string // 音轨标题
   mute: boolean // 静音

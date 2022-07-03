@@ -1,82 +1,56 @@
+import { Source } from './Interface'
 import { Track, Envelope, Pattern } from '@/class'
-import { workerCanvasData, editorCanvasData } from 'modules/canvas'
 import { getLineY } from 'modules/dot'
-import { indicatorData } from 'modules/indicator'
-import { overlayData } from 'modules/overlay'
 import { trackData } from 'modules/track'
-import { bpm, timeData } from '.'
 
-let oldStart: number
-let timer: number
-let oldWorkerLeftBeat: number, oldEditorLeftBeat: number
+let audioData: AudioData
 
 /**
- * @description: 播放/暂停
- * @return {void}
+ * @description: 获取用于播放的音频数据
+ * @param {boolean} sign 用于记录与清除音频数据，避免每次都重复获取
+ * @return {AudioData}
  */
-const play = () => {
-  if (timeData.playing) {
-    timeData.playing = false
-    indicatorData.start = oldStart
-    workerCanvasData.leftBeat = oldWorkerLeftBeat
-    editorCanvasData.leftBeat = oldEditorLeftBeat
-    clearInterval(timer)
-
-    // 停止播放
-  } else {
-    timeData.playing = true
-    oldStart = indicatorData.start
-    oldWorkerLeftBeat = workerCanvasData.leftBeat
-    oldEditorLeftBeat = editorCanvasData.leftBeat
-    const step = bpm.value / 60 / 50
-    let litter = indicatorData.start < overlayData.end // 记录上一时刻指针是否小于循环结束位置
-
-    timer = setInterval(() => {
-      if (timeData.cycle && indicatorData.start >= overlayData.end && litter) {
-        indicatorData.start = overlayData.start
-        workerCanvasData.leftBeat = oldWorkerLeftBeat
-        editorCanvasData.leftBeat = oldEditorLeftBeat
-      }
-      litter = indicatorData.start < overlayData.end
-      if (indicatorData.start >= workerCanvasData.rightBeat) {
-        workerCanvasData.leftBeat = indicatorData.start
-      }
-      if (indicatorData.start >= editorCanvasData.rightBeat) {
-        editorCanvasData.leftBeat = indicatorData.start
-      }
-      indicatorData.start += step
-    }, 20)
-
-    // 提取数据  开始播放
-    const { sortedTrackData } = trackData
-    const trackMap = new Map()
-    const result = []
-    for (const track of sortedTrackData) {
-      // 独奏的
-      if (track.solo) {
-        trackMap.clear()
-        trackMap.set(track.trackId, track)
-        break
-      }
-      if (!track.mute) {
-        trackMap.set(track.trackId, track)
-      }
-    }
-    for (const [, track] of trackMap) {
-      result.push(getTrackData(track, trackMap))
-    }
-
-    console.log(result)
+const getAudioData = (sign: boolean) => {
+  if (!sign) {
+    audioData = <AudioData>(<any>undefined)
+    return audioData
+  } else if (audioData != undefined) {
+    return audioData
   }
-}
+  // 提取数据  开始播放
+  const { sortedTrackData } = trackData
+  const trackMap = <Map<number, Track>>new Map()
+  const result = []
+  for (const track of sortedTrackData) {
+    // 独奏的
+    if (track.solo) {
+      trackMap.clear()
+      trackMap.set(track.trackId, track)
+      break
+    }
+    // 未静音的音轨才添加进去
+    if (!track.mute) {
+      trackMap.set(track.trackId, track)
+    }
+  }
+  for (const [, track] of trackMap) {
+    result.push(getTrackData(track, trackMap))
+  }
 
-// 获取一个音轨的播放数据，返回一个对象
+  audioData = result
+  return result
+}
+export default getAudioData
+
+// 获取一个音轨的播放数据 包括其音源、音节、作用于它的包络
 const getTrackData = (track: Track, trackMap: Map<number, Track>) => {
   // 处理音节
   const noteMap = <Map<number, Set<Note>>>new Map()
+  const trackVolume = track.volume
   for (const patternId of track.patternIdSet) {
     const pattern = Pattern.getPattern(patternId)
     const { start, end, offsetX } = pattern
+    const patternVolume = trackVolume * pattern.volume
     for (const [row, noteSet] of pattern.noteMap) {
       // 调用映射
       for (const note of noteSet) {
@@ -84,6 +58,7 @@ const getTrackData = (track: Track, trackMap: Map<number, Track>) => {
         const noteData = {
           start: Math.max(note.start + offsetX, start),
           end: Math.min(note.end + offsetX, end),
+          volume: note.volume * patternVolume,
         }
 
         let notes = noteMap.get(row)
@@ -143,6 +118,7 @@ const getTrackData = (track: Track, trackMap: Map<number, Track>) => {
     })
     envelopeSet.add({ start, end, category, type, dotList })
   }
+  envelopeSet.clear()
 
   return {
     trackId: track.trackId,
@@ -167,7 +143,12 @@ const pushSinDot = (preDot: Dot | undefined, dot: Dot, dotList: Dot[]) => {
   }
 }
 
-export default play
+type AudioData = {
+  trackId: number
+  source: Source
+  noteMap: Map<number, Set<Note>>
+  envelopeSet: Set<EnvelopeDate>
+}[]
 
 interface EnvelopeDate {
   start: number
@@ -180,6 +161,7 @@ interface EnvelopeDate {
 interface Note {
   start: number
   end: number
+  volume: number
 }
 
 interface Dot {

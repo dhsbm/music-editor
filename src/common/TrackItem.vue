@@ -29,6 +29,12 @@ const volume = ref(prop.track.volume)
 watch(volume, (now) => {
   emit('update:volume', now)
 })
+watch(
+  () => prop.volume,
+  (now) => {
+    volume.value = now
+  }
+)
 </script>
 
 <style lang="scss" scoped>

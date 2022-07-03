@@ -1,17 +1,19 @@
+import { Source } from 'modules/audio/Interface'
 import { trackData } from 'modules/track'
 import { stringify } from 'modules/tools'
 import { Envelope, Pattern } from '.'
 import { globalData } from 'modules/globalData'
 import { TrackObj, IdMap } from './Interface'
+
 // 音轨类
 class Track {
   trackId: number // 音轨id,若为假值则自动创建并备案
   volume: number // 音轨响度
-  source: number // 音源 (应该传入的时sourse类的id)
   color: string // 音轨颜色
   trackTitle: string // 音轨标题
   mute: boolean // 静音
   solo: boolean // 独奏
+  source: Source
   patternIdSet: Set<number> // 音谱id集合
   envelopeIdSet: Set<number> // 所拥有的包络id
   envelopeIdList: Set<number> // 作用于此音轨的包络id
@@ -19,17 +21,22 @@ class Track {
     trackId: number,
     color = trackData.colorList[Math.floor(Math.random() * trackData.colorList.length)],
     title = '',
-    volume = 1,
-    source = 1
+    volume = 1
   ) {
     this.trackId = trackId || globalData.project.newTrack(this)
 
     this.color = color // 颜色
     this.trackTitle = title || '音轨' + this.trackId // 名称
     this.volume = volume // 响度
-    this.source = source // 音源
     this.mute = false // 静音
     this.solo = false // 独奏
+    this.source = {
+      type: 'sine',
+      attackTime: 0.2,
+      decayTime: 0.3,
+      releaseTime: 0.2,
+      sustainLevel: 0.7,
+    } // 音源
 
     this.patternIdSet = new Set() // 音谱id集合
     this.envelopeIdSet = new Set() // 所拥有的包络id
@@ -78,9 +85,12 @@ class Track {
     result.push(`"trackId":${idMap.trackIdMap.get(track.trackId)}`)
 
     // 处理普通属性
-    for (const key of ['color', 'trackTitle', 'volume', 'source']) {
+    for (const key of ['color', 'trackTitle', 'volume']) {
       result.push(`"${key}":${stringify(track[<keyof Track>key])}`)
     }
+
+    // 处理音源合成器
+    result.push(`"source":${JSON.stringify(track.source)}`)
 
     // 处理音谱集合  建立patternIdMap
     const patternIdSet = []
@@ -121,8 +131,9 @@ class Track {
   // 解码
   static parse(object: TrackObj, trackId: number) {
     const { color, trackTitle, volume, source } = object
-    const track = new Track(trackId, color, trackTitle, volume, source)
+    const track = new Track(trackId, color, trackTitle, volume)
 
+    track.source = source
     // 建立音谱id集合
     const patternIdSet = <Set<number>>new Set()
     for (const patternId of object.patternIdSet) {
