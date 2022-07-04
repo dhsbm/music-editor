@@ -17,7 +17,7 @@ interface EnvelopeEditorData {
   show: boolean
   envelope?: Envelope
   clone?: {
-    type: number
+    shape: number
     category: number
     actTrackId: number
     envelopeTitle: string

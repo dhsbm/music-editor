@@ -1,7 +1,9 @@
-import { Source } from './Interface'
+import { AudioData, NoteData, EnvelopeDate, DotData } from './Interface'
 import { Track, Envelope, Pattern } from '@/class'
 import { getLineY } from 'modules/dot'
 import { trackData } from 'modules/track'
+import { Shape } from '@/class/Interface'
+import { beatToTime } from 'modules/tools'
 
 let audioData: AudioData
 
@@ -45,7 +47,7 @@ export default getAudioData
 // 获取一个音轨的播放数据 包括其音源、音节、作用于它的包络
 const getTrackData = (track: Track, trackMap: Map<number, Track>) => {
   // 处理音节
-  const noteMap = <Map<number, Set<Note>>>new Map()
+  const noteMap = <Map<number, Set<NoteData>>>new Map()
   const trackVolume = track.volume
   for (const patternId of track.patternIdSet) {
     const pattern = Pattern.getPattern(patternId)
@@ -63,7 +65,7 @@ const getTrackData = (track: Track, trackMap: Map<number, Track>) => {
 
         let notes = noteMap.get(row)
         if (!notes) {
-          const set = <Set<Note>>new Set()
+          const set = <Set<NoteData>>new Set()
           noteMap.set(row, set)
           notes = set
         }
@@ -78,7 +80,7 @@ const getTrackData = (track: Track, trackMap: Map<number, Track>) => {
     // 包络所在的音轨被静音了
     if (!trackMap.has(envelope.trackId)) continue
 
-    const { start, end, offsetX, category, type } = envelope
+    const { start, end, offsetX, category, shape } = envelope
     let dotList = []
     let preDotData
     dotList.push({
@@ -95,13 +97,13 @@ const getTrackData = (track: Track, trackMap: Map<number, Track>) => {
         continue
       }
       if (dot.x + offsetX > end) {
-        if (type == 4) {
+        if (shape == Shape.Sine) {
           pushSinDot(preDotData, dotData, dotList)
         }
         break
       }
 
-      if (type == 4) {
+      if (shape == Shape.Sine) {
         // 正弦，切分100点
         pushSinDot(preDotData, dotData, dotList)
         preDotData = dotData
@@ -111,14 +113,13 @@ const getTrackData = (track: Track, trackMap: Map<number, Track>) => {
       }
     }
     // 正弦模式下会点会溢出范围，过滤一下
-    if (type == 4) dotList = dotList.filter((dot) => dot.x >= start && dot.x <= end)
+    if (shape == Shape.Sine) dotList = dotList.filter((dot) => dot.x >= start && dot.x <= end)
     dotList.push({
       x: end,
       y: getLineY(envelope, end - offsetX),
     })
-    envelopeSet.add({ start, end, category, type, dotList })
+    envelopeSet.add({ start, end, category, shape, dotList })
   }
-  envelopeSet.clear()
 
   return {
     trackId: track.trackId,
@@ -129,42 +130,18 @@ const getTrackData = (track: Track, trackMap: Map<number, Track>) => {
 }
 
 // 负责切片100份,需要传入前一点，当前点，存储列表，范围
-const pushSinDot = (preDot: Dot | undefined, dot: Dot, dotList: Dot[]) => {
+const pushSinDot = (preDot: DotData | undefined, dot: DotData, dotList: DotData[]) => {
   if (!preDot) return
   const difX = dot.x - preDot.x
   const difY = dot.y - preDot.y
-  for (let i = 0; i < 100; i++) {
-    const dy = (1 - Math.cos((i / 100) * Math.PI)) / 2
-    const dx = i / 100
+  const parts = beatToTime(difX) * 100
+
+  for (let i = 0; i <= parts; i++) {
+    const dy = (1 - Math.cos((i / parts) * Math.PI)) / 2
+    const dx = i / parts
     dotList.push({
       x: preDot.x + dx * difX,
       y: preDot.y + dy * difY,
     })
   }
-}
-
-type AudioData = {
-  trackId: number
-  source: Source
-  noteMap: Map<number, Set<Note>>
-  envelopeSet: Set<EnvelopeDate>
-}[]
-
-interface EnvelopeDate {
-  start: number
-  end: number
-  category: number
-  type: number
-  dotList: Dot[]
-}
-
-interface Note {
-  start: number
-  end: number
-  volume: number
-}
-
-interface Dot {
-  x: number
-  y: number
 }

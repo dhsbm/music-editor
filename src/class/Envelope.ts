@@ -162,11 +162,11 @@ class Envelope {
     return this.dotData.dotList
   }
   // 节点数据的类型
-  set type(type) {
-    this.dotData.type = type
+  set shape(shape) {
+    this.dotData.shape = shape
   }
-  get type() {
-    return this.dotData.type
+  get shape() {
+    return this.dotData.shape
   }
   // 节点数据的类别
   set category(category) {

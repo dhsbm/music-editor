@@ -6,7 +6,7 @@ import { workerCanvasData } from 'modules/canvas'
 const overlayData: OverlayDate = reactive({
   // 这里的单位时beat
   start: 0,
-  end: 2,
+  end: 4,
   changeStart: false,
   changeEnd: false,
   // 音谱编辑器的颜色

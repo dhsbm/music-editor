@@ -11,7 +11,7 @@ const showEnvelopeEditor = (envelope: Envelope) => {
   envelopeEditorData.show = true
   envelopeEditorData.envelope = envelope
   envelopeEditorData.clone = {
-    type: envelope.type,
+    shape: envelope.shape,
     category: envelope.category,
     actTrackId: envelope.actTrackId,
     envelopeTitle: envelope.envelopeTitle,

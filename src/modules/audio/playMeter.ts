@@ -1,6 +1,5 @@
 import { indicatorData } from 'modules/indicator'
-import { convertBeatTime } from 'modules/tools'
-import { ConvertDir } from 'modules/tools/Interfacs'
+import { beatToTime } from 'modules/tools'
 import { audioContext, primaryGainControl, playData } from '.'
 
 /**
@@ -11,8 +10,8 @@ const playMeter = () => {
   clearInterval(playData.meterTimer)
   if (!(playData.metronome && playData.playing)) return
   let i = Math.ceil(indicatorData.start)
-  const delay = convertBeatTime(ConvertDir.BeatToTime, i - indicatorData.start)
-  const timeout = convertBeatTime(ConvertDir.BeatToTime, 1)
+  const delay = beatToTime(i - indicatorData.start)
+  const timeout = beatToTime(1)
   setTimeout(() => {
     if (i % 4 == 0) {
       playMeter1()

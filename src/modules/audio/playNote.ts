@@ -1,8 +1,9 @@
 import { Source } from './Interface'
-import { audioContext, primaryGainControl } from '.'
+import { audioContext } from '.'
+import { toNonNegative } from 'modules/tools'
 
 /**
- * @description: 播放一个音节
+ * @description: 制作音节合成器与增益节点
  * @param {number} frequency 频率
  * @param {number} gain 响度
  * @param {number} duration 持续事件
@@ -14,16 +15,16 @@ const playNote = (frequency: number, gain: number, start: number, duration: numb
   noteOcillator.type = Source.type
   const time = audioContext.currentTime + start
 
-  noteOcillator.frequency.setValueAtTime(frequency, time)
+  noteOcillator.frequency.setValueAtTime(frequency, 0)
 
   // 颤音
-  const vibrato = audioContext.createOscillator() // 颤音
-  vibrato.frequency.setValueAtTime(20, 0)
-  const vibraGain = audioContext.createGain()
-  vibraGain.gain.setValueAtTime(gain * 1.5, 0)
-  vibrato.connect(vibraGain)
-  vibraGain.connect(noteOcillator.frequency)
-  vibrato.start(time)
+  // const vibrato = audioContext.createOscillator() // 颤音
+  // vibrato.frequency.setValueAtTime(frequency / 20, 0)
+  // const vibraGain = audioContext.createGain()
+  // vibraGain.gain.setValueAtTime(gain * 1.5, 0)
+  // vibrato.connect(vibraGain)
+  // vibraGain.connect(noteOcillator.frequency)
+  // vibrato.start(toNonNegative(time))
 
   const attackTime = duration * Source.attackTime // 上升
   const decayTime = duration * Source.decayTime // 衰退
@@ -31,18 +32,17 @@ const playNote = (frequency: number, gain: number, start: number, duration: numb
   const sustainLevel = gain * Source.sustainLevel // 维持的高度
 
   const noteGain = audioContext.createGain()
-  noteGain.gain.setValueAtTime(0, 0)
-  noteGain.gain.linearRampToValueAtTime(gain, time + attackTime)
-  noteGain.gain.linearRampToValueAtTime(sustainLevel, time + attackTime + decayTime)
-  noteGain.gain.setValueAtTime(sustainLevel, time + duration - releaseTime)
-  noteGain.gain.linearRampToValueAtTime(0, time + duration)
+  noteGain.gain.setValueAtTime(0, toNonNegative(time))
+  noteGain.gain.linearRampToValueAtTime(gain, toNonNegative(time + attackTime))
+  noteGain.gain.linearRampToValueAtTime(sustainLevel, toNonNegative(time + attackTime + decayTime))
+  noteGain.gain.setValueAtTime(sustainLevel, toNonNegative(time + duration - releaseTime))
+  noteGain.gain.linearRampToValueAtTime(0, toNonNegative(time + duration))
 
-  noteOcillator.connect(noteGain)
-  noteGain.connect(primaryGainControl)
-  noteOcillator.start(time)
-  noteOcillator.stop(time + duration)
-
-  return noteOcillator
+  return {
+    time,
+    noteOcillator,
+    noteGain,
+  }
 }
 
 export default playNote

@@ -1,9 +1,8 @@
 import { workerCanvasData, editorCanvasData } from 'modules/canvas'
 import { indicatorData } from 'modules/indicator'
 import { overlayData } from 'modules/overlay'
-import { convertBeatTime } from 'modules/tools'
-import { ConvertDir } from 'modules/tools/Interfacs'
-import { playData, playMeter, palyMusic } from '.'
+import { timeToBeat } from 'modules/tools'
+import { playData, playMeter, palyMusic, getAudioData } from '.'
 
 let oldStart: number
 let timer: number
@@ -15,6 +14,7 @@ let oldWorkerLeftBeat: number, oldEditorLeftBeat: number
  */
 const play = (on_off: boolean) => {
   playData.playing = on_off
+  getAudioData(on_off)
 
   if (on_off == false) {
     indicatorData.start = oldStart
@@ -29,7 +29,7 @@ const play = (on_off: boolean) => {
     oldEditorLeftBeat = editorCanvasData.leftBeat
 
     const timeout = 20
-    const step = convertBeatTime(ConvertDir.TimeToBeat, timeout / 1000)
+    const step = timeToBeat(timeout / 1000)
     let litter = indicatorData.start < overlayData.end // 记录上一时刻指针是否小于循环结束位置
 
     timer = setInterval(() => {
@@ -52,9 +52,8 @@ const play = (on_off: boolean) => {
       }
       indicatorData.start += step
     }, timeout)
-
-    // 播放节拍器
   }
+  // 播放节拍器
   palyMusic()
   playMeter()
 }

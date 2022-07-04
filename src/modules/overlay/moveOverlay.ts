@@ -1,6 +1,6 @@
 import { hideHit, showHit } from 'modules/hit'
 import { playData } from 'modules/audio'
-import { toRange } from 'modules/tools'
+import { toRange, adsorb } from 'modules/tools'
 import { overlayData } from '.'
 
 /**
@@ -21,13 +21,13 @@ const moveOverlay = (e: MouseEvent, beatWidth: number) => {
   const move = (event: MouseEvent) => {
     const dif = (event.pageX - oldPageX) / beatWidth
     if (overlayData.changeStart) {
-      overlayData.start = toRange(oldStart + dif, oldEnd - 1, 0)
+      overlayData.start = adsorb(toRange(oldStart + dif, oldEnd - 1, 0), 1, 0.1)
     } else if (overlayData.changeEnd) {
-      overlayData.end = Math.max(oldStart + 1, oldEnd + dif)
+      overlayData.end = adsorb(Math.max(oldStart + 1, oldEnd + dif))
     } else {
       if (oldStart + dif < 0) return
-      overlayData.start = oldStart + dif
-      overlayData.end = oldEnd + dif
+      overlayData.start = adsorb(oldStart + dif)
+      overlayData.end = adsorb(oldEnd + dif)
     }
   }
   const moveEnd = () => {

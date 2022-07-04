@@ -31,7 +31,10 @@ import beatToTimeStr from './beatToTimeStr'
 // 将小节转换为节拍
 import beatToPatStr from './beatToPatStr'
 // 节拍与秒的互转
-import convertBeatTime from './convertBeatTime'
+import beatToTime from './beatToTime'
+import timeToBeat from './timeToBeat'
+// 化为非负数
+import toNonNegative from './toNonNegative'
 
 export {
   fix,
@@ -50,5 +53,7 @@ export {
   moveItem,
   beatToTimeStr,
   beatToPatStr,
-  convertBeatTime,
+  beatToTime,
+  timeToBeat,
+  toNonNegative,
 }

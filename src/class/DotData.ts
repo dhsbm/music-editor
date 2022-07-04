@@ -1,24 +1,20 @@
 import { Envelope, Dot } from '.'
 import { globalData } from 'modules/globalData'
 import { stringify } from 'modules/tools'
-import { IdMap, DotDataObj } from './Interface'
-const defaultList = [0, 0.8, 0.5, 0.5]
-const range = [0, 1, 1, 2]
+import { IdMap, DotDataObj, Category, Shape } from './Interface'
 
 // 节点数据类
 class DotData {
   dotDataId: number // 节点数据id 若为0则自动申请
   envelopeIdSet: Set<number> // 生效的包络id
   dotList: Array<Dot> // 节点的集合
-  type: number // 类型
-  category: number // 类别：音量、声相……
-  constructor(dotDataId: number, type = 1, category = 1) {
+  shape: Shape // 类型
+  category: Category // 类别：音量、声相……
+  constructor(dotDataId: number, shape = Shape.Broken, category = Category.Volume) {
     this.dotDataId = dotDataId || globalData.project.newDotData(this)
     this.envelopeIdSet = new Set() // 值为envelope的id
     this.dotList = [] // 点的集合
-    //类型：1、2、3、4
-    //对应：折线、正向水平线、反向水平线、1/2正弦
-    this.type = type
+    this.shape = shape //对应：折线、正向水平线、反向水平线、1/2正弦
     this.category = category // 类别：音量、声相……
   }
   // 添加包络
@@ -49,7 +45,7 @@ class DotData {
   // 克隆节点数据
   clone(): DotData {
     const dotData = new DotData(0)
-    dotData.type = this.type
+    dotData.shape = this.shape
     dotData.category = this.category
     for (const dot of this.dotList) {
       const clone = dot.clone()
@@ -58,10 +54,6 @@ class DotData {
     }
     return dotData
   }
-  // 键
-  static keys() {
-    return ['type', 'category']
-  }
 
   // 编码为字符串
   static stringify(dotData: DotData, idMap: IdMap) {
@@ -69,7 +61,7 @@ class DotData {
     result.push(`"dotDataId":${idMap.dotDataIdMap.get(dotData.dotDataId)}`)
 
     // 处理普通属性
-    for (const key of ['type', 'category']) {
+    for (const key of ['shape', 'category']) {
       result.push(`"${key}":${stringify(dotData[<keyof DotData>key])}`)
     }
 
@@ -92,8 +84,8 @@ class DotData {
 
   // 解析对象
   static parse(object: DotDataObj, dotDataId: number) {
-    const { type, category, envelopeIdSet, dotList } = object
-    const dotData = new DotData(dotDataId, type, category)
+    const { shape: shape, category, envelopeIdSet, dotList } = object
+    const dotData = new DotData(dotDataId, shape, category)
     // 建立包络id集合
     dotData.envelopeIdSet = new Set(envelopeIdSet)
     // 建立节点列表
@@ -103,11 +95,7 @@ class DotData {
   }
   // 默认值
   get defaultValue() {
-    return defaultList[this.category]
-  }
-  // 范围
-  get range() {
-    return range[this.category]
+    return 0.5
   }
 }
 

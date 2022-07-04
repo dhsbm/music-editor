@@ -1,13 +1,12 @@
-import { convertBeatTime } from '.'
-import { ConvertDir } from './Interfacs'
+import { beatToTime } from '.'
 
 /**
  * @description: 将小节转换为时间
  * @param {number} beat 小节数
- * @return {string}
+ * @return {string} 时间字符串
  */
-const beatToTime = (beat: number): string => {
-  let time = convertBeatTime(ConvertDir.BeatToTime, beat)
+const beatToTimeStr = (beat: number): string => {
+  let time = beatToTime(beat)
   const hour = (time / 3600) | 0
   time %= 3600
   const minute = (time / 60) | 0
@@ -21,4 +20,4 @@ const beatToTime = (beat: number): string => {
   return hour + ':' + pad(minute) + ':' + pad(second) + '.' + pad(rest)
 }
 
-export default beatToTime
+export default beatToTimeStr

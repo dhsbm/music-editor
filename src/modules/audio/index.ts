@@ -9,6 +9,7 @@ import palyMusic from './palyMusic'
 import getAudioData from './getAudioData'
 import playNote from './playNote'
 import indexToFrequency from './indexToFrequency'
+import playEnvelope from './playEnvelope'
 
 export {
   audioContext,
@@ -20,4 +21,5 @@ export {
   getAudioData,
   playNote,
   indexToFrequency,
+  playEnvelope,
 }

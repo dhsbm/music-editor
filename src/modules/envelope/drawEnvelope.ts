@@ -33,11 +33,11 @@ const drawEnvelope = (envelope: Envelope, pointed = false) => {
   ctx.closePath()
   ctx.clip()
   // 写字
-  ctx.font = 'normal 20px serif'
+  ctx.font = 'normal 14px serif'
   ctx.textAlign = 'left'
   ctx.textBaseline = 'top'
   ctx.fillStyle = 'white'
-  ctx.fillText(envelope.envelopeTitle, x + 1, y + 5)
+  ctx.fillText(envelope.envelopeTitle, x + 5, y + 5)
 
   // 画内部的点
   drawDot(envelope, y)

@@ -32,11 +32,11 @@ const drawPattern = (pattern: Pattern, pointed = false) => {
   ctx.closePath()
   ctx.clip()
   // 写字
-  ctx.font = 'normal 20px serif'
+  ctx.font = 'normal 14px serif'
   ctx.textAlign = 'left'
   ctx.textBaseline = 'top'
   ctx.fillStyle = 'white'
-  ctx.fillText(pattern.patternTitle, x + 1, y + 5)
+  ctx.fillText(pattern.patternTitle, x + 5, y + 5)
 
   // 画内部音节
   ctx.strokeStyle = track.color

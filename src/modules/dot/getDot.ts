@@ -1,4 +1,5 @@
 import { Envelope } from '@/class'
+import { Shape } from '@/class/Interface'
 
 /**
  * @description: 检查所在点是否在线上，是否有点
@@ -29,14 +30,14 @@ const getDot = (envelope: Envelope, x: number, y: number, xRange: number, yRange
   if (preDot && nextDot) {
     // 夹在两点之间
     const difX = x - preDot.x
-    if (envelope.type == 1) {
+    if (envelope.shape == Shape.Broken) {
       // 折线
       const y = preDot.y + difX * ((nextDot.y - preDot.y) / (nextDot.x - preDot.x))
       return { dot: undefined, dotY: y, dotX: x }
-    } else if (envelope.type == 2) {
+    } else if (envelope.shape == Shape.ForwardHr) {
       // 正向水平线
       return { dot: undefined, dotY: preDot.y, dotX: x }
-    } else if (envelope.type == 3) {
+    } else if (envelope.shape == Shape.reverseHr) {
       // 反向水平线
       return { dot: undefined, dotY: nextDot.y, dotX: x }
     } else {

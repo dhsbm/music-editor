@@ -1,6 +1,6 @@
 import { stringify, fix } from 'modules/tools'
 import { globalData } from 'modules/globalData'
-import { DotObj } from './Interface'
+import { DotObj, Category } from './Interface'
 // 包络中的点类
 class Dot {
   private _x: number // 横向位置，单位beat
@@ -83,7 +83,19 @@ class Dot {
   // 根据类别显示数据
   get value() {
     // todos 这里应该根据类别显示
-    return this.y.toFixed(2)
+    const category = this.dotData.category
+    const y = this.y
+    if (category == Category.Volume) {
+      // 声量
+      return Math.round(y * 100 * 2) + '%'
+    } else if (category == Category.Panner) {
+      // 声像
+      const str = y < 0.5 ? '右声道' : '左声道'
+
+      return str + Math.round(Math.abs(y - 0.5) * 100 * 2) + '%'
+    } else {
+      throw Error('')
+    }
   }
 }
 

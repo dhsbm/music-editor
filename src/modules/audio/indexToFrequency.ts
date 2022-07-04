@@ -12,7 +12,7 @@ const frequencyArr = [
 const indexToFrequency = (index: number) => {
   const section = (index / 12) | 0 // 0-9
   const i = index % 12
-  return frequencyArr[i] * 2 ** (section - 4)
+  return frequencyArr[i] * 2 ** (5 - section)
 }
 
 export default indexToFrequency

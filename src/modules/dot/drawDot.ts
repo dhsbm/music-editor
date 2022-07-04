@@ -1,4 +1,5 @@
 import { Envelope } from '@/class'
+import { Shape } from '@/class/Interface'
 import { workerCanvasData } from 'modules/canvas'
 import { getLineY, selectedDotList } from '.'
 /**
@@ -38,16 +39,16 @@ const drawDot = (envelope: Envelope, y: number) => {
         preDot = { dotX, dotY }
         continue
       } else if (dot.x + offsetX > end) {
-        if (envelope.type == 4) {
+        if (envelope.shape == Shape.Sine) {
           drawSin(ctx, preDot, { dotX, dotY })
         }
         break
       }
 
-      if (envelope.type == 1) {
+      if (envelope.shape == Shape.Broken) {
         // 折线
         ctx.lineTo(dotX, dotY)
-      } else if (envelope.type == 2) {
+      } else if (envelope.shape == Shape.ForwardHr) {
         // 正向水平线
         if (dot.preDot) {
           const preDotY = mapDotY(dot.preDot.y) * beatHeight + y
@@ -56,14 +57,14 @@ const drawDot = (envelope: Envelope, y: number) => {
           ctx.lineTo(dotX, startY)
         }
         ctx.moveTo(dotX, dotY)
-      } else if (envelope.type == 3) {
+      } else if (envelope.shape == Shape.reverseHr) {
         // 反向水平线
         ctx.lineTo(dotX, dotY)
         if (dot.nextDot) {
           const nextDotY = mapDotY(dot.nextDot.y) * beatHeight + y
           ctx.moveTo(dotX, nextDotY)
         }
-      } else if (envelope.type == 4) {
+      } else if (envelope.shape == Shape.Sine) {
         // 1/2正弦
         drawSin(ctx, preDot, { dotX, dotY })
         preDot = { dotX, dotY }
@@ -108,9 +109,10 @@ const drawSin = (ctx: CanvasRenderingContext2D, start: DotObj, end: DotObj) => {
   const difX = endX - startX
   const difY = endY - startY
 
-  for (let i = 1; i <= 100; i++) {
-    const dy = (1 - Math.cos((i / 100) * Math.PI)) / 2
-    const dx = i / 100
+  const parts = Math.max((difX / 5) | 0, 5)
+  for (let i = 0; i <= parts; i++) {
+    const dy = (1 - Math.cos((i / parts) * Math.PI)) / 2
+    const dx = i / parts
     ctx.lineTo(startX + dx * difX, startY + dy * difY)
   }
 }

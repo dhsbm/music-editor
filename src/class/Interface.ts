@@ -21,8 +21,8 @@ export interface DotObj {
 export interface DotDataObj {
   envelopeIdSet: Array<number> // 生效的包络id
   dotList: Array<DotObj> // 节点的集合
-  type: number // 类型
-  category: number // 类别：音量、声相……
+  shape: Shape // 类型
+  category: Category // 类别：音量、声相……
 }
 
 export interface EnvelopeObj {
@@ -98,4 +98,17 @@ export interface ProjectObj {
   noteDataId: number
   envelopeId: number
   dotDataId: number
+}
+
+// 包络的类别
+export enum Category {
+  Volume,
+  Panner,
+}
+// 包络的线形
+export enum Shape {
+  Broken, // 折线
+  ForwardHr, // 正向水平线
+  reverseHr, // 反向水平线
+  Sine, // 1/2正弦
 }

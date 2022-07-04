@@ -15,6 +15,7 @@ const switchProject = (index: number) => {
     return
   }
   const projectId = switchProjectWindowData.projectList[index].projectId
+
   if (projectId == globalData.project.projectId) return
   openProject(projectId)
 }

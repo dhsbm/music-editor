@@ -1,11 +1,11 @@
 <!-- 播放时遮罩层，拦截操作 -->
 <template>
-  <div v-if="timeData.playing" class="timeMask" @click="showCenterPrompt('播放期间禁止操作，请先暂停播放')"></div>
+  <div v-if="playData.playing" class="timeMask" @click="showCenterPrompt('播放期间禁止操作，请先暂停播放')"></div>
 </template>
 
 <script setup lang="ts">
 import { showCenterPrompt } from 'modules/prompt'
-import { timeData } from 'modules/time'
+import { playData } from 'modules/audio'
 </script>
 
 <style lang="scss" scoped>

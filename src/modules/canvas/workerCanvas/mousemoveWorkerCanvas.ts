@@ -45,7 +45,7 @@ const _mousemoveWorkerCanvas = throttle((e: MouseEvent) => {
   changePrePointData('envelope', envelopeData.pointEnvelope)
   changeDotStyle(envelopeData)
 
-  if (patternData.changeStart && patternData.changeEnd) {
+  if (patternData.changeStart && patternData.changeEnd && envelopeData.changeStart && envelopeData.changeEnd) {
     workerCanvasData.style.cursor = 'default'
   } else {
     workerCanvasData.style.cursor = 'ew-resize'

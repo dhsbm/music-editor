@@ -22,7 +22,7 @@
         label="作用于"
         :list="actTrackList"
       ></SelectSetting>
-      <SelectSetting v-model:value="envelopeEditorData.clone!.type" label="线形" :list="typeList"></SelectSetting>
+      <SelectSetting v-model:value="envelopeEditorData.clone!.shape" label="线形" :list="shapeList"></SelectSetting>
       <SelectSetting
         v-model:value="envelopeEditorData.clone!.category"
         label="类别"
@@ -41,6 +41,7 @@ import Title from 'common/Title.vue'
 import { envelopeEditorData, hideEnvelopeEditor, saveEnvelope } from 'modules/envelope'
 import { trackData } from 'modules/track'
 import { computed } from '@vue/reactivity'
+import { Category, Shape } from '@/class/Interface'
 
 const actTrackList = computed(() => {
   let list = trackData.sortedTrackData.map((track) => ({ name: track.trackTitle, value: track.trackId }))
@@ -49,14 +50,14 @@ const actTrackList = computed(() => {
   return list
 })
 
-const typeList = [
-  { name: '折线', value: 1 },
-  { name: '正向水平线', value: 2 },
-  { name: '反向水平线', value: 3 },
-  { name: '1/2正弦', value: 4 },
+const shapeList = [
+  { name: '折线', value: Shape.Broken },
+  { name: '正向水平线', value: Shape.ForwardHr },
+  { name: '反向水平线', value: Shape.reverseHr },
+  { name: '1/2正弦', value: Shape.Sine },
 ]
 const categoryList = [
-  { name: '音量', value: 1 },
-  { name: '声相', value: 2 },
+  { name: '音量', value: Category.Volume },
+  { name: '声相', value: Category.Panner },
 ]
 </script>
