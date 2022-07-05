@@ -10,6 +10,7 @@ import getAudioData from './getAudioData'
 import playNote from './playNote'
 import indexToFrequency from './indexToFrequency'
 import playEnvelope from './playEnvelope'
+import playDefaultNote from './playDefaultNote'
 
 export {
   audioContext,
@@ -22,4 +23,5 @@ export {
   playNote,
   indexToFrequency,
   playEnvelope,
+  playDefaultNote,
 }

@@ -2,7 +2,7 @@
 <template>
   <div
     v-show="keyboardData.show"
-    class="keyboard"
+    class="keyboardWindow"
     :style="keyboardData.style"
     @mousedown="changeZIndex(keyboardData.style)"
   >
@@ -10,23 +10,25 @@
     <Resize :data="keyboardData"></Resize>
     <Title :data="keyboardData" title="键盘" :close="() => (keyboardData.show = false)" :start="true"></Title>
 
-    <div class="scrollbox">
-      <div class="settings">
-        <div class="octaveSwitch">
-          <p>八度</p>
-          <button @click="changeOctave(-1)">-</button>
-          <span>{{ keyboardData.octave }}</span>
-          <button @click="changeOctave(1)">+</button>
+    <div class="pianoContainer">
+      <div class="piano">
+        <div class="settings">
+          <div class="octaveSwitch">
+            <p>八度</p>
+            <button @click="changeOctave(-1)">-</button>
+            <span>{{ keyboardData.octave + 1 }}</span>
+            <button @click="changeOctave(1)">+</button>
+          </div>
         </div>
-      </div>
-      <div class="mainContent">
-        <canvas ref="keyboardCanvas" :style="keyboardData.canvasStyle" @mousedown="mousedownKeyboard"></canvas>
-      </div>
-      <div class="long">
-        <input v-model="keyboardData.coverRatio" type="range" min="0.0" max="1.0" step="0.0000001" />
-      </div>
-      <div class="short">
-        <input v-model="keyboardData.zoom" type="range" min="0.5" max="1.5" step="0.00001" />
+        <div class="main">
+          <canvas ref="keyboardCanvas" :style="keyboardData.canvasStyle" @mousedown="mousedownKeyboard"></canvas>
+        </div>
+        <div class="long">
+          <input v-model="keyboardData.coverRatio" type="range" min="0.0" max="1.0" step="0.0000001" />
+        </div>
+        <div class="short">
+          <input v-model="keyboardData.zoom" type="range" min="0.5" max="1.5" step="0.00001" />
+        </div>
       </div>
     </div>
   </div>
@@ -51,7 +53,7 @@ onMounted(() => {
 @import 'scss/window.scss';
 
 // 钢琴键盘样式
-.keyboard {
+.keyboardWindow {
   @include window-shadow();
   position: absolute;
   left: 50%;
@@ -63,8 +65,11 @@ onMounted(() => {
   max-height: 300px;
   transform: translate(-500px, -121px);
 
-  .scrollbox {
+  .pianoContainer {
     height: calc(100% - 30px);
+  }
+  .piano {
+    height: 100%;
     display: grid;
     grid-template-columns: 140px 1fr 100px;
     grid-template-rows: 1fr 12px;
@@ -105,7 +110,7 @@ onMounted(() => {
         }
       }
     }
-    .mainContent {
+    .main {
       grid-area: mainContent;
       overflow: hidden;
       canvas {

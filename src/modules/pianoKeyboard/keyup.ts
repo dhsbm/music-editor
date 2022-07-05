@@ -9,11 +9,9 @@ const keyup = (e: KeyboardEvent) => {
   const key = e.key.toUpperCase()
   const { mapLetterList, mapNumberList, downLetterList, downNumberList } = keyboardStaticData
   if (mapLetterList.indexOf(key) !== -1) {
-    // console.log('停止对应的音乐', key)
     downLetterList.delete(key)
     keydownRender()
   } else if (mapNumberList.indexOf(key) !== -1) {
-    // console.log('停止对应的音乐', key)
     downNumberList.delete(key)
     keydownRender()
   }

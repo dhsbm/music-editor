@@ -1,4 +1,5 @@
 import { keyboardStaticData, keyboardData, keyboardRender } from '.'
+import { playDefaultNote } from 'modules/audio'
 
 /**
  * @description: 鼠标点击键盘时
@@ -14,17 +15,17 @@ const mousedownKeyboard = (e: MouseEvent) => {
   const move = (event: MouseEvent) => {
     const x = event.offsetX / zoom,
       y = event.offsetY / ratioY
-    const i = Math.floor(x / cellWidth)
+    const index = Math.floor(x / cellWidth)
     const rest = x % cellWidth
-    let res = keyColorOrder[i % 12] + i
+    let res = keyColorOrder[index % 12] + index
 
     if (res[0] == 'b' && y > blackKeyHeight) {
-      if (rest < cellWidth / 2) res = 'w' + (i - 1)
-      else res = 'w' + (i + 1)
+      if (rest < cellWidth / 2) res = 'w' + (index - 1)
+      else res = 'w' + (index + 1)
     }
     if (res != keyboardStaticData.mouseDownKey) {
       keyboardStaticData.mouseDownKey = res
-      // console.log('播放对应的音乐', res)
+      playDefaultNote(119 - index)
       keyboardRender()
     }
   }

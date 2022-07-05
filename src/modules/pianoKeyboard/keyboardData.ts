@@ -8,7 +8,7 @@ const keyboardData: KeyboardData = reactive({
   octave: 3,
   zoom: 1,
   showWidth: 860,
-  totalWidth: computed(() => 2750 * keyboardData.zoom),
+  totalWidth: computed(() => 22 * 120 * keyboardData.zoom),
   style: {
     zIndex: 0,
     width: '1000px',

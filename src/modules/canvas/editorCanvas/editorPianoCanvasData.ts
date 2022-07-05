@@ -1,7 +1,7 @@
 import { reactive, computed } from 'vue'
 import { editorCanvasData } from '..'
 
-// 编辑器键盘区数据
+// 内容编辑器键盘区数据
 const editorPianoCanvasData = reactive({
   canvas: <HTMLCanvasElement>(<unknown>undefined),
   ctx: <CanvasRenderingContext2D>(<unknown>undefined),
