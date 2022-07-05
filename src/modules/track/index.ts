@@ -19,6 +19,10 @@ import switchMute from './switchMute'
 import mouseoverTrackList from './mouseoverTrackList'
 import mouseoutTrackList from './mouseoutTrackList'
 import selectTrackItem from './selectTrackItem'
+import sourceEditorData from './sourceEditor/sourceEditorData'
+import showSourceEditor from './sourceEditor/showSourceEditor'
+import hideSourceEditor from './sourceEditor/hideSourceEditor'
+import saveSource from './sourceEditor/saveSource'
 
 export {
   trackData,
@@ -40,4 +44,8 @@ export {
   switchSolo,
   switchMute,
   selectTrackItem,
+  sourceEditorData,
+  showSourceEditor,
+  hideSourceEditor,
+  saveSource,
 }

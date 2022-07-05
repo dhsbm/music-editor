@@ -4,9 +4,10 @@ import { keyboardData, keyboardStaticData, keydownRender } from '.'
 /**
  * @description: 键盘按下时，播放音乐，绘制按下的键
  * @param {KeyboardEvent} e 键盘事件
- * @return {null}
+ * @return {void}
  */
 const keydown = (e: KeyboardEvent) => {
+  if (!keyboardData.show) return
   const key = e.key.toUpperCase()
   const { mapLetterList, mapNumberList, downLetterList, downNumberList, mapLetterLocationList, mapNumberLocationList } =
     keyboardStaticData

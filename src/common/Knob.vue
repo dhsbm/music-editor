@@ -39,7 +39,7 @@
       {{ showData }}
     </div>
     <div class="bottom">
-      <div>octave</div>
+      <div>{{ label }}</div>
     </div>
   </div>
 </template>
@@ -64,13 +64,15 @@ const props = withDefaults(
     max?: number
     // 步长
     step?: number
+    // 标签
+    label: string
   }>(),
   {
-    value: 5,
+    value: 0.5,
     fix: 2,
     min: 0,
-    max: 10,
-    step: 0.1,
+    max: 1,
+    step: 0.01,
   }
 )
 const emit = defineEmits(['update:value'])
@@ -151,14 +153,14 @@ const digit = Math.min(props.fix, Math.max(getPlaces(props.value), getPlaces(pro
 // 显示数据
 const showData = computed(() => fix(knobData.difAngle * unit, digit))
 // 初始角度
-knobData.angle = props.value / unit - 45
+knobData.angle = (props.max - props.value) / unit - 45
 </script>
 
 <style lang="scss" scoped>
 .knob {
   position: relative;
-  width: 72px;
-  height: 72px;
+  width: 100%;
+  height: 100%;
 
   .tip {
     position: absolute;

@@ -1,5 +1,6 @@
-import { globalData } from 'modules/globalData'
+import { showSourceEditor } from 'modules/track'
 import { moveTrack, showTrackEditor, showTrackMenu, switchMute, switchSolo, trackData } from '.'
+import { Track } from '@/class'
 
 /**
  * @description: 鼠标点击事件
@@ -11,23 +12,33 @@ const mousedownTrackList = (e: MouseEvent, dblclick = false) => {
   const path = e.composedPath()
   let target = '' // 点击的元素
   let trackId = -1 // 点击的音轨id
-  for (let i = 0; i < path.length; i++) {
+  outer: for (let i = 0; i < path.length; i++) {
     const dom = <HTMLElement>path[i]
     const dataset = dom.dataset
-    if (dataset.name == 'name') {
-      target = 'name'
-    } else if (dataset.name == 'mute') {
-      target = 'mute'
-    } else if (dataset.name == 'solo') {
-      target = 'solo'
-    } else if (dataset.name == 'item') {
-      trackId = parseInt(<string>dataset.trackid)
-      break
+    switch (dataset.name) {
+      case 'name':
+        target = 'name'
+        break
+      case 'mute':
+        target = 'mute'
+        break
+      case 'solo':
+        target = 'solo'
+        break
+      case 'source':
+        target = 'source'
+        break
+      case 'edit':
+        target = 'edit'
+        break
+      case 'item':
+        trackId = parseInt(<string>dataset.trackid)
+        break outer
     }
   }
 
   if (trackId != -1) {
-    trackData.selectedTrack = globalData.project.getTrack(trackId)
+    trackData.selectedTrack = Track.getTrack(trackId)
   } else {
     return
   }
@@ -37,12 +48,25 @@ const mousedownTrackList = (e: MouseEvent, dblclick = false) => {
     if (dblclick) {
       showTrackEditor(trackData.selectedTrack)
       return
-    } else if (target == 'name') {
-      trackData.trackOrder.length > 1 && moveTrack(e, trackId)
-    } else if (target == 'mute') {
-      switchMute(trackData.selectedTrack)
-    } else if (target == 'solo') {
-      switchSolo(trackData.selectedTrack)
+    }
+    switch (target) {
+      case 'name':
+        trackData.trackOrder.length > 1 && moveTrack(e, trackId)
+        break
+      case 'mute':
+        switchMute(trackData.selectedTrack)
+        break
+      case 'solo':
+        switchSolo(trackData.selectedTrack)
+        break
+      case 'source':
+        target = 'source'
+        showSourceEditor(trackData.selectedTrack)
+        break
+      case 'edit':
+        target = 'edit'
+        showTrackEditor(trackData.selectedTrack)
+        break
     }
   }
 }

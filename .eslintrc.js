@@ -41,7 +41,7 @@ module.exports = {
     // props是否必需默认值
     'vue/require-default-prop': 'off',
     // 缩进
-    indent: ['warn', 2],
+    indent: ['warn', 2, { SwitchCase: 1 }],
     // 函数前空格
     'space-before-function-paren': 0,
     // 末尾逗号

@@ -1,4 +1,4 @@
-import { keyboardStaticData, keydownRender } from '.'
+import { keyboardData, keyboardStaticData, keydownRender } from '.'
 
 /**
  * @description: 键盘按下时，暂停音乐，恢复按下的键
@@ -6,6 +6,7 @@ import { keyboardStaticData, keydownRender } from '.'
  * @return {void}
  */
 const keyup = (e: KeyboardEvent) => {
+  if (!keyboardData.show) return
   const key = e.key.toUpperCase()
   const { mapLetterList, mapNumberList, downLetterList, downNumberList } = keyboardStaticData
   if (mapLetterList.indexOf(key) !== -1) {

@@ -7,6 +7,8 @@
         <div class="trackButtons">
           <button :style="track.mute ? 'background: black;color:white;' : ''" data-name="mute">M</button>
           <button :style="track.solo ? 'background: black;color:white;' : ''" data-name="solo">S</button>
+          <button data-name="edit">E</button>
+          <button data-name="source">P</button>
         </div>
       </div>
       <div class="panel" :style="'background:' + track.color + ';'"></div>
@@ -66,9 +68,11 @@ watch(
       }
       .trackButtons {
         margin-top: 10px;
+        padding-left: 10px;
+        padding-right: 26px;
         display: flex;
+        justify-content: space-around;
         button {
-          margin-left: 20px;
           color: rgba(255, 248, 222, 0.5);
           background-color: transparent;
           width: 14px;

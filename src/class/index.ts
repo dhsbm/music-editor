@@ -6,6 +6,5 @@ import Note from './Note' // 音节
 import Envelope from './Envelope' // 包络
 import DotData from './DotData' // 节点数据
 import Dot from './Dot' // 包络节点
-import Synthesizer from './Synthesizer' // 合成器
 
-export { Dot, DotData, Envelope, Note, NoteData, Pattern, Project, Synthesizer, Track }
+export { Dot, DotData, Envelope, Note, NoteData, Pattern, Project, Track }

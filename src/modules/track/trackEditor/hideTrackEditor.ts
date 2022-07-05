@@ -2,8 +2,7 @@ import { trackEditorData } from '..'
 
 /**
  * @description: 隐藏音轨编辑器
- * @param {null}
- * @return {null}
+ * @return {void}
  */
 const hideTrackEditor = () => {
   trackEditorData.show = false

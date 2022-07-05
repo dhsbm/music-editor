@@ -1,7 +1,7 @@
 import { editorCanvasRender, workerCanvasRender } from 'modules/canvas'
-import { deleteTrack, showTrackEditor, trackData } from 'modules/track'
+import { deleteTrack, showSourceEditor, showTrackEditor, trackData } from 'modules/track'
 import { deletePattern, showPatternEditor } from 'modules/pattern'
-import { deleteNote } from 'modules/note'
+import { deleteNote, showNoteEditor } from 'modules/note'
 import { historyList, historyData } from '.'
 import { deleteEnvelope, showEnvelopeEditor } from 'modules/envelope'
 import { deleteDot, showDotEditor } from 'modules/dot'
@@ -42,6 +42,13 @@ const undo = (needRender = true) => {
         target[key] = oldData
       }
       showTrackEditor(target)
+    } else if (describe == '修改音源参数') {
+      const source = target.source
+      for (const { key, oldData } of historyEvent.difference) {
+        source[key] = oldData
+      }
+      showSourceEditor(target)
+      needRender = false
     }
     if (needRender) workerCanvasRender()
   } else if (type == HistoryType.Pattern) {
@@ -71,6 +78,7 @@ const undo = (needRender = true) => {
         target[key] = oldData
       }
       showPatternEditor(target)
+      needRender = false
     } else if (describe == '独立音谱') {
       const { oldNoteData, newNoteData } = historyEvent
       newNoteData.deletePattern(target)
@@ -99,6 +107,12 @@ const undo = (needRender = true) => {
           note.addSelf()
         }
       }
+    } else if (describe == '修改音节参数') {
+      for (const { key, oldData } of historyEvent.difference) {
+        target[key] = oldData
+      }
+      showNoteEditor(target)
+      needRender = false
     }
     if (needRender) editorCanvasRender()
   } else if (type == HistoryType.Envelop) {

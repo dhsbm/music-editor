@@ -7,28 +7,27 @@ import { showHoverPrompt } from 'modules/prompt'
  */
 const mouseoverTrackList = (e: MouseEvent) => {
   const path = e.composedPath()
-  let targetName = '' // 触发的元素
-  let target = null
   for (let i = 0; i < path.length; i++) {
     const dom = <HTMLElement>path[i]
     const dataset = dom.dataset
-    if (dataset.name == 'mute') {
-      targetName = 'mute'
-      target = dom
-      break
-    } else if (dataset.name == 'solo') {
-      targetName = 'solo'
-      target = dom
-      break
-    } else if (dataset.name == 'item') {
-      return
+    switch (dataset.name) {
+      case 'name':
+        return
+      case 'mute':
+        showHoverPrompt(<MouseEvent>(<any>{ target: dom }), '静音 开/关', 'bottom')
+        return
+      case 'solo':
+        showHoverPrompt(<MouseEvent>(<any>{ target: dom }), '独奏 开/关', 'bottom')
+        return
+      case 'source':
+        showHoverPrompt(<MouseEvent>(<any>{ target: dom }), '音源编辑器', 'bottom')
+        break
+      case 'edit':
+        showHoverPrompt(<MouseEvent>(<any>{ target: dom }), '参数编辑器', 'bottom')
+        break
+      case 'item':
+        return
     }
-  }
-  if (targetName == 'mute') {
-    // 因为需要传入的是鼠标事件对象，其target属性应该是个dom元素
-    showHoverPrompt(<MouseEvent>{ target }, '静音 开/关', 'bottom')
-  } else if (targetName == 'solo') {
-    showHoverPrompt(<MouseEvent>{ target }, '独奏 开/关', 'bottom')
   }
 }
 

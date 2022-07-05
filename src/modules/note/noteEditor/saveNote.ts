@@ -1,6 +1,7 @@
 import { toRaw } from 'vue'
 import { recordHistory } from 'modules/history'
 import { noteEditorData } from '..'
+import { HistoryType } from 'modules/history/Interface'
 
 /**
  * @description: 保存音节参数的修改
@@ -23,7 +24,7 @@ const saveNote = () => {
   }
   if (difference.length > 0) {
     recordHistory({
-      type: 3,
+      type: HistoryType.Note,
       describe: '修改音节参数',
       target: toRaw(note),
       difference,

@@ -24,6 +24,13 @@ const inlineValue = ref(prop.value)
 watch(inlineValue, (now) => {
   emit('update:value', now)
 })
+
+watch(
+  () => prop.value,
+  (now) => {
+    inlineValue.value = now
+  }
+)
 </script>
 
 <style lang="scss" scoped>

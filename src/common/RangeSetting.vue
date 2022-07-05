@@ -32,6 +32,12 @@ const inlineValue = ref(prop.value * 100)
 watch(inlineValue, (now) => {
   emit('update:value', now / 100)
 })
+watch(
+  () => prop.value,
+  (now) => {
+    inlineValue.value = now * 100
+  }
+)
 </script>
 
 <style lang="scss" scoped>

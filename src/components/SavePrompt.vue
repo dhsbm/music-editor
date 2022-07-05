@@ -1,7 +1,7 @@
 <!-- 保存提示 -->
 <template>
   <div v-if="savePromptData.show" class="savePrompt">
-    <p>您是否要保存修改 {{ globalData.project?.title }} ?</p>
+    <p>您是否要保存修改 {{ globalData.project?.projectTitle }} ?</p>
     <div class="btns">
       <button @click="hideSavePrompt(true)">保存</button>
       <button @click="hideSavePrompt(false)">不保存</button>

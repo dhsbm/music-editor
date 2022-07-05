@@ -13,7 +13,7 @@
     <PianoKeyboard></PianoKeyboard>
     <History></History>
     <Library></Library>
-    <Synthesizer></Synthesizer>
+    <SourceEditor></SourceEditor>
     <NewProjectWindow></NewProjectWindow>
     <OpenProjectWindow></OpenProjectWindow>
     <SaveProjectWindow></SaveProjectWindow>
@@ -47,7 +47,7 @@ import ContentEditor from 'components/ContentEditor.vue'
 import PianoKeyboard from 'components/PianoKeyboard.vue'
 import History from 'components/History.vue'
 import Library from 'components/Library.vue'
-import Synthesizer from 'components/Synthesizer.vue'
+import SourceEditor from 'components/SourceEditor.vue'
 import NewProjectWindow from 'components/NewProjectWindow.vue'
 import OpenProjectWindow from 'components/OpenProjectWindow.vue'
 import SaveProjectWindow from 'components/SaveProjectWindow.vue'

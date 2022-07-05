@@ -1,8 +1,7 @@
 import { workerCanvasRender } from 'modules/canvas'
 import { contentEditorData, patternEditorData, selectedPatternList } from 'modules/pattern'
 import { recordHistory } from 'modules/history'
-import { trackData, trackEditorData } from '.'
-import { synthesizerData } from 'modules/synthesizer'
+import { sourceEditorData, trackData, trackEditorData } from '.'
 import { deleteEnvelope, envelopeEditorData, selectedEnvelopeList } from 'modules/envelope'
 import { Track, Envelope } from '@/class'
 import { HistoryType } from 'modules/history/Interface'
@@ -23,9 +22,9 @@ const deleteTrack = (trackId: number, record = true) => {
     trackEditorData.track = undefined
     trackEditorData.clone = undefined
   }
-  if (synthesizerData.track?.trackId === trackId) {
-    synthesizerData.track = undefined
-    // synthesizerData.clone = undefined
+  if (sourceEditorData.track?.trackId === trackId) {
+    sourceEditorData.track = undefined
+    sourceEditorData.clone = undefined
   }
   if (contentEditorData.pattern && track.hasPattern(contentEditorData.pattern)) {
     contentEditorData.pattern = undefined

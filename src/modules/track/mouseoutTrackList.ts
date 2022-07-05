@@ -10,12 +10,25 @@ const mouseoutTrackList = (e: MouseEvent) => {
   for (let i = 0; i < path.length; i++) {
     const dom = <HTMLElement>path[i]
     const dataset = dom.dataset
-    if (dataset.name == 'mute') {
-      hideHoverPrompt()
-    } else if (dataset.name == 'solo') {
-      hideHoverPrompt()
-    } else if (dataset.name == 'item') {
-      return
+
+    switch (dataset.name) {
+      case 'name':
+        return
+      case 'mute':
+        hideHoverPrompt()
+        return
+      case 'solo':
+        hideHoverPrompt()
+        return
+      case 'source':
+        hideHoverPrompt()
+        break
+      case 'edit':
+        hideHoverPrompt()
+
+        break
+      case 'item':
+        return
     }
   }
 }
