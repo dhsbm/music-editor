@@ -1,6 +1,5 @@
 import { addPattern } from 'modules/pattern'
 import { libraryData, libraryList } from '.'
-import { NoteData } from '@/class'
 
 /**
  * @description: 在工作区放下音乐素材
@@ -9,7 +8,7 @@ import { NoteData } from '@/class'
  */
 const dropLibraryItem = (e: MouseEvent) => {
   if (libraryData.dragId) {
-    addPattern(e, <NoteData>libraryList.get(libraryData.dragId)?.data?.clone())
+    addPattern(e, libraryList.get(libraryData.dragId)?.data?.clone(), 1)
     libraryData.dragId = 0
   }
 }

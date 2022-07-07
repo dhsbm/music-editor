@@ -13,10 +13,10 @@ import { HistoryType } from 'modules/history/Interface'
  * @param {NoteData} [noteData] 是否有现成数据(由素材库提供)
  * @return {Pattern} 返回添加的音谱
  */
-const addPattern = (e: MouseEvent, noteData: NoteData | undefined = undefined) => {
+const addPattern = (e: MouseEvent, noteData: NoteData | undefined = undefined, sig = workerSig.value) => {
   const { trackCount, trackOrder } = trackData
   const { beatWidth, leftBeat, beatHeight, coverPixelY } = workerCanvasData
-  const x = toMultiple(e.offsetX + leftBeat * beatWidth, (beatWidth * 4) / workerSig.value)
+  const x = toMultiple(e.offsetX + leftBeat * beatWidth, (beatWidth * 4) / sig)
   const y = e.offsetY + coverPixelY
   const row = (y / beatHeight) | 0
   let trackId = trackOrder[row]
@@ -24,7 +24,7 @@ const addPattern = (e: MouseEvent, noteData: NoteData | undefined = undefined) =
     trackId = addTrack().trackId
   }
   noteData = noteData || new NoteData(0)
-  const pattern = new Pattern(0, trackId, noteData.noteDataId, 0, 4 / workerSig.value)
+  const pattern = new Pattern(0, trackId, noteData.noteDataId, 0, 4 / sig)
   pattern.start += x / beatWidth
   pattern.end += x / beatWidth
   pattern.offsetX += x / beatWidth

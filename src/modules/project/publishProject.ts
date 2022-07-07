@@ -1,5 +1,4 @@
 import { reqPublishComposition } from '@/api'
-import { globalData } from 'modules/globalData'
 import { showCenterPrompt } from 'modules/prompt'
 import { publishProjectWindowData } from '.'
 
@@ -11,7 +10,6 @@ let sign = false
  */
 const publishProject = async () => {
   if (sign) return
-  console.log(globalData.project)
   sign = true
   const data = {
     title: publishProjectWindowData.title,

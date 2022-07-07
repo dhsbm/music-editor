@@ -9,5 +9,6 @@ export interface LibraryItem {
   tone: string
   show: boolean
   children?: number[]
+  parent?: number
   data?: NoteData
 }

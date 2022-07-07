@@ -101,8 +101,6 @@ const redo = (needRender = true) => {
       for (const { key, newData } of historyEvent.difference) {
         target[key] = newData
       }
-      console.log(target)
-
       showNoteEditor(target)
       needRender = false
     }

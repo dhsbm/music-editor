@@ -6,6 +6,7 @@ import { libraryData, libraryList } from '.'
  * @return {void}
  */
 const switchFolder = (id: number) => {
+  if (libraryData.searchKey.trim() != '') return
   const item = libraryList.get(id)
   if (item && item.children) {
     for (const childId of item.children) {

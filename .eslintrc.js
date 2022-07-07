@@ -17,7 +17,8 @@ module.exports = {
   },
   rules: {
     // 打包时禁止console
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    // 'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-console': 'off',
     // 打包时禁止debugger
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     // 检测html标签自闭和

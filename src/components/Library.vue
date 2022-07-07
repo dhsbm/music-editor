@@ -4,7 +4,7 @@
     <Title :data="libraryData" title="音频素材库" :close="() => (libraryData.show = false)"></Title>
     <div class="search">
       <span class="puyin">&#xe7b7;</span>
-      <input type="search" placeholder="搜索" />
+      <input v-model="libraryData.searchKey" type="search" placeholder="搜索" />
     </div>
     <div class="contentHeader">
       <span>名字</span>
@@ -38,12 +38,13 @@ import { changeZIndex } from 'modules/tools'
 
 <style lang="scss" scoped>
 @import 'scss/window.scss';
-@import 'scss/middle.scss';
 @import 'scss/scrollbar.scss';
 /* 素材库样式 */
 .library {
-  @include middle();
   @include window-shadow();
+  position: absolute;
+  right: 0;
+  top: 50px;
   width: 300px;
   height: 600px;
   background: $window-background-color;

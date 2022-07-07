@@ -1,12 +1,12 @@
 <template>
   <!-- 顶部canvas组件 -->
   <div class="wrapper">
-    <canvas ref="canvas" @click="changeIndicator($event, beatWidth, leftBeat)"></canvas>
+    <canvas ref="headerCanvas" @click="changeIndicator($event, beatWidth, leftBeat)"></canvas>
   </div>
 </template>
 
 <script setup lang="ts">
-import { getCurrentInstance, onMounted, watch } from 'vue'
+import { onMounted, watch, ref } from 'vue'
 import { changeIndicator } from 'modules/indicator'
 import { canvasData } from 'modules/canvas'
 const props = defineProps<{
@@ -14,7 +14,6 @@ const props = defineProps<{
   beatWidth: number
   sig: number
 }>()
-const vm = getCurrentInstance()
 let canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D
 
 const render = () => {
@@ -49,8 +48,11 @@ const render = () => {
 }
 
 watch(() => [props.leftBeat, props.beatWidth, props.sig], render)
+
+const headerCanvas = ref(null)
+
 onMounted(() => {
-  canvas = vm!.refs.canvas as HTMLCanvasElement
+  canvas = headerCanvas.value as any as HTMLCanvasElement
   ctx = canvas.getContext('2d')!
   canvas.width = 2000
   canvas.height = 30

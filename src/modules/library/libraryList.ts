@@ -46,6 +46,7 @@ libraryList.set(2, {
   tone: '',
   show: false,
   children: [3, 4, 5],
+  parent: 1,
 })
 libraryList.set(3, {
   id: 3,
@@ -56,6 +57,7 @@ libraryList.set(3, {
   tone: 'Eb',
   show: false,
   data: createNoteData(),
+  parent: 2,
 })
 libraryList.set(4, {
   id: 4,
@@ -66,6 +68,7 @@ libraryList.set(4, {
   tone: 'Eb',
   show: false,
   data: createNoteData(),
+  parent: 2,
 })
 libraryList.set(5, {
   id: 5,
@@ -76,6 +79,7 @@ libraryList.set(5, {
   tone: 'Eb',
   show: false,
   data: createNoteData(),
+  parent: 2,
 })
 libraryList.set(6, {
   id: 6,
@@ -86,6 +90,7 @@ libraryList.set(6, {
   tone: '',
   show: false,
   children: [7, 10],
+  parent: 1,
 })
 libraryList.set(7, {
   id: 7,
@@ -96,6 +101,7 @@ libraryList.set(7, {
   tone: '',
   show: false,
   children: [8, 9],
+  parent: 6,
 })
 libraryList.set(8, {
   id: 8,
@@ -106,6 +112,7 @@ libraryList.set(8, {
   tone: 'Cm',
   show: false,
   data: createNoteData(),
+  parent: 7,
 })
 libraryList.set(9, {
   id: 9,
@@ -116,6 +123,7 @@ libraryList.set(9, {
   tone: 'Cm',
   show: false,
   data: createNoteData(),
+  parent: 7,
 })
 libraryList.set(10, {
   id: 10,
@@ -126,6 +134,7 @@ libraryList.set(10, {
   tone: '',
   show: false,
   children: [11, 12],
+  parent: 6,
 })
 libraryList.set(11, {
   id: 11,
@@ -136,6 +145,7 @@ libraryList.set(11, {
   tone: 'Cm',
   show: false,
   data: createNoteData(),
+  parent: 10,
 })
 libraryList.set(12, {
   id: 12,
@@ -146,6 +156,7 @@ libraryList.set(12, {
   tone: 'Cm',
   show: false,
   data: createNoteData(),
+  parent: 10,
 })
 libraryList.set(13, {
   id: 13,
@@ -166,6 +177,7 @@ libraryList.set(14, {
   tone: '',
   show: false,
   children: [15],
+  parent: 13,
 })
 libraryList.set(15, {
   id: 15,
@@ -176,6 +188,7 @@ libraryList.set(15, {
   tone: 'Abm',
   show: false,
   data: createNoteData(),
+  parent: 43,
 })
 libraryList.set(16, {
   id: 16,
@@ -186,6 +199,7 @@ libraryList.set(16, {
   tone: '',
   show: false,
   children: [17, 20],
+  parent: 13,
 })
 libraryList.set(17, {
   id: 17,
@@ -196,6 +210,7 @@ libraryList.set(17, {
   tone: '',
   show: false,
   children: [18, 19],
+  parent: 16,
 })
 libraryList.set(18, {
   id: 18,
@@ -206,6 +221,7 @@ libraryList.set(18, {
   tone: 'G',
   show: false,
   data: createNoteData(),
+  parent: 17,
 })
 libraryList.set(19, {
   id: 19,
@@ -216,6 +232,7 @@ libraryList.set(19, {
   tone: 'Amb',
   show: false,
   data: createNoteData(),
+  parent: 17,
 })
 libraryList.set(20, {
   id: 20,
@@ -226,6 +243,7 @@ libraryList.set(20, {
   tone: 'Am',
   show: false,
   data: createNoteData(),
+  parent: 16,
 })
 libraryList.set(21, {
   id: 21,
@@ -246,6 +264,7 @@ libraryList.set(22, {
   tone: '',
   show: false,
   children: [23, 24],
+  parent: 21,
 })
 libraryList.set(23, {
   id: 23,
@@ -256,6 +275,7 @@ libraryList.set(23, {
   tone: '',
   show: false,
   data: createNoteData(),
+  parent: 22,
 })
 libraryList.set(24, {
   id: 24,
@@ -266,4 +286,5 @@ libraryList.set(24, {
   tone: '',
   show: false,
   data: createNoteData(),
+  parent: 22,
 })
