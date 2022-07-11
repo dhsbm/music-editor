@@ -7,6 +7,7 @@ const globalData = {
   user: { userName: '', userId: '' }, // 登录用户
   pressed: false, // 鼠标是否处于按下状态
   driver: <Driver>(<unknown>undefined),
+  a: <HTMLAnchorElement>(<unknown>undefined),
 }
 
 export default globalData

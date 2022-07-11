@@ -9,9 +9,10 @@
         <li class="menu-item" @click="saveProjectWindowData.show = true">另存为</li>
         <li class="menu-item">&nbsp;</li>
         <li class="menu-item" @click="showPending">导入音乐文件</li>
-        <li class="menu-item" @click="showPending">导入MIDI文件</li>
+        <li class="menu-item" @click="importProject">导入项目文件</li>
         <li class="menu-item">&nbsp;</li>
         <li class="menu-item" @click="showPending">导出音乐</li>
+        <li class="menu-item" @click="exportProject">导出项目文件</li>
         <li class="menu-item" @click="publishProjectWindowData.show = true">发布项目</li>
         <li class="menu-item">&nbsp;</li>
         <li class="menu-item" @click="showPending">设置</li>
@@ -33,6 +34,8 @@ import {
   saveProjectWindowData,
   saveProject,
   publishProjectWindowData,
+  exportProject,
+  importProject,
 } from 'modules/project'
 import showPending from 'modules/tools/showPending'
 </script>

@@ -17,8 +17,14 @@ import publishProject from './publishProject'
 import publishProjectWindowData from './publishProjectWindowData'
 import inputProjectTag from './inputProjectTag'
 import deleteProjectTag from './deleteProjectTag'
+// 获取项目信息
 import getBarOrTime from './getBarOrTime'
 import getProjectDetail from './getProjectDetail'
+// 导入导出项目
+import exportProject from './exportProject'
+import importProject from './importProject'
+// 加载项目
+import loadProject from './loadProject'
 
 export {
   openProject,
@@ -35,4 +41,7 @@ export {
   deleteProjectTag,
   getBarOrTime,
   getProjectDetail,
+  exportProject,
+  importProject,
+  loadProject,
 }

@@ -1,15 +1,9 @@
 import { showCenterPrompt } from 'modules/prompt'
 import { reqProjectData } from '@/api'
 import { Project } from '@/class'
-import { globalData } from 'modules/globalData'
 import { bpm } from 'modules/time'
-import { historyData, historyList } from 'modules/history'
-import { selectedNoteList } from 'modules/note'
-import { selectedPatternList } from 'modules/pattern'
-import { trackData } from 'modules/track'
-import { recordHistory } from 'modules/history'
-import { HistoryType } from 'modules/history/Interface'
 import { unzip } from 'modules/tools'
+import { loadProject } from '.'
 
 /**
  * @description: 打开项目
@@ -28,27 +22,8 @@ const openProject = async (projectId: number) => {
     showCenterPrompt('网络不良，项目加载失败')
     project = new Project()
   }
-  globalData.project = project
 
-  // 重置音轨
-  trackData.trackMap = project.trackMap
-  const trackOrder = []
-  for (let i = 1; i <= project.trackMap.size; i++) {
-    trackOrder.push(i)
-  }
-  trackData.trackOrder = trackOrder
-
-  document.title = project.projectTitle // 改标题
-
-  // 清空选择区
-  selectedNoteList.clear()
-  selectedPatternList.clear()
-  // 维护历史记录
-  historyData.lastIndex = historyData.index = -1
-  historyData.newStep = historyData.oldStep = 0
-  historyList.splice(0, historyList.length)
-
-  recordHistory({ type: HistoryType.Init, describe: '初始化项目', target: project })
+  loadProject(project)
 }
 
 export default openProject
