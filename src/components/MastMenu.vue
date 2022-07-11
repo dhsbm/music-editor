@@ -1,23 +1,23 @@
 <!-- 主菜单 -->
 <template>
-  <div v-if="masterMenuData.show" class="mask" @mousedown="masterMenuData.show = false">
+  <div v-if="masterMenuData.show" class="mask" @click="masterMenuData.show = false">
     <div class="mastMenu">
       <ul class="menu-group">
-        <li class="menu-item" @mousedown="newProjectWindowData.show = true">新建</li>
-        <li class="menu-item" @mousedown="switchProjectWindowData.show = true">打开</li>
-        <li class="menu-item" @mousedown="saveProject">保存</li>
-        <li class="menu-item" @mousedown="saveProjectWindowData.show = true">另存为</li>
+        <li class="menu-item" @click="newProjectWindowData.show = true">新建</li>
+        <li class="menu-item" @click="switchProjectWindowData.show = true">打开</li>
+        <li class="menu-item" @click="saveProject">保存</li>
+        <li class="menu-item" @click="saveProjectWindowData.show = true">另存为</li>
         <li class="menu-item">&nbsp;</li>
-        <li class="menu-item" @mousedown="showPending">导入音乐文件</li>
-        <li class="menu-item" @mousedown="showPending">导入MIDI文件</li>
+        <li class="menu-item" @click="showPending">导入音乐文件</li>
+        <li class="menu-item" @click="showPending">导入MIDI文件</li>
         <li class="menu-item">&nbsp;</li>
-        <li class="menu-item" @mousedown="showPending">导出音乐</li>
-        <li class="menu-item" @mousedown="publishProjectWindowData.show = true">发布项目</li>
+        <li class="menu-item" @click="showPending">导出音乐</li>
+        <li class="menu-item" @click="publishProjectWindowData.show = true">发布项目</li>
         <li class="menu-item">&nbsp;</li>
-        <li class="menu-item" @mousedown="showPending">设置</li>
+        <li class="menu-item" @click="showPending">设置</li>
         <li class="menu-item">&nbsp;</li>
-        <li class="menu-item" @mousedown="guide">入门教学</li>
-        <li class="menu-item" @mousedown="showPending">详细教程</li>
+        <li class="menu-item" @click="guide">新手教程</li>
+        <li class="menu-item" @click="showPending">操作手册</li>
         <li class="menu-item">&nbsp;</li>
       </ul>
     </div>

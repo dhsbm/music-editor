@@ -35,6 +35,9 @@ import beatToTime from './beatToTime'
 import timeToBeat from './timeToBeat'
 // 化为非负数
 import toNonNegative from './toNonNegative'
+// 压缩解压
+import zip from './zip'
+import unzip from './unzip'
 
 export {
   fix,
@@ -56,4 +59,6 @@ export {
   beatToTime,
   timeToBeat,
   toNonNegative,
+  zip,
+  unzip,
 }

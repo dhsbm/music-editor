@@ -9,6 +9,7 @@ import { selectedPatternList } from 'modules/pattern'
 import { trackData } from 'modules/track'
 import { recordHistory } from 'modules/history'
 import { HistoryType } from 'modules/history/Interface'
+import { unzip } from 'modules/tools'
 
 /**
  * @description: 打开项目
@@ -20,7 +21,7 @@ const openProject = async (projectId: number) => {
   let project
   if (response.code == 200 && response.data) {
     const data = response.data
-    const projectData = data.projectData
+    const projectData = unzip(data.projectData)
     bpm.value = data.bpm
     project = Project.parse(JSON.parse(projectData))
   } else {

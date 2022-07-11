@@ -1,4 +1,4 @@
-import { stringify } from 'modules/tools'
+import { stringify, zip } from 'modules/tools'
 import { trackData } from 'modules/track'
 import { Envelope, DotData, NoteData, Pattern, Track } from '.'
 import { ProjectObj } from './Interface'
@@ -81,7 +81,7 @@ class Project {
   // 建立patternIdSet-> Pattern -> 建立noteDataIdMap -> NoteDara -> Note
   // 建立envelopeIdSet-> Envelope -> 建立dotDataIdMap -> dotDara -> Dot
   // 编码为字符串
-  static stringify(project: Project) {
+  static stringify(project: Project, needZip = true) {
     const result = []
     // 处理普通属性
     result.push(`"projectId":${stringify(project['projectId'])}`)
@@ -149,7 +149,7 @@ class Project {
     result.push(`"dotDataId":${idMap.newDotDataId}`)
     result.push(`"dotDataMap":{${String(dotDataMap)}}`)
 
-    return '{' + String(result) + '}'
+    return needZip ? zip('{' + String(result) + '}') : '{' + String(result) + '}'
   }
 
   // 解析对象

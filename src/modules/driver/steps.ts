@@ -10,54 +10,54 @@ import { changeZIndex } from 'modules/tools'
 let pattern: Pattern
 
 const steps = [
-  // {
-  //   element: '.soundTrack',
-  //   popover: {
-  //     title: '音轨列表',
-  //     description: '在这里可以操作音轨',
-  //     position: 'right-center',
-  //   },
-  // },
-  // {
-  //   element: '.edit',
-  //   popover: {
-  //     title: '工作区',
-  //     description: '在这里创作、编配乐曲',
-  //     position: 'mid-center',
-  //   },
-  // },
-  // {
-  //   element: '.headerControlBar',
-  //   popover: {
-  //     title: '控制条',
-  //     description: '这里有各种控制选项<br>鼠标悬浮按钮会显示提示信息',
-  //     position: 'bottom-center',
-  //   },
-  // },
-  // {
-  //   element: '.menu',
-  //   popover: {
-  //     title: '主菜单',
-  //     description: '在这里可以创建、保存、打开项目文件',
-  //     position: 'bottom',
-  //   },
-  // },
-  // {
-  //   element: '.mode',
-  //   popover: {
-  //     title: '工具栏',
-  //     description: '在这里可以切换工具，操作工作区',
-  //     position: 'bottom',
-  //   },
-  // },
-  // {
-  //   element: '.do',
-  //   popover: {
-  //     title: '撤销 & 重做',
-  //     description: '对操作不满意，可以在这里撤销与重做<br>也绑定了快捷键ctrl+Z/ctrl+Y',
-  //     position: 'bottom',
-  //   },
-  // },
+  {
+    element: '.soundTrack',
+    popover: {
+      title: '音轨列表',
+      description: '在这里可以操作音轨',
+      position: 'right-center',
+    },
+  },
+  {
+    element: '.edit',
+    popover: {
+      title: '工作区',
+      description: '在这里创作、编配乐曲',
+      position: 'mid-center',
+    },
+  },
+  {
+    element: '.headerControlBar',
+    popover: {
+      title: '控制条',
+      description: '这里有各种控制选项<br>鼠标悬浮按钮会显示提示信息',
+      position: 'bottom-center',
+    },
+  },
+  {
+    element: '.menu',
+    popover: {
+      title: '主菜单',
+      description: '在这里可以创建、保存、打开项目文件',
+      position: 'bottom',
+    },
+  },
+  {
+    element: '.mode',
+    popover: {
+      title: '工具栏',
+      description: '在这里可以切换工具，操作工作区',
+      position: 'bottom',
+    },
+  },
+  {
+    element: '.do',
+    popover: {
+      title: '撤销 & 重做',
+      description: '对操作不满意，可以在这里撤销与重做<br>也绑定了快捷键ctrl+Z/ctrl+Y',
+      position: 'bottom',
+    },
+  },
   {
     element: '.window',
     popover: {

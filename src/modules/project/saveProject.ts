@@ -10,8 +10,7 @@ import { getProjectDetail } from '.'
  */
 const saveProject = async () => {
   showCenterPrompt('开始保存')
-  const projectId = globalData.project.patternId
-
+  const projectId = globalData.project.projectId
   const response = await reqSaveProject(projectId, getProjectDetail())
   if (response.code == 200) {
     showCenterPrompt('保存成功')
