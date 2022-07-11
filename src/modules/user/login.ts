@@ -1,3 +1,4 @@
+import { showCenterPrompt } from 'modules/prompt'
 import { globalData } from 'modules/globalData'
 import { hideLoginWindow, loginWindowData } from '.'
 import { reqLogin } from '@/api'
@@ -20,6 +21,7 @@ const login = async () => {
     hideLoginWindow()
   } else {
     loginWindowData.tip = '用户名或密码错误'
+    showCenterPrompt('测试阶段，输入任意字符即可登录')
   }
   loginWindowData.username = ''
   loginWindowData.password = ''

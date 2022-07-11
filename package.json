@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.27.2",
     "default-passive-events": "^2.0.0",
+    "driver.js": "^0.9.8",
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
     "vue": "^3.2.13"

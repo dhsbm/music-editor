@@ -1,6 +1,11 @@
 <!-- 素材库 -->
 <template>
-  <div v-if="libraryData.show" class="library" :style="libraryData.style" @mousedown="changeZIndex(libraryData.style)">
+  <div
+    v-show="libraryData.show"
+    class="library"
+    :style="libraryData.style"
+    @mousedown="changeZIndex(libraryData.style)"
+  >
     <Title :data="libraryData" title="音频素材库" :close="() => (libraryData.show = false)"></Title>
     <div class="search">
       <span class="puyin">&#xe7b7;</span>
@@ -43,8 +48,8 @@ import { changeZIndex } from 'modules/tools'
 .library {
   @include window-shadow();
   position: absolute;
-  right: 0;
-  top: 50px;
+  right: 12px;
+  top: 60px;
   width: 300px;
   height: 600px;
   background: $window-background-color;

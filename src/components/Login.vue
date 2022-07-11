@@ -7,7 +7,7 @@
         <li><input v-model="loginWindowData.password" type="text" placeholder="PASSWORD" /></li>
         <li class="tip">
           <span>{{ loginWindowData.tip }}</span>
-          <span>忘记密码</span>
+          <span @click="showPending">忘记密码</span>
         </li>
         <li><button class="login" @click="login">LOGIN</button></li>
       </ul>
@@ -16,6 +16,7 @@
 </template>
 
 <script setup lang="ts">
+import showPending from 'modules/tools/showPending'
 import { loginWindowData, hideLoginWindow, login } from 'modules/user'
 </script>
 

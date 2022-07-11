@@ -4,8 +4,8 @@
     <div v-if="globalData.login">
       <div class="name">{{ globalData.user.userName }}</div>
       <div class="content">
-        <div>个人中心</div>
-        <div>项目管理</div>
+        <div @mousedown="showPending">个人中心</div>
+        <div @mousedown="showPending">项目管理</div>
         <div @mousedown="feedbackData.show = true">意见反馈</div>
         <div @mousedown="logout">退出登录</div>
       </div>
@@ -20,7 +20,7 @@
 import { userMenuData, hideUserMenu, logout, showLoginWindow } from 'modules/user'
 import { globalData } from 'modules/globalData'
 import { feedbackData } from 'modules/feedback'
-
+import showPending from 'modules/tools/showPending'
 document.addEventListener('mousedown', () => {
   hideUserMenu()
 })

@@ -3,14 +3,14 @@ import { changeZIndex } from 'modules/tools'
 
 // 导出全局历史事件列表以及列表指针
 const historyData = reactive({
-  show: false,
+  show: true,
   index: -1, // 当前索引
   lastIndex: -1, // 最高索引
   newStep: 0, // 新做的步数 为0说明没有增加新操作
   oldStep: 0, // 过去的步数 为0说明没有撤回旧操作
   style: {
     zIndex: 0,
-    transform: 'translate(-115px, -150px)',
+    transform: 'translate(0px, 0px)',
   },
   historyContainer: <HTMLElement>(<unknown>null),
 })

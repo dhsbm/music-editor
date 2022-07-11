@@ -1,6 +1,6 @@
 import { isLatest } from 'modules/history'
-import { openProject, switchProjectWindowData } from '.'
-import { showSavePrompt } from 'modules/prompt'
+import { openProject, switchProjectWindowData, saveProject } from '.'
+import { showPromptWindow } from 'modules/prompt'
 import { globalData } from 'modules/globalData'
 
 /**
@@ -11,7 +11,19 @@ import { globalData } from 'modules/globalData'
 const switchProject = (index: number) => {
   if (index == -1) return
   if (!isLatest()) {
-    showSavePrompt(() => switchProject(index))
+    showPromptWindow({
+      text: '还未保存修改，是否要离开？',
+      btn1: '保存',
+      fun1: async () => {
+        await saveProject()
+        switchProject(index)
+      },
+      btn2: '不保存',
+      fun2: () => {
+        switchProject(index)
+      },
+      btn3: '取消',
+    })
     return
   }
   const projectId = switchProjectWindowData.projectList[index].projectId

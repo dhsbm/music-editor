@@ -6,9 +6,9 @@ import hideHoverPrompt from './hideHoverPrompt'
 import centerPromptData from './centerPromptData'
 import showCenterPrompt from './showCenterPrompt'
 import hideCenterPrompt from './hideCenterPrompt'
-import savePromptData from './savePromptData'
-import showSavePrompt from './showSavePrompt'
-import hideSavePrompt from './hideSavePrompt'
+import promptWindowData from './promptWindowData'
+import showPromptWindow from './showPromptWindow'
+import hidePromptWindow from './hidePromptWindow'
 
 export {
   hoverPromptData,
@@ -17,7 +17,7 @@ export {
   centerPromptData,
   showCenterPrompt,
   hideCenterPrompt,
-  savePromptData,
-  showSavePrompt,
-  hideSavePrompt,
+  promptWindowData,
+  showPromptWindow,
+  hidePromptWindow,
 }

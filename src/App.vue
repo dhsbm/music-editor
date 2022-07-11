@@ -27,7 +27,7 @@
     <DotMenu></DotMenu>
     <HoverPrompt></HoverPrompt>
     <CenterPrompt></CenterPrompt>
-    <SavePrompt></SavePrompt>
+    <PromptWindow></PromptWindow>
     <Hit></Hit>
     <TimeMask></TimeMask>
   </div>
@@ -61,13 +61,14 @@ import DotMenu from 'components/DotMenu.vue'
 import EnvelopeMenu from 'components/EnvelopeMenu.vue'
 import HoverPrompt from 'components/HoverPrompt.vue'
 import CenterPrompt from 'components/CenterPrompt.vue'
-import SavePrompt from 'components/SavePrompt.vue'
+import PromptWindow from 'components/PromptWindow.vue'
 import Hit from 'components/Hit.vue'
 import TimeMask from 'components/TimeMask.vue'
-import { init } from 'modules/init'
-
+import { init, initDriver } from 'modules/init'
+import { onMounted } from 'vue'
 // 初始化
 init()
+onMounted(initDriver)
 </script>
 
 <!-- 全局样式 -->
@@ -87,7 +88,6 @@ init()
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 .app {
   margin: 0 auto;
   // height: 950px;
@@ -96,6 +96,9 @@ init()
   position: relative;
   cursor: default;
   user-select: none;
+  overflow: hidden;
+}
+body {
   overflow: hidden;
 }
 

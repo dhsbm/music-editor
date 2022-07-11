@@ -40,12 +40,14 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 @import 'scss/window.scss';
-@import 'scss/middle.scss';
 @import 'scss/scrollbar.scss';
 // 历史记录样式
 .history {
-  @include middle();
   @include window-shadow();
+  z-index: 5;
+  position: absolute;
+  right: 12px;
+  top: 60px;
   width: 230px;
   height: 300px;
   background: $window-background-color;

@@ -9,59 +9,64 @@
     >
       &#xe62c;
     </button>
-    <button
-      class="puyin"
-      :class="mode == Mode.Select ? 'active' : ''"
-      @click="mode = Mode.Select"
-      @mouseleave="hideHoverPrompt"
-      @mouseenter="showHoverPrompt($event, '指针工具')"
-    >
-      &#xe645;
-    </button>
-    <button
-      class="puyin"
-      :class="mode == Mode.Add ? 'active' : ''"
-      @click="mode = Mode.Add"
-      @mouseleave="hideHoverPrompt"
-      @mouseenter="showHoverPrompt($event, '铅笔工具')"
-    >
-      &#xe61b;
-    </button>
-    <button
-      class="puyin"
-      :class="mode == Mode.Tailor ? 'active' : ''"
-      @click="mode = Mode.Tailor"
-      @mouseleave="hideHoverPrompt"
-      @mouseenter="showHoverPrompt($event, '剪刀工具')"
-    >
-      &#xe600;
-    </button>
-    <button
-      class="puyin"
-      :class="mode == Mode.Delete ? 'active' : ''"
-      @click="mode = Mode.Delete"
-      @mouseleave="hideHoverPrompt"
-      @mouseenter="showHoverPrompt($event, '删除工具')"
-    >
-      &#xec7b;
-    </button>
+    <div class="mode">
+      <button
+        class="puyin"
+        :class="mode == Mode.Select ? 'active' : ''"
+        @click="mode = Mode.Select"
+        @mouseleave="hideHoverPrompt"
+        @mouseenter="showHoverPrompt($event, '指针工具')"
+      >
+        &#xe645;
+      </button>
+      <button
+        class="puyin"
+        :class="mode == Mode.Add ? 'active' : ''"
+        @click="mode = Mode.Add"
+        @mouseleave="hideHoverPrompt"
+        @mouseenter="showHoverPrompt($event, '铅笔工具')"
+      >
+        &#xe61b;
+      </button>
+      <button
+        class="puyin"
+        :class="mode == Mode.Tailor ? 'active' : ''"
+        @click="mode = Mode.Tailor"
+        @mouseleave="hideHoverPrompt"
+        @mouseenter="showHoverPrompt($event, '剪刀工具')"
+      >
+        &#xe600;
+      </button>
+      <button
+        class="puyin"
+        :class="mode == Mode.Delete ? 'active' : ''"
+        @click="mode = Mode.Delete"
+        @mouseleave="hideHoverPrompt"
+        @mouseenter="showHoverPrompt($event, '删除工具')"
+      >
+        &#xec7b;
+      </button>
+    </div>
     <div class="line"></div>
-    <button
-      class="puyin"
-      @click="undo(true)"
-      @mouseleave="hideHoverPrompt"
-      @mouseenter="showHoverPrompt($event, '撤销')"
-    >
-      &#xe659;
-    </button>
-    <button
-      class="puyin"
-      @click="redo(true)"
-      @mouseleave="hideHoverPrompt"
-      @mouseenter="showHoverPrompt($event, '重做')"
-    >
-      &#xe65a;
-    </button>
+    <div class="do">
+      <button
+        class="puyin"
+        @click="undo(true)"
+        @mouseleave="hideHoverPrompt"
+        @mouseenter="showHoverPrompt($event, '撤销')"
+      >
+        &#xe659;
+      </button>
+      <button
+        class="puyin"
+        @click="redo(true)"
+        @mouseleave="hideHoverPrompt"
+        @mouseenter="showHoverPrompt($event, '重做')"
+      >
+        &#xe65a;
+      </button>
+    </div>
+    <!-- <div class="play"> -->
     <div
       class="time"
       @click="timeData.showPat = !timeData.showPat"
@@ -129,39 +134,42 @@
     >
       &#xe602;
     </button>
+    <!-- </div> -->
     <div class="filler"></div>
-    <button
-      class="puyin"
-      @click="contentEditorData.show = !contentEditorData.show"
-      @mouseleave="hideHoverPrompt"
-      @mouseenter="showHoverPrompt($event, '音谱编辑器')"
-    >
-      &#xe621;
-    </button>
-    <button
-      class="puyin"
-      @click="keyboardData.show = !keyboardData.show"
-      @mouseleave="hideHoverPrompt"
-      @mouseenter="showHoverPrompt($event, '钢琴键盘')"
-    >
-      &#xe60b;
-    </button>
-    <button
-      class="puyin"
-      @click="historyData.show = !historyData.show"
-      @mouseleave="hideHoverPrompt"
-      @mouseenter="showHoverPrompt($event, '历史记录')"
-    >
-      &#xe709;
-    </button>
-    <button
-      class="puyin"
-      @click="libraryData.show = !libraryData.show"
-      @mouseleave="hideHoverPrompt"
-      @mouseenter="showHoverPrompt($event, '素材库')"
-    >
-      &#xe620;
-    </button>
+    <div class="window">
+      <button
+        class="puyin"
+        @click="contentEditorData.show = !contentEditorData.show"
+        @mouseleave="hideHoverPrompt"
+        @mouseenter="showHoverPrompt($event, '音谱编辑器')"
+      >
+        &#xe621;
+      </button>
+      <button
+        class="puyin"
+        @click="keyboardData.show = !keyboardData.show"
+        @mouseleave="hideHoverPrompt"
+        @mouseenter="showHoverPrompt($event, '钢琴键盘')"
+      >
+        &#xe60b;
+      </button>
+      <button
+        class="puyin"
+        @click="historyData.show = !historyData.show"
+        @mouseleave="hideHoverPrompt"
+        @mouseenter="showHoverPrompt($event, '历史记录')"
+      >
+        &#xe709;
+      </button>
+      <button
+        class="puyin"
+        @click="libraryData.show = !libraryData.show"
+        @mouseleave="hideHoverPrompt"
+        @mouseenter="showHoverPrompt($event, '素材库')"
+      >
+        &#xe620;
+      </button>
+    </div>
     <button class="puyin login" :style="userButtonData.style" @click="showUserMenu">&#xe6bc;</button>
   </div>
 </template>

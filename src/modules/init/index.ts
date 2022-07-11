@@ -2,6 +2,7 @@
 
 import addListener from './addListener'
 import checkLogin from './checkLogin'
+import initDriver from './initDriver'
 import initProject from './initProject'
 
 /**
@@ -14,4 +15,4 @@ const init = async () => {
   initProject()
 }
 
-export { init }
+export { init, initDriver }

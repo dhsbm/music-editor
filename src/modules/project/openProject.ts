@@ -45,7 +45,6 @@ const openProject = async (projectId: number) => {
   // 维护历史记录
   historyData.lastIndex = historyData.index = -1
   historyData.newStep = historyData.oldStep = 0
-  // 先假删除，不然热更新总报错
   historyList.splice(0, historyList.length)
 
   recordHistory({ type: HistoryType.Init, describe: '初始化项目', target: project })
