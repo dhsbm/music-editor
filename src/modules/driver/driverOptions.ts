@@ -8,6 +8,9 @@ const driverOptions = {
   closeBtnText: '跳过教程', // Text on the close button for this step
   nextBtnText: '下一步 ', // Next button text for this step
   prevBtnText: '上一步', // Previous button text for this step
+  onReset: () => {
+    document.body.style.overflow = 'auto'
+  },
 }
 
 export default driverOptions

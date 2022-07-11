@@ -6,6 +6,7 @@ import { steps } from '.'
  * @return {void}
  */
 const guide = () => {
+  document.body.style.overflow = 'hidden'
   const { driver } = globalData
   driver.defineSteps(steps)
   driver.start()

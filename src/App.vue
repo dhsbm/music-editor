@@ -98,10 +98,6 @@ onMounted(initDriver)
   user-select: none;
   overflow: hidden;
 }
-body {
-  overflow: hidden;
-}
-
 div {
   box-sizing: border-box;
 }
