@@ -20,15 +20,6 @@
       >
         {{ project.title }}
       </div>
-      <div
-        v-for="(project, index) in switchProjectWindowData.projectList"
-        :key="project.projectId"
-        class="projectItem"
-        :class="switchProjectWindowData.select == index ? 'active' : ''"
-        @click="switchProjectWindowData.select = index"
-      >
-        {{ project.title }}
-      </div>
     </div>
     <div class="bottom">
       <button @click="switchProject(switchProjectWindowData.select)">确认打开</button>
@@ -58,7 +49,7 @@ import { switchProjectWindowData, switchProject } from 'modules/project'
   z-index: 4;
   .content {
     height: 200px;
-    overflow-y: scroll;
+    overflow-y: auto;
     @include scrollbar();
     .projectItem {
       background-color: rgba(0, 0, 0, 0.2);

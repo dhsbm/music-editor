@@ -1,7 +1,6 @@
 import { showCenterPrompt } from 'modules/prompt'
 import { reqProjectData } from '@/api'
 import { Project } from '@/class'
-import { bpm } from 'modules/time'
 import { unzip } from 'modules/tools'
 import { loadProject } from '.'
 
@@ -14,9 +13,7 @@ const openProject = async (projectId: number) => {
   const response = await reqProjectData(projectId)
   let project
   if (response.code == 200 && response.data) {
-    const data = response.data
-    const projectData = unzip(data.projectData)
-    bpm.value = data.bpm
+    const projectData = unzip(response.data)
     project = Project.parse(JSON.parse(projectData))
   } else {
     showCenterPrompt('网络不良，项目加载失败')

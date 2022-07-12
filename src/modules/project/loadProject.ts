@@ -6,6 +6,7 @@ import { selectedPatternList } from 'modules/pattern'
 import { trackData } from 'modules/track'
 import { recordHistory } from 'modules/history'
 import { HistoryType } from 'modules/history/Interface'
+import { bpm } from 'modules/time'
 
 /**
  * @description: 加载项目
@@ -14,7 +15,7 @@ import { HistoryType } from 'modules/history/Interface'
  */
 const loadProject = (project: Project) => {
   globalData.project = project
-
+  bpm.value = project.bpm
   // 重置音轨
   trackData.trackMap = project.trackMap
   const trackOrder = []

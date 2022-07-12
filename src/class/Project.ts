@@ -1,3 +1,4 @@
+import { bpm } from 'modules/time'
 import { stringify, zip } from 'modules/tools'
 import { trackData } from 'modules/track'
 import { Envelope, DotData, NoteData, Pattern, Track } from '.'
@@ -8,6 +9,7 @@ class Project {
   projectTitle: string // 项目标题
   introduce: string // 项目介绍
   authorId: string // 项目作者
+  bpm: number // 每分钟节拍数
   // 所有数据
   trackMap: Map<number, Track>
   patternMap: Map<number, Pattern>
@@ -25,6 +27,7 @@ class Project {
     this.projectTitle = '默认项目'
     this.introduce = ''
     this.authorId = ''
+    this.bpm = 120
 
     this.trackMap = new Map()
     this.patternMap = new Map()
@@ -84,10 +87,12 @@ class Project {
   static stringify(project: Project, needZip = true) {
     const result = []
     // 处理普通属性
-    result.push(`"projectId":${stringify(project['projectId'])}`)
-    result.push(`"projectTitle":${stringify(project['projectTitle'])}`)
-    result.push(`"introduce":${stringify(project['introduce'])}`)
-    result.push(`"authorId":${stringify(project['authorId'])}`)
+    const { projectId, projectTitle, introduce, authorId } = project
+    result.push(`"projectId":${stringify(projectId)}`)
+    result.push(`"projectTitle":${stringify(projectTitle)}`)
+    result.push(`"introduce":${stringify(introduce)}`)
+    result.push(`"authorId":${stringify(authorId)}`)
+    result.push(`"bpm":${stringify(bpm.value)}`)
 
     const idMap = {
       newTrackId: 0,
@@ -159,7 +164,7 @@ class Project {
     project['projectTitle'] = object['projectTitle']
     project['introduce'] = object['introduce']
     project['authorId'] = object['authorId']
-
+    project['bpm'] = object['bpm']
     // 建立音轨映射
     const trackMap = new Map()
     for (const trackId of Object.keys(object.trackMap)) {

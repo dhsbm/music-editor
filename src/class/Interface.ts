@@ -75,6 +75,7 @@ export interface ProjectObj {
   projectTitle: string // 项目标题
   introduce: string // 项目介绍
   authorId: string // 项目作者
+  bpm: number
   // 所有数据
   trackMap: {
     [prop: string]: TrackObj

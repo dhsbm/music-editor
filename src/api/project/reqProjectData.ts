@@ -1,10 +1,7 @@
 import { mockAjax, ResponseInterface } from '..'
 
 interface ProjectDataResponse extends ResponseInterface {
-  data: {
-    bpm: number // 项目bpm
-    projectData: string // 项目数据
-  } | null
+  data: string | null // 项目数据
 }
 
 /**

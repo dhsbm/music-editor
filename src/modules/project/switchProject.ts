@@ -1,7 +1,6 @@
-import { isLatest } from 'modules/history'
+import { historyData, isLatest } from 'modules/history'
 import { openProject, switchProjectWindowData, saveProject } from '.'
 import { showPromptWindow } from 'modules/prompt'
-import { globalData } from 'modules/globalData'
 
 /**
  * @description: 打开选中的项目
@@ -20,6 +19,8 @@ const switchProject = (index: number) => {
       },
       btn2: '不保存',
       fun2: () => {
+        historyData.newStep = 0
+        historyData.oldStep = 0
         switchProject(index)
       },
       btn3: '取消',
@@ -28,7 +29,6 @@ const switchProject = (index: number) => {
   }
   const projectId = switchProjectWindowData.projectList[index].projectId
 
-  if (projectId == globalData.project.projectId) return
   openProject(projectId)
 }
 
