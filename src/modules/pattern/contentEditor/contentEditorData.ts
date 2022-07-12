@@ -1,5 +1,5 @@
 import { reactive, computed, watch } from 'vue'
-import { editorCanvasData } from 'modules/canvas'
+import { editorCanvasData, editorCanvasRender } from 'modules/canvas'
 import { selectedNoteList } from 'modules/note'
 import { changeZIndex } from 'modules/tools'
 import { Pattern } from '@/class'
@@ -56,6 +56,7 @@ watch(
       contentEditorData.style.height = preStyle.height
       contentEditorData.style.transform = preStyle.transform
     }
+    editorCanvasRender()
   }
 )
 
