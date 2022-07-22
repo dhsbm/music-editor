@@ -8,7 +8,7 @@ const sourceEditorData: SourceEditorData = reactive({
   clone: undefined, // 克隆的数据
   style: {
     zIndex: 4,
-    transform: 'translate(-140px, -115px)',
+    transform: 'translate(-140px, -165px)',
   },
 })
 

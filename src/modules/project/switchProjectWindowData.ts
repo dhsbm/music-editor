@@ -11,7 +11,7 @@ const switchProjectWindowData = reactive({
   projectList: <{ projectId: number; title: string }[]>[],
   style: {
     zIndex: 4,
-    transform: 'translate(-150px, -120px)',
+    transform: 'translate(-250px, -140px)',
   },
 })
 
