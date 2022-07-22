@@ -8,14 +8,14 @@ class DotData {
   dotDataId: number // 节点数据id 若为0则自动申请
   envelopeIdSet: Set<number> // 生效的包络id
   dotList: Array<Dot> // 节点的集合
-  shape: Shape // 类型
+  shape: Shape // 线形：折线、正向水平线、反向水平线、1/2正弦
   category: Category // 类别：音量、声相……
   constructor(dotDataId: number, shape = Shape.Broken, category = Category.Volume) {
     this.dotDataId = dotDataId || globalData.project.newDotData(this)
-    this.envelopeIdSet = new Set() // 值为envelope的id
-    this.dotList = [] // 点的集合
-    this.shape = shape //对应：折线、正向水平线、反向水平线、1/2正弦
-    this.category = category // 类别：音量、声相……
+    this.envelopeIdSet = new Set()
+    this.dotList = []
+    this.shape = shape
+    this.category = category
   }
   // 添加包络
   addEnvelope(envelope: Envelope) {

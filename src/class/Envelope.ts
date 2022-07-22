@@ -74,6 +74,7 @@ class Envelope {
       this.offsetX,
       this.envelopeTitle
     )
+    envelope.actTrackId = this.actTrackId
     if (deep) {
       const dotData = this.dotData.clone()
       envelope.dotData = dotData

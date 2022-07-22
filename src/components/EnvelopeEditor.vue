@@ -57,7 +57,7 @@ const shapeList = [
   { name: '1/2正弦', value: Shape.Sine },
 ]
 const categoryList = [
-  { name: '音量', value: Category.Volume },
+  { name: '响度', value: Category.Volume },
   { name: '声相', value: Category.Panner },
 ]
 </script>

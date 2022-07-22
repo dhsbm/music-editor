@@ -31,12 +31,6 @@ const drawPattern = (pattern: Pattern, pointed = false) => {
   ctx.rect(x + 1, y + 1, w - 2, beatHeight - 2)
   ctx.closePath()
   ctx.clip()
-  // 写字
-  ctx.font = 'normal 14px serif'
-  ctx.textAlign = 'left'
-  ctx.textBaseline = 'top'
-  ctx.fillStyle = 'white'
-  ctx.fillText(pattern.patternTitle, x + 5, y + 5)
 
   // 画内部音节
   ctx.strokeStyle = track.color
@@ -53,6 +47,13 @@ const drawPattern = (pattern: Pattern, pointed = false) => {
   }
   ctx.stroke()
   ctx.closePath()
+
+  // 写字
+  ctx.font = 'normal 14px serif'
+  ctx.textAlign = 'left'
+  ctx.textBaseline = 'top'
+  ctx.fillStyle = 'white'
+  ctx.fillText(pattern.patternTitle, x + 5, y + 5)
 
   // 画底部按钮
   if (pointed) {

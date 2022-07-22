@@ -32,15 +32,16 @@ const drawEnvelope = (envelope: Envelope, pointed = false) => {
   ctx.rect(x + 1, y + 1, w - 2, beatHeight - 2)
   ctx.closePath()
   ctx.clip()
+
+  // 画内部的点
+  drawDot(envelope, y)
+
   // 写字
   ctx.font = 'normal 14px serif'
   ctx.textAlign = 'left'
   ctx.textBaseline = 'top'
   ctx.fillStyle = 'white'
   ctx.fillText(envelope.envelopeTitle, x + 5, y + 5)
-
-  // 画内部的点
-  drawDot(envelope, y)
 
   // 画底部按钮
   if (pointed) {

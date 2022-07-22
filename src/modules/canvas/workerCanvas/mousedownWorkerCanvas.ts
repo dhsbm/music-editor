@@ -19,7 +19,7 @@ const mousedownWorkerCanvas = (e: MouseEvent) => {
   // 鼠标中键
   if (e.button == 1) {
     // moveCanvas(e, workerCanvasData)
-    const str = Project.stringify(globalData.project, false)
+    const str = Project.stringify(globalData.project, true)
     console.log(str)
     // console.log(str)
     // const object = JSON.parse(str)
