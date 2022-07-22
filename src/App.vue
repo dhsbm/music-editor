@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <HeaderControlBar></HeaderControlBar>
-    <MastMenu></MastMenu>
+    <MasterMenu></MasterMenu>
     <Worker></Worker>
     <LoginWindow></LoginWindow>
     <TrackEditor></TrackEditor>
@@ -29,13 +29,13 @@
     <CenterPrompt></CenterPrompt>
     <PromptWindow></PromptWindow>
     <Hit></Hit>
-    <TimeMask></TimeMask>
+    <Mask></Mask>
   </div>
 </template>
 
 <script lang="ts" setup>
 import HeaderControlBar from 'components/HeaderControlbar.vue'
-import MastMenu from 'components/MastMenu.vue'
+import MasterMenu from 'components/MasterMenu.vue'
 import Worker from 'components/Worker.vue'
 import LoginWindow from 'components/Login.vue'
 import TrackEditor from 'components/TrackEditor.vue'
@@ -63,7 +63,7 @@ import HoverPrompt from 'components/HoverPrompt.vue'
 import CenterPrompt from 'components/CenterPrompt.vue'
 import PromptWindow from 'components/PromptWindow.vue'
 import Hit from 'components/Hit.vue'
-import TimeMask from 'components/TimeMask.vue'
+import Mask from 'components/Mask.vue'
 import { init, initDriver } from 'modules/init'
 import { onMounted } from 'vue'
 // 初始化

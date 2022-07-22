@@ -1,4 +1,5 @@
 import { globalData } from 'modules/globalData'
+import { showMask } from 'modules/mask'
 import { steps } from '.'
 
 /**
@@ -7,6 +8,7 @@ import { steps } from '.'
  */
 const guide = () => {
   document.body.style.overflow = 'hidden'
+  showMask()
   const { driver } = globalData
   driver.defineSteps(steps)
   driver.start()

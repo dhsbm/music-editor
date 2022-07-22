@@ -9,8 +9,8 @@ import { showPromptWindow } from 'modules/prompt'
  */
 const initDriver = () => {
   globalData.driver = new Driver(driverOptions)
-  const g = false
-  if (g) {
+  const shouGuide = true
+  if (shouGuide) {
     showPromptWindow({
       text: '是否要开始新手教程',
       fun1: guide,

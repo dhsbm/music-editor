@@ -1,7 +1,7 @@
 <!-- 主菜单 -->
 <template>
-  <div v-if="masterMenuData.show" class="mask" @click="masterMenuData.show = false">
-    <div class="mastMenu">
+  <div v-if="masterMenuData.show" class="masterMask" @click="masterMenuData.show = false">
+    <div class="masterMenu">
       <ul class="menu-group">
         <li class="menu-item" @click="newProjectWindowData.show = true">新建</li>
         <li class="menu-item" @click="switchProjectWindowData.show = true">打开</li>
@@ -18,7 +18,7 @@
         <li class="menu-item" @click="showPending">设置</li>
         <li class="menu-item">&nbsp;</li>
         <li class="menu-item" @click="guide">新手教程</li>
-        <li class="menu-item" @click="showPending">操作手册</li>
+        <li class="menu-item" @click="goGitee">操作手册</li>
         <li class="menu-item">&nbsp;</li>
       </ul>
     </div>
@@ -38,10 +38,14 @@ import {
   importProject,
 } from 'modules/project'
 import showPending from 'modules/tools/showPending'
+
+const goGitee = () => {
+  window.open('https://gitee.com/du-hao-111/music-editor/blob/master/README.md#%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C')
+}
 </script>
 
 <style lang="scss" scoped>
-.mask {
+.masterMask {
   position: absolute;
   z-index: 99999;
   top: 0;
@@ -49,7 +53,7 @@ import showPending from 'modules/tools/showPending'
   height: 100vh;
   width: 100%;
   background-color: rgba(37, 33, 33, 0.8);
-  .mastMenu {
+  .masterMenu {
     width: 230px;
     height: 100%;
     padding: 30px;

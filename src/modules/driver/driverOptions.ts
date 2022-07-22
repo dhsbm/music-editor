@@ -1,3 +1,5 @@
+import { hideMask } from 'modules/mask'
+
 const driverOptions = {
   animate: false, // Whether to animate or not
   opacity: 0.3, // Background opacity (0 means only popovers and without overlay)
@@ -10,6 +12,7 @@ const driverOptions = {
   prevBtnText: '上一步', // Previous button text for this step
   onReset: () => {
     document.body.style.overflow = 'auto'
+    hideMask()
   },
 }
 

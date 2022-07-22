@@ -1,6 +1,8 @@
 import { workerCanvasData, editorCanvasData } from 'modules/canvas'
 import { indicatorData } from 'modules/indicator'
+import { hideMask, showMask } from 'modules/mask'
 import { overlayData } from 'modules/overlay'
+import { showCenterPrompt } from 'modules/prompt'
 import { timeToBeat } from 'modules/tools'
 import { playData, playMeter, palyMusic, getAudioData } from '.'
 
@@ -17,13 +19,15 @@ const play = (on_off: boolean) => {
   getAudioData(on_off)
 
   if (on_off == false) {
+    // 停止播放
     indicatorData.start = oldStart
     workerCanvasData.leftBeat = oldWorkerLeftBeat
     editorCanvasData.leftBeat = oldEditorLeftBeat
     clearInterval(timer)
-
-    // 停止播放
+    hideMask()
   } else {
+    // 开始播放
+    showMask(() => showCenterPrompt('播放期间禁止操作，请先暂停播放'), true)
     oldStart = indicatorData.start
     oldWorkerLeftBeat = workerCanvasData.leftBeat
     oldEditorLeftBeat = editorCanvasData.leftBeat
