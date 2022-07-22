@@ -11,7 +11,7 @@ import { HistoryType } from 'modules/history/Interface'
 const saveDot = () => {
   const { clone, dot } = dotEditorData
   if (clone && dot) {
-    if (clone.y > 0 && clone.y < 1) {
+    if (clone.y >= 0 && clone.y <= 1) {
       if (clone.y != dot.y) {
         dot.y = clone.y
         recordHistory({
