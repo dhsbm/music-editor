@@ -13,7 +13,7 @@ const independEnvelope = (envelope: Envelope) => {
   dotData.deleteEnvelope(envelope)
   envelope.dotData = newDotData
   newDotData.addEnvelope(envelope)
-
+  console.log(dotData === newDotData)
   recordHistory({
     type: HistoryType.Envelop,
     describe: '独立包络',

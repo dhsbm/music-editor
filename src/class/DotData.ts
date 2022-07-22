@@ -49,7 +49,7 @@ class DotData {
     dotData.category = this.category
     for (const dot of this.dotList) {
       const clone = dot.clone()
-      dotData.addDot(dot)
+      dotData.addDot(clone)
       clone.dotData = dotData
     }
     return dotData

@@ -15,7 +15,7 @@ class Dot {
   }
 
   // 克隆节点
-  clone(): Dot {
+  clone() {
     return new Dot(this.dotDataId, this.x, this.y)
   }
   // 将节点添加包络数据中
